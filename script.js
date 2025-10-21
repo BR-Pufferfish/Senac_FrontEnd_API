@@ -11,6 +11,7 @@ async function getUsers(){
 }
 getUsers()
 
+
 function init(){
         const form = document.querySelector("form")
     form.addEventListener("submit",(event)=>{
@@ -24,36 +25,39 @@ function init(){
 }
 init()
 
+
 function openModal(){
     const body = document.body
    
-    body.insertAdjacentHTML("beforeend",`
-        <div class="wrapper">
+    body.insertAdjacentHTML("beforeend",
+        `<div class="wrapper">
         <div class="modal">
             <button id="close">X</button>
             <p>Algo deu errado! tente novamente</p>
         </div>
-    </div>
-        `)
-        const close = document.querySelector("#close")
+    </div>`)
+    
+    const close = document.querySelector("#close")
     close.addEventListener("click",()=>{
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
     })
 }
 
+
 function toastify(tipo,mensagem){
-    document.body.insertAdjacentHTML("beforeend",`
-            <div class="toastify ${tipo}">
+    document.body.insertAdjacentHTML("beforeend",
+        `<div class="toastify ${tipo}">
         <p>${mensagem}</p>
-    </div>
-        `)
+    </div>`)
         const toas= document.querySelector(".toastify")
         setTimeout(() => {
             
             toas.remove()
         }, 3000);
 }
+
+
 async function createUser(){
     const name = document.querySelector("#name")
     const email = document.querySelector("#email")
@@ -76,6 +80,7 @@ async function createUser(){
     }
 }
 
+
 async function updateUser(){
       const name = document.querySelector("#name")
     const email = document.querySelector("#email")
@@ -89,9 +94,10 @@ async function updateUser(){
         body:JSON.stringify(usuario)
     })
     const user = await response.json()
-    console.log(user,"user atualizado")
-    
+    console.log(user,"user atualizado")  
 }
+
+
 async function removeUser(){
     const response = await fetch(`${baseUrl}/Usuario/1`,{
         method:"DELETE"
