@@ -1,11 +1,11 @@
-//http://localhost:5130
-const baseUrl = "http://localhost:3001"
+//https://localhost:7166/api
+const baseUrl = "https://localhost:7166/api"
 
 const headers ={
             "content-type":	"application/json; charset=utf-8"
         }
 async function getUsers(){
-    const response = await fetch(`${baseUrl}/users`)
+    const response = await fetch(`${baseUrl}/Usuario`)
     const users = await response.json()
 
 }
@@ -61,7 +61,7 @@ async function createUser(){
         name:name.value,
         email:email.value
     }
-    const response = await fetch(`${baseUrl}/users`,{
+    const response = await fetch(`${baseUrl}/Usuario`,{
         method:"POST",
         headers:headers,
         body:JSON.stringify(usuario)
@@ -83,7 +83,7 @@ async function updateUser(){
         name:name.value,
         email:email.value
     }
-    const response = await fetch(`${baseUrl}/users/1`,{
+    const response = await fetch(`${baseUrl}/Usuario/1`,{
         method:"PUT",
          headers:headers,
         body:JSON.stringify(usuario)
@@ -93,7 +93,7 @@ async function updateUser(){
     
 }
 async function removeUser(){
-    const response = await fetch(`${baseUrl}/users/1`,{
+    const response = await fetch(`${baseUrl}/Usuario/1`,{
         method:"DELETE"
     })
     console.log(response,"response delete")
