@@ -9,6 +9,23 @@ async function getUsuario() {
     const resJson = await response.json()
 
     console.log(resJson, "resjosn")
+    const lista = document.querySelector("ul")
+    resJson.forEach(usuario => {
+        lista.insertAdjacentHTML("beforeend", `
+             <li>
+                <p>${usuario.nome}</p>
+                <button id=${usuario.id}>Excluir</button>
+                    <button id="${usuario.id}-edit">Excluir</button>
+             </li>
+            `)
+        const btnExcluir = document.getElementById(usuario.id)
+        btnExcluir.addEventListener("click", async () => {
+            console.log("clicou para excluir", usuario.id)
+            deleteUsuario(usuario.id)
+        })
+
+
+    })
 }
 getUsuario()
 
@@ -32,6 +49,12 @@ getUsuario()
 // postUsuario()
 
 
+// async function getUsuarioId() {
+
+// }
+// getUsuarioId()
+
+
 async function postUsuario() {
     const name = document.querySelector("#name")
     const email = document.querySelector("#email")
@@ -46,7 +69,7 @@ async function postUsuario() {
     })
     console.log(response, "response")
 }
-postUsuario()
+// postUsuario()
 
 
 async function putUsuario() {
@@ -64,13 +87,13 @@ async function putUsuario() {
     const user = await response.json()
     console.log(user, "user atualizado")
 }
-putUsuario()
+// putUsuario()
 
 
-async function deleteUsuario() {
-    const response = await fetch(`${baseUrl}/Usuario/1`, {
+async function deleteUsuario(id) {
+    const response = await fetch(`${baseUrl}/Usuario/${id}`, {
         method: "DELETE"
     })
     console.log(response, "response delete")
 }
-deleteUsuario()
+// deleteUsuario()
