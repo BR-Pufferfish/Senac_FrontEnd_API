@@ -29,31 +29,6 @@ async function getUsuario() {
 }
 getUsuario()
 
-// async function postUsuario() {
-//     const obj = {
-//         titulo: "Abajur",
-//         descricao: "",
-//         preco: 200,
-//         possuiPreparo: true,
-//         imagem: "",
-//         tipo: ""
-//     }
-//     const response = await fetch(`${baseUrl}/Usuario`, {
-//         method: "POST",
-//         body: JSON.stringify(obj),
-//         headers: headers
-//     })
-//     const resJson = await response.json()
-//     console.log(resJson, "resJson")
-// }
-// postUsuario()
-
-
-// async function getUsuarioId() {
-
-// }
-// getUsuarioId()
-
 
 async function postUsuario() {
     const name = document.querySelector("#name")
