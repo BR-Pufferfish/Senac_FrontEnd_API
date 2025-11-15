@@ -1,6 +1,9 @@
 const baseUrl = "https://localhost:7166/api"
-
 const headers = { "content-type": "application/json; charset=utf-8" }
+
+
+
+
 
 
 async function getUsuario() {
@@ -15,13 +18,20 @@ async function getUsuario() {
              <li>
                 <p>${usuario.nome}</p>
                 <button id=${usuario.id}>Excluir</button>
-                    <button id="${usuario.id}-edit">Excluir</button>
+                <button id="${usuario.id}-edit">Excluir</button>
              </li>
             `)
         const btnExcluir = document.getElementById(usuario.id)
         btnExcluir.addEventListener("click", async () => {
-            console.log("clicou para excluir", usuario.id)
+            console.log("Excluir", usuario.id)
             deleteUsuario(usuario.id)
+        })
+
+
+        const btnEditar = document.getElementById(`${usuario.id}-edit`)
+        btnEditar.addEventListener("click", async () => {
+            console.log("Editar", usuario.id)
+            putUsuario(usuario.id)
         })
 
 
@@ -30,39 +40,69 @@ async function getUsuario() {
 getUsuario()
 
 
+
+
+
+
 async function postUsuario() {
-    const name = document.querySelector("#name")
-    const email = document.querySelector("#email")
-    const usuario = {
-        name: name.value,
-        email: email.value
-    }
-    const response = await fetch(`${baseUrl}/Usuario`, {
-        method: "POST",
-        headers: headers,
-        body: JSON.stringify(usuario)
+
+    const form = document.querySelector("form")
+
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault()
+
+        const name = document.querySelector("#name")
+        const email = document.querySelector("#email")
+        const senha = document.querySelector("#senha")
+
+
+        const usuario = {
+            name: name.value,
+            email: email.value,
+            senha: senha.value
+        }
+
+
+        const response = await fetch(`${baseUrl}/Usuario`, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(usuario)
+        })
+
+
+        console.log(response, "response")
     })
-    console.log(response, "response")
 }
-// postUsuario()
+postUsuario()
+
+
+
+
 
 
 async function putUsuario() {
     const name = document.querySelector("#name")
     const email = document.querySelector("#email")
+
     const usuario = {
         name: name.value,
         email: email.value
     }
+
     const response = await fetch(`${baseUrl}/Usuario/1`, {
         method: "PUT",
         headers: headers,
         body: JSON.stringify(usuario)
     })
+
     const user = await response.json()
     console.log(user, "user atualizado")
 }
-// putUsuario()
+
+
+
+
+
 
 
 async function deleteUsuario(id) {
@@ -71,4 +111,3 @@ async function deleteUsuario(id) {
     })
     console.log(response, "response delete")
 }
-// deleteUsuario()

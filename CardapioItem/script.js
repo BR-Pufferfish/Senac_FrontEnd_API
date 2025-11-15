@@ -25,7 +25,7 @@ async function getCardapioItem() {
 
         const btnExcluir = document.getElementById(caItem.id)
         btnExcluir.addEventListener("click", async () => {
-            console.log("clicou para excluir", caItem.id)
+            console.log("Excluir", caItem.id)
             deleteCardapioItem(caItem.id)
         })
 
@@ -53,13 +53,14 @@ async function postCardapioItem() {
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
+
         const titulo = document.querySelector("#titulo")
         const descricao = document.querySelector("#descricao")
         const preco = document.querySelector("#preco")
-        let checkbox = document.querySelector("#possuipreparo")
+        const checkbox = document.querySelector("#possuipreparo")
 
 
-        const CardapioItem = {
+        const cardapioItem = {
             titulo: titulo.value,
             descricao: descricao.value,
             preco: preco.value,
@@ -70,14 +71,13 @@ async function postCardapioItem() {
         const response = await fetch(`${baseUrl}/CardapioItem`, {
             method: "POST",
             headers: headers,
-            body: JSON.stringify(CardapioItem)
+            body: JSON.stringify(cardapioItem)
         })
 
 
         console.log(response, "response")
     })
 }
-postCardapioItem()
 
 
 
