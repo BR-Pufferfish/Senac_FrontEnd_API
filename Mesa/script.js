@@ -19,6 +19,8 @@ async function getMesa() {
                 <button id="${mesa.id}-edit">Excluir</button>
              </li>
             `)
+
+            
         const btnExcluir = document.getElementById(mesa.id)
         btnExcluir.addEventListener("click", async () => {
             console.log("Excluir", mesa.id)
@@ -65,7 +67,7 @@ async function postMesa() {
             body: JSON.stringify(mesa)
         })
 
-        
+
         const confirmar = await response.json()
         console.log(confirmar, "postMesa - Mesa adicionada")
     })
