@@ -89,7 +89,7 @@ async function putUsuario() {
         email: email.value
     }
 
-    const response = await fetch(`${baseUrl}/Usuario/1`, {
+    const response = await fetch(`${baseUrl}/Usuario/${id}`, {
         method: "PUT",
         headers: headers,
         body: JSON.stringify(usuario)
