@@ -16,11 +16,11 @@ async function getMesa() {
              <li>
                 <p>${mesa.numeroMesa}</p>
                 <button id=${mesa.id}>Excluir</button>
-                <button id="${mesa.id}-edit">Excluir</button>
+                <button id="${mesa.id}-edit">Editar</button>
              </li>
             `)
 
-            
+
         const btnExcluir = document.getElementById(mesa.id)
         btnExcluir.addEventListener("click", async () => {
             console.log("Excluir", mesa.id)
