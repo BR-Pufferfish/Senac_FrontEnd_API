@@ -1,0 +1,71 @@
+/* Fundo geral */
+body {
+    font-family: "Poppins", sans-serif;
+    background: #faf7f2;
+    margin: 0;
+    padding: 50px 20px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    gap: 40px;
+    /* espaço maior entre botões */
+}
+
+/* Botões EXTRA GRANDES */
+a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 85vw;
+    /* Ocupa grande parte da tela */
+    max-width: 600px;
+    /* Agora permite maior largura */
+    height: 110px;
+    /* ALTO — ideal para dedo */
+
+    text-decoration: none;
+    font-size: 32px;
+    /* Fonte maior */
+    font-weight: 600;
+
+    background-color: #d35400;
+    color: white;
+    border-radius: 14px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    transition: 0.25s ease;
+}
+
+/* Efeito hover (para mouse) */
+a:hover {
+    background-color: #e67e22;
+    transform: translateY(-5px);
+}
+
+/* Efeito ao clicar */
+a:active {
+    transform: scale(0.96);
+}
+
+/* Layout para tablets em modo paisagem */
+@media (orientation: landscape) {
+    body {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding-top: 70px;
+        gap: 35px;
+    }
+
+    a {
+        width: 40vw;
+        max-width: 450px;
+        height: 120px;
+        /* ainda maior na horizontal */
+        font-size: 30px;
+    }
+}
