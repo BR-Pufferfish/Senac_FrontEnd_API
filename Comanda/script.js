@@ -22,6 +22,7 @@ function novaComanda() {
     btnNew.addEventListener("click", async () => {
         console.log("Nova Comanda", cardapioItems)
         const lista = document.querySelector("#cardapio_items")
+
         cardapioItems.forEach(caItem => {
             lista.insertAdjacentHTML("beforeend", `
              <li>
@@ -31,6 +32,7 @@ function novaComanda() {
              </li>
             `)
         })
+
         lista.insertAdjacentHTML("beforeend", `
             
             <input type="text" id="cliente" placeholder="Nome do cliente"/>
@@ -40,25 +42,30 @@ function novaComanda() {
 
         const btnFinalizar = document.getElementById("finalizar")
         btnFinalizar.addEventListener("click", async () => {
+
             console.log("Finalizar Comanda", document.querySelector("#mesa").value)
             const inputsCheck = document.querySelectorAll(".check")
             console.log(inputsCheck)
             let itensSelecionados = []
+
             inputsCheck.forEach(input => {
                 if (input.checked) {
                     itensSelecionados.push(parseInt(input.id))
                 }
             })
+
             const body = {
                 "numeroMesa": 11,
                 "nomeCliente": "testeTeste",
                 "cardapioItemIds": itensSelecionados
             }
+
             const res = await fetch(`${baseUrl}/Comanda`, {
                 method: "POST",
                 headers: headers,
                 body: JSON.stringify(body)
             })
+
             console.log("Itens Selecionados:", itensSelecionados)
             const resJson = await res.json()
             console.log("Comanda criada:", resJson)
