@@ -1,7 +1,14 @@
 /* Fundo geral */
+:root {
+    --primary-color: #d35400;
+    --primary-color-hover: #e67e22;
+    --button-height: 110px;
+    --button-font-size: 32px;
+}
+
 body {
     font-family: "Poppins", sans-serif;
-    background: #faf7f2;
+    background: #ffdc99;
     margin: 0;
     padding: 50px 20px;
 
@@ -32,7 +39,8 @@ a {
     /* Fonte maior */
     font-weight: 600;
 
-    background-color: #d35400;
+    /*cor principal*/
+    background-color: var(--primary-color);
     color: white;
     border-radius: 14px;
 
@@ -40,9 +48,9 @@ a {
     transition: 0.25s ease;
 }
 
-/* Efeito hover (para mouse) */
+/*Ao passar o mouse por cima do botões*/
 a:hover {
-    background-color: #e67e22;
+    background-color: var(--primary-color-hover);
     transform: translateY(-5px);
 }
 
@@ -61,10 +69,11 @@ a:active {
         gap: 35px;
     }
 
+    /*Resp pelo enquadramento dos botões*/
     a {
-        width: 40vw;
+        width: 100vw;
         max-width: 450px;
-        height: 120px;
+        height: 18vw;
         /* ainda maior na horizontal */
         font-size: 30px;
     }
