@@ -33,8 +33,6 @@ async function getMesa() {
             console.log("Editar", mesa.id)
             putMesa(mesa.id)
         })
-
-
     })
 }
 getMesa()

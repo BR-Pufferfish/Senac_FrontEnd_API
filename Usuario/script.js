@@ -8,20 +8,21 @@ const headers = { "content-type": "application/json; charset=utf-8" }
 
 async function getUsuario() {
     const response = await fetch(`${baseUrl}/Usuario`)
-    console.log(response, "response")
     const resJson = await response.json()
 
-    console.log(resJson, "resjosn")
     const lista = document.querySelector("ul")
     resJson.forEach(usuario => {
         lista.insertAdjacentHTML("beforeend", `
              <li>
                 <p>${usuario.nome}</p>
-                <button id=${usuario.id}>Excluir</button>
-                <button id="${usuario.id}-edit">Excluir</button>
+                <p>${usuario.email}</p>
+                <button id='${usuario.id}-delete'>Excluir</button>
+                <button id='${usuario.id}-edit'>Editar</button>
              </li>
             `)
-        const btnExcluir = document.getElementById(usuario.id)
+
+
+        const btnExcluir = document.getElementById(`${usuario.id}-delete`)
         btnExcluir.addEventListener("click", async () => {
             console.log("Excluir", usuario.id)
             deleteUsuario(usuario.id)
@@ -51,13 +52,14 @@ async function postUsuario() {
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
 
-        const name = document.querySelector("#name")
+        const nome = document.querySelector("#nome")
         const email = document.querySelector("#email")
         const senha = document.querySelector("#senha")
 
+        console.log(nome.value, email.value, senha.value)
 
         const usuario = {
-            name: name.value,
+            nome: nome.value,
             email: email.value,
             senha: senha.value
         }
@@ -69,8 +71,8 @@ async function postUsuario() {
             body: JSON.stringify(usuario)
         })
 
-
-        console.log(response, "response")
+        const user = await response.json()
+        console.log(user, "usuario criado")
     })
 }
 postUsuario()
@@ -80,13 +82,15 @@ postUsuario()
 
 
 
-async function putUsuario() {
-    const name = document.querySelector("#name")
+async function putUsuario(id) {
+    const nome = document.querySelector("#nome")
     const email = document.querySelector("#email")
+    const senha = document.querySelector("#senha")
 
     const usuario = {
-        name: name.value,
-        email: email.value
+        nome: nome.value,
+        email: email.value,
+        senha: senha.value
     }
 
     const response = await fetch(`${baseUrl}/Usuario/${id}`, {
@@ -96,7 +100,7 @@ async function putUsuario() {
     })
 
     const user = await response.json()
-    console.log(user, "user atualizado")
+    console.log(user, "usuario atualizado")
 }
 
 
@@ -109,5 +113,7 @@ async function deleteUsuario(id) {
     const response = await fetch(`${baseUrl}/Usuario/${id}`, {
         method: "DELETE"
     })
-    console.log(response, "response delete")
+
+    const user = await response.json()
+    console.log(user, "usuario deletado")
 }

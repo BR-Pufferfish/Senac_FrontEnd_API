@@ -9,23 +9,25 @@
 
 <body>
     <a href="../Home/index.html">Home</a>
-    
+
+
+    <form>
+        <label for="numeroMesa"></label>
+        <input type="number" id="numeroMesa" name="numeroMesa" placeholder="Ex: 10">
+
+        <label for="situacaoMesa"></label>
+        <input type="text" id="situacaoMesa" name="situacaoMesa" placeholder="Ex: Livre">
+
+        <button type="submit">salvar</button>
+    </form>
+
+
     <div id="div_get">
         <h2>Mesa</h2>
         <ul>
             <!-- <li></li> -->
         </ul>
     </div>
-
-    <form>
-        <label for="numeroMesa" placeholder="Ex: 10"></label>
-        <input type="number" id="numeroMesa" name="numeroMesa">
-
-        <label for="situacaoMesa" placeholder="Ex: Livre"></label>
-        <input type="text" id="situacaoMesa" name="situacaoMesa">
-
-        <button type="submit">salvar</button>
-    </form>
 
 
     <script src="./script.js"></script>
