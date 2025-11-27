@@ -15,13 +15,13 @@ async function getMesa() {
         lista.insertAdjacentHTML("beforeend", `
              <li>
                 <p>${mesa.numeroMesa}</p>
-                <button id=${mesa.id}>Excluir</button>
-                <button id="${mesa.id}-edit">Editar</button>
+                <button id='${mesa.id}-delete'>Excluir</button>
+                <button id='${mesa.id}-edit'>Editar</button>
              </li>
             `)
 
 
-        const btnExcluir = document.getElementById(mesa.id)
+        const btnExcluir = document.getElementById(`${mesa.id}-delete`)
         btnExcluir.addEventListener("click", async () => {
             console.log("Excluir", mesa.id)
             deleteMesa(mesa.id)
@@ -77,7 +77,7 @@ postMesa()
 
 
 
-async function putMesa() {
+async function putMesa(id) {
     const numeroMesa = document.querySelector("#numeroMesa")
     const situacaoMesa = document.querySelector("#situacaoMesa")
 
