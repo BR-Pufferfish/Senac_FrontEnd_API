@@ -1,7 +1,11 @@
 //https://localhost:7166/api
 const baseUrl = "https://localhost:7166/api"
-
 const headers = { "content-type": "application/json; charset=utf-8" }
+
+
+
+
+
 
 async function getUsers() {
     const response = await fetch(`${baseUrl}/Usuario`)
@@ -11,18 +15,26 @@ async function getUsers() {
 getUsers()
 
 
-function init() {
-    const form = document.querySelector("form")
-    form.addEventListener("submit", (event) => {
-        event.preventDefault()
-        createUser()
-        // updateUser()
-        // removeUser()
-        // openModal()
-    })
 
-}
-init()
+
+
+
+// function init() {
+//     const form = document.querySelector("form")
+//     form.addEventListener("submit", (event) => {
+//         event.preventDefault()
+//         createUser()
+//         // updateUser()
+//         // removeUser()
+//         // openModal()
+//     })
+
+// }
+// init()
+
+
+
+
 
 
 function openModal() {
@@ -44,6 +56,10 @@ function openModal() {
 }
 
 
+
+
+
+
 function toastify(tipo, mensagem) {
     document.body.insertAdjacentHTML("beforeend",
         `<div class="toastify ${tipo}">
@@ -55,6 +71,10 @@ function toastify(tipo, mensagem) {
         toas.remove()
     }, 3000);
 }
+
+
+
+
 
 
 async function createUser() {

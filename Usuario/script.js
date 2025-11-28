@@ -5,6 +5,38 @@ const headers = { "content-type": "application/json; charset=utf-8" }
 
 
 
+function modalPostUsuario() {
+    const body = document.body
+
+    body.insertAdjacentHTML("beforeend",
+        `<div class="wrapper">
+            <div class="modal">
+                <button id="close">X</button>
+                <form>
+                    <label for="nome"></label>
+                    <input type="text" id="nome" placeholder="Ex: Shaolin">
+
+                    <label for="email"></label>
+                    <input type="text" id="email" placeholder="Ex: shaolin@email.com">
+
+                    <label for="senha"></label>
+                    <input type="text" id="senha" placeholder="Ex: Flavinho2025">
+
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+        `)
+a
+        // verificar como que vou captar os dados destes campos e enviar para a api
+
+
+    const close = document.querySelector("#close")
+    close.addEventListener("click", () => {
+        const wrapper = document.querySelector(".wrapper")
+        wrapper.remove()
+    })
+}
 
 async function getUsuario() {
     const response = await fetch(`${baseUrl}/Usuario`)
