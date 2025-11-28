@@ -70,7 +70,6 @@ async function postMesa() {
         console.log(confirmar, "postMesa - Mesa adicionada")
     })
 }
-postMesa()
 
 
 
