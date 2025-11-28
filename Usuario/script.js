@@ -12,7 +12,7 @@ novoUsuario.addEventListener("click", modalPostUsuario)
 function modalPostUsuario() {
     const body = document.body
 
-    body.insertAdjacentHTML("beforeend",
+    body.insertAdjacentHTML("afterbegin",
         `<div class="wrapper">
             <div class="modal">
                 <button id="close">X</button>
@@ -32,38 +32,8 @@ function modalPostUsuario() {
         </div>
         `)
 
-    // verificar como que vou captar os dados destes campos e enviar para a api
-    // async function postUsuario() {
 
-    //     const form = document.querySelector("form")
-
-    //     form.addEventListener("submit", async (event) => {
-    //         event.preventDefault()
-
-    //         const nome = document.querySelector("#nome")
-    //         const email = document.querySelector("#email")
-    //         const senha = document.querySelector("#senha")
-
-    //         console.log(nome.value, email.value, senha.value)
-
-    //         const usuario = {
-    //             nome: nome.value,
-    //             email: email.value,
-    //             senha: senha.value
-    //         }
-
-
-    //         const response = await fetch(`${baseUrl}/Usuario`, {
-    //             method: "POST",
-    //             headers: headers,
-    //             body: JSON.stringify(usuario)
-    //         })
-
-    //         const user = await response.json()
-    //         console.log(user, "usuario criado")
-    //     })
-    // }
-    // postUsuario()
+    postUsuario()
 
     const close = document.querySelector("#close")
     close.addEventListener("click", () => {
@@ -146,7 +116,7 @@ async function postUsuario() {
         console.log(user, "usuario criado")
     })
 }
-postUsuario()
+// postUsuario()
 
 
 
