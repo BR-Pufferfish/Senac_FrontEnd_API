@@ -1,4 +1,5 @@
-const baseUrl = "https://localhost:7093/api"
+// const baseUrl = "https://localhost:7166/api"
+import { baseUrl } from "../baseUrl.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 
@@ -73,7 +74,7 @@ async function getUsuario() {
         const btnEditar = document.getElementById(`${usuario.id}-edit`)
         btnEditar.addEventListener("click", async () => {
             console.log("Editar", usuario.id)
-            putUsuario(usuario.id)
+            putUsuario(usuario)
         })
 
 
@@ -123,7 +124,34 @@ async function postUsuario() {
 
 
 
-async function putUsuario(id) {
+async function putUsuario(userEdit) {
+    const body = document.body
+
+    body.insertAdjacentHTML("afterbegin",
+        `<div class="wrapper">
+            <div class="modal">
+                <button id="close">X</button>
+                <form>
+                    <label for="nome"></label>
+                    <input type="text" id="nome" placeholder="Ex: Shaolin" value="${userEdit.nome}">
+
+                    <label for="email"></label>
+                    <input type="text" id="email" placeholder="Ex: shaolin@email.com">
+
+                    <label for="senha"></label>
+                    <input type="text" id="senha" placeholder="Ex: Flavinho2025">
+
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+        `)
+    const close = document.querySelector("#close")
+    close.addEventListener("click", () => {
+        const wrapper = document.querySelector(".wrapper")
+        wrapper.remove()
+    })
+
     const nome = document.querySelector("#nome")
     const email = document.querySelector("#email")
     const senha = document.querySelector("#senha")
@@ -134,7 +162,7 @@ async function putUsuario(id) {
         senha: senha.value
     }
 
-    const response = await fetch(`${baseUrl}/Usuario/${id}`, {
+    const response = await fetch(`${baseUrl}/Usuario/${userEdit.id}`, {
         method: "PUT",
         headers: headers,
         body: JSON.stringify(usuario)
@@ -157,4 +185,5 @@ async function deleteUsuario(id) {
 
     const user = await response.json()
     console.log(user, "usuario deletado")
+    location.reload()
 }
