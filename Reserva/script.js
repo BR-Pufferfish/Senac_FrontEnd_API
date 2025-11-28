@@ -1,4 +1,5 @@
-const baseUrl = "https://localhost:7166/api"
+// const baseUrl = "https://localhost:7166/api"
+import { baseUrl } from "../baseUrl.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 
@@ -34,8 +35,7 @@ function modalPostReserva() {
         </div>
         `)
 
-    // verificar como que vou captar os dados destes campos e enviar para a api
-
+    postReserva()
 
     const close = document.querySelector("#close")
     close.addEventListener("click", () => {
@@ -56,28 +56,111 @@ async function getReserva() {
     resJson.forEach(reserva => {
         lista.insertAdjacentHTML("beforeend", `
              <li>
-                <p>${reserva.id}</p>
-                <p>${reserva.nomeCliente}</p>
+                <p>ID: ${reserva.id}</p>
+                <p>Mesa: ${reserva.numeroMesa}</p>
+                <p>Cliente: ${reserva.nomeCliente}</p>
+                <p>Contato: ${reserva.telefone}</p>
+                <p>Data: ${reserva.dataHoraReserva}</p>
                 <button id='${reserva.id}-delete'>Excluir</button>
                 <button id='${reserva.id}-edit'>Editar</button>
              </li>
             `)
 
 
-        const btnExcluir = document.getElementById(`${usuario.id}-delete`)
+        const btnExcluir = document.getElementById(`${reserva.id}-delete`)
         btnExcluir.addEventListener("click", async () => {
-            console.log("Excluir", usuario.id)
-            deleteUsuario(usuario.id)
+            console.log("Excluir", reserva.id)
+            deleteReserva(reserva.id)
         })
 
 
-        const btnEditar = document.getElementById(`${usuario.id}-edit`)
+        const btnEditar = document.getElementById(`${reserva.id}-edit`)
         btnEditar.addEventListener("click", async () => {
-            console.log("Editar", usuario.id)
-            putUsuario(usuario.id)
+            console.log("Editar", reserva.id)
+            putReserva(reserva.id)
         })
 
 
     })
 }
 getReserva()
+
+
+
+
+
+
+async function postReserva() {
+
+    const form = document.querySelector("form")
+
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault()
+
+        const numeroMesa = document.querySelector("#numeroMesa")
+        const nomeCliente = document.querySelector("#nomeCliente")
+        const telefone = document.querySelector("#telefone")
+        const dataHoraReserva = document.querySelector("#dataHoraReserva")
+
+        console.log(numeroMesa.value, nomeCliente.value, telefone.value, dataHoraReserva.value)
+
+        const reserva = {
+            numeroMesa: numeroMesa.value,
+            nomeCliente: nomeCliente.value,
+            telefone: telefone.value,
+            dataHoraReserva: dataHoraReserva.value
+        }
+
+
+        const response = await fetch(`${baseUrl}/Reservas`, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(reserva)
+        })
+
+        const reser = await response.json()
+        console.log(reser, "POST - Reserva criada")
+    })
+}
+
+
+
+
+
+
+async function putReserva(id) {
+    const numeroMesa = document.querySelector("#numeroMesa")
+    const nomeCliente = document.querySelector("#nomeCliente")
+    const telefone = document.querySelector("#telefone")
+    const dataHoraReserva = document.querySelector("#dataHoraReserva")
+
+    const reserva = {
+        numeroMesa: numeroMesa.value,
+        nomeCliente: nomeCliente.value,
+        telefone: telefone.value,
+        dataHoraReserva: dataHoraReserva.value
+    }
+
+    const response = await fetch(`${baseUrl}/Reservas/${id}`, {
+        method: "PUT",
+        headers: headers,
+        body: JSON.stringify(reserva)
+    })
+
+    const reser = await response.json()
+    console.log(reser, "PUT - Reserva atualizada")
+}
+
+
+
+
+
+
+async function deleteReserva(id) {
+    const response = await fetch(`${baseUrl}/Reservas/${id}`, {
+        method: "DELETE"
+    })
+
+    const reser = await response.json()
+    console.log(reser, "DELETE - Reserva deletada")
+}

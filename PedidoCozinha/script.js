@@ -66,13 +66,13 @@ async function getPedido() {
         lista.insertAdjacentHTML("beforeend", `
              <li>
                 <p>${pedido.id}</p>
-                <button id=${pedido.id}>Excluir</button>
+                <button id=${pedido.id}-excluir>Excluir</button>
                 <button id="${pedido.id}-edit">Editar</button>
              </li>
             `)
 
 
-        // const btnExcluir = document.getElementById(mesa.id)
+        // const btnExcluir = document.getElementById(`${mesa.id}-excluir`)
         // btnExcluir.addEventListener("click", async () => {
         //     console.log("Excluir", mesa.id)
         //     deleteMesa(mesa.id)
