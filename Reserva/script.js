@@ -34,7 +34,7 @@ function modalPostReserva() {
         </div>
         `)
 
-        // verificar como que vou captar os dados destes campos e enviar para a api
+    // verificar como que vou captar os dados destes campos e enviar para a api
 
 
     const close = document.querySelector("#close")
@@ -43,3 +43,41 @@ function modalPostReserva() {
         wrapper.remove()
     })
 }
+
+
+
+
+
+async function getReserva() {
+    const response = await fetch(`${baseUrl}/Reservas`)
+    const resJson = await response.json()
+
+    const lista = document.querySelector("ul")
+    resJson.forEach(reserva => {
+        lista.insertAdjacentHTML("beforeend", `
+             <li>
+                <p>${reserva.id}</p>
+                <p>${reserva.nomeCliente}</p>
+                <button id='${reserva.id}-delete'>Excluir</button>
+                <button id='${reserva.id}-edit'>Editar</button>
+             </li>
+            `)
+
+
+        const btnExcluir = document.getElementById(`${usuario.id}-delete`)
+        btnExcluir.addEventListener("click", async () => {
+            console.log("Excluir", usuario.id)
+            deleteUsuario(usuario.id)
+        })
+
+
+        const btnEditar = document.getElementById(`${usuario.id}-edit`)
+        btnEditar.addEventListener("click", async () => {
+            console.log("Editar", usuario.id)
+            putUsuario(usuario.id)
+        })
+
+
+    })
+}
+getReserva()
