@@ -117,14 +117,13 @@ async function postUsuario() {
         console.log(user, "usuario criado")
     })
 }
-// postUsuario()
 
 
 
 
 
 
-async function putUsuario(userEdit) {
+function abrirModalEdit(userEdit) {
     const body = document.body
 
     body.insertAdjacentHTML("afterbegin",
@@ -146,30 +145,47 @@ async function putUsuario(userEdit) {
             </div>
         </div>
         `)
+
     const close = document.querySelector("#close")
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
     })
 
-    const nome = document.querySelector("#nome")
-    const email = document.querySelector("#email")
-    const senha = document.querySelector("#senha")
+}
 
-    const usuario = {
-        nome: nome.value,
-        email: email.value,
-        senha: senha.value
-    }
 
-    const response = await fetch(`${baseUrl}/Usuario/${userEdit.id}`, {
-        method: "PUT",
-        headers: headers,
-        body: JSON.stringify(usuario)
+
+
+
+
+async function putUsuario(userEdit) {
+    abrirModalEdit(userEdit)
+
+    const form = document.querySelector("form")
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault()
+
+
+        const nome = document.querySelector("#nome")
+        const email = document.querySelector("#email")
+        const senha = document.querySelector("#senha")
+
+        const usuario = {
+            nome: nome.value,
+            email: email.value,
+            senha: senha.value
+        }
+
+        const response = await fetch(`${baseUrl}/Usuario/${userEdit.id}`, {
+            method: "PUT",
+            headers: headers,
+            body: JSON.stringify(usuario)
+        })
+
+        const user = await response.json()
+        console.log(user, "usuario atualizado")
     })
-
-    const user = await response.json()
-    console.log(user, "usuario atualizado")
 }
 
 
@@ -183,7 +199,6 @@ async function deleteUsuario(id) {
         method: "DELETE"
     })
 
-    const user = await response.json()
-    console.log(user, "usuario deletado")
+    console.log("usuario deletado")
     location.reload()
 }
