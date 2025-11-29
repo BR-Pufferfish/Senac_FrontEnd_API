@@ -128,27 +128,73 @@ async function postReserva() {
 
 
 
-async function putReserva(id) {
-    const numeroMesa = document.querySelector("#numeroMesa")
-    const nomeCliente = document.querySelector("#nomeCliente")
-    const telefone = document.querySelector("#telefone")
-    const dataHoraReserva = document.querySelector("#dataHoraReserva")
+function abrirModalEdit(reservaEdit) {
+    const body = document.body
 
-    const reserva = {
-        numeroMesa: numeroMesa.value,
-        nomeCliente: nomeCliente.value,
-        telefone: telefone.value,
-        dataHoraReserva: dataHoraReserva.value
-    }
+    body.insertAdjacentHTML("afterbegin",
+        `<div class="wrapper">
+            <div class="modal">
+                <button id="close">X</button>
+                <form>
+                    <label for="numeroMesa"></label>
+                    <input type="number" id="numeroMesa" value="${reservaEdit.numeroMesa}">
 
-    const response = await fetch(`${baseUrl}/Reservas/${id}`, {
-        method: "PUT",
-        headers: headers,
-        body: JSON.stringify(reserva)
+                    <label for="nomeCliente"></label>
+                    <input type="text" id="nomeCliente" value="${reservaEdit.nomeCliente}">
+
+                    <label for="telefone"></label>
+                    <input type="text" id="telefone" value="${reservaEdit.telefone}">
+
+                    <label for="dataHoraReserva"></label>
+                    <input type="datetime" id="dataHoraReserva" value="${reservaEdit.dataHoraReserva}">
+
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+        `)
+
+    const close = document.querySelector("#close")
+    close.addEventListener("click", () => {
+        const wrapper = document.querySelector(".wrapper")
+        wrapper.remove()
     })
+}
 
-    const reser = await response.json()
-    console.log(reser, "PUT - Reserva atualizada")
+
+
+
+
+
+async function putReserva(reservaEdit) {
+    abrirModalEdit(reservaEdit)
+
+    const form = document.querySelector("form")
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault()
+
+        const numeroMesa = document.querySelector("#numeroMesa")
+        const nomeCliente = document.querySelector("#nomeCliente")
+        const telefone = document.querySelector("#telefone")
+        const dataHoraReserva = document.querySelector("#dataHoraReserva")
+
+        const reserva = {
+            numeroMesa: numeroMesa.value,
+            nomeCliente: nomeCliente.value,
+            telefone: telefone.value,
+            dataHoraReserva: dataHoraReserva.value
+        }
+
+        const response = await fetch(`${baseUrl}/Reservas/${id}`, {
+            method: "PUT",
+            headers: headers,
+            body: JSON.stringify(reserva)
+        })
+
+        const reser = await response.json()
+        console.log(reser, "PUT - Reserva atualizada")
+
+    })
 }
 
 

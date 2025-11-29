@@ -132,13 +132,13 @@ function abrirModalEdit(userEdit) {
                 <button id="close">X</button>
                 <form>
                     <label for="nome"></label>
-                    <input type="text" id="nome" placeholder="Ex: Shaolin" value="${userEdit.nome}">
+                    <input type="text" id="nome" value="${userEdit.nome}">
 
                     <label for="email"></label>
-                    <input type="text" id="email" placeholder="Ex: shaolin@email.com">
+                    <input type="text" id="email" value="${userEdit.email}">
 
                     <label for="senha"></label>
-                    <input type="text" id="senha" placeholder="Ex: Flavinho2025">
+                    <input type="text" id="senha" value="${userEdit.senha}">
 
                     <button type="submit">Salvar</button>
                 </form>
@@ -151,7 +151,6 @@ function abrirModalEdit(userEdit) {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
     })
-
 }
 
 

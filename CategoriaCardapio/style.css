@@ -1,0 +1,239 @@
+/* ----------------------------------------------------
+   ESTILO GERAL (bordas vermelhas, estilo sketch)
+-----------------------------------------------------*/
+* {
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f9fbfd;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Containers principais */
+.page-container {
+    width: 95%;
+    margin: auto;
+    padding: 20px;
+    border: 2px solid #d76a76;
+    border-radius: 16px;
+    background: white;
+}
+
+/* Título */
+.page-title {
+    text-align: center;
+    font-size: 22px;
+    color: #b14450;
+    margin-bottom: 20px;
+}
+
+/* ----------------------------------------------------
+   BOTÃO "NOVA CATEGORIA" + BARRA DE PESQUISA
+-----------------------------------------------------*/
+.top-controls {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#novaCategoria {
+    width: 40px;
+    height: 40px;
+    background: #ffd7dd;
+    border: 2px solid #d76a76;
+    border-radius: 6px;
+    font-size: 22px;
+    color: #a53e48;
+    cursor: pointer;
+}
+
+/* Barra de busca */
+.search-box {
+    flex: 1;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 8px 12px;
+    border: 2px solid #d76a76;
+    border-radius: 8px;
+    background: #fff;
+}
+
+/* ----------------------------------------------------
+   CARDS DE CATEGORIAS (grade com imagem + info)
+-----------------------------------------------------*/
+.category-grid {
+    margin-top: 25px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+.category-card {
+    border: 2px solid #d76a76;
+    border-radius: 14px;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #fff5f6;
+}
+
+/* Imagem */
+.category-card .img-box {
+    height: 100px;
+    background: #fcd1d6;
+    border: 2px solid #d76a76;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #b14450;
+    font-size: 14px;
+}
+
+.category-info p {
+    height: 12px;
+    background: #f8cdd3;
+    border-radius: 4px;
+    margin: 5px 0;
+}
+
+/* Botões Editar / Excluir */
+.card-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.card-actions button {
+    padding: 5px 12px;
+    border: 2px solid #d76a76;
+    border-radius: 6px;
+    background: #ffd7dd;
+    cursor: pointer;
+    color: #a53e48;
+    font-size: 14px;
+}
+
+/* ----------------------------------------------------
+   MODAL (Cadastrar / Editar Categoria)
+-----------------------------------------------------*/
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 900;
+}
+
+/* Caixa central */
+.modal {
+    width: 460px;
+    background: white;
+    border: 2px solid #d76a76;
+    border-radius: 16px;
+    padding: 25px;
+    position: relative;
+}
+
+/* Botão fechar */
+#close {
+    position: absolute;
+    right: 12px;
+    top: 12px;
+    width: 32px;
+    height: 32px;
+    border: 2px solid #d76a76;
+    background: #ffd7dd;
+    border-radius: 50%;
+    cursor: pointer;
+    color: #a53e48;
+}
+
+/* Título do modal */
+.modal-title {
+    text-align: center;
+    font-size: 20px;
+    color: #b14450;
+    margin-bottom: 25px;
+}
+
+/* Inputs */
+.modal label {
+    font-weight: bold;
+    color: #b14450;
+    margin-top: 10px;
+}
+
+.modal input,
+.modal textarea {
+    width: 100%;
+    padding: 8px;
+    border: 2px solid #d76a76;
+    border-radius: 8px;
+    margin-top: 5px;
+    background: #ffeef0;
+}
+
+/* Área grande para descrição */
+.modal textarea {
+    height: 120px;
+    resize: none;
+}
+
+/* Botão salvar */
+.modal button[type="submit"] {
+    margin-top: 20px;
+    padding: 10px;
+    width: 130px;
+    border: 2px solid #d76a76;
+    background: #ffd7dd;
+    border-radius: 10px;
+    cursor: pointer;
+    color: #a53e48;
+    float: right;
+}
+
+/* ----------------------------------------------------
+   MODAL DE DELETE
+-----------------------------------------------------*/
+.wrapper-delete {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .35);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 950;
+}
+
+.modal-delete {
+    background: white;
+    padding: 25px;
+    width: 350px;
+    border: 2px solid #d76a76;
+    border-radius: 14px;
+    text-align: center;
+}
+
+.modal-delete button {
+    padding: 8px 20px;
+    border-radius: 6px;
+    border: 2px solid #d76a76;
+    background: #ffd7dd;
+    cursor: pointer;
+    margin: 10px;
+}
