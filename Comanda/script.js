@@ -72,3 +72,56 @@ function novaComanda() {
     })
 }
 novaComanda()
+
+
+
+
+
+
+// async function getComandas() {
+//     const response = await fetch(`${baseUrl}/Usuario`)
+//     const resJson = await response.json()
+
+//     const lista = document.querySelector("ul")
+//     resJson.forEach(usuario => {
+//         lista.insertAdjacentHTML("beforeend", `
+//              <li>
+//                 <p>${usuario.nome}</p>
+//                 <p>${usuario.email}</p>
+//                 <button id='${usuario.id}-delete'>Excluir</button>
+//                 <button id='${usuario.id}-edit'>Editar</button>
+//              </li>
+//             `)
+
+
+//         const btnExcluir = document.getElementById(`${usuario.id}-delete`)
+//         btnExcluir.addEventListener("click", async () => {
+//             console.log("Excluir", usuario.id)
+//             deleteUsuario(usuario.id)
+//         })
+
+
+//         const btnEditar = document.getElementById(`${usuario.id}-edit`)
+//         btnEditar.addEventListener("click", async () => {
+//             console.log("Editar", usuario.id)
+//             putUsuario(usuario)
+//         })
+
+
+//     })
+// }
+// getComandas()
+
+
+
+
+
+
+// async function deleteComanda(id) {
+//     const response = await fetch(`${baseUrl}/Usuario/${id}`, {
+//         method: "DELETE"
+//     })
+
+//     console.log("DELETE - Comanda deletado")
+//     location.reload()
+// }
