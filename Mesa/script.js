@@ -32,11 +32,51 @@ async function getMesa() {
         const btnEditar = document.getElementById(`${mesa.id}-edit`)
         btnEditar.addEventListener("click", async () => {
             console.log("Editar", mesa.id)
-            putMesa(mesa.id)
+            putMesa(mesa)
         })
     })
 }
 getMesa()
+
+
+
+
+
+
+// Ação ao clicar no botão Adicionar Usuário
+const novaMesa = document.querySelector("#novaMesa")
+novaMesa.addEventListener("click", modalPostMesa)
+
+function modalPostMesa() {
+    const body = document.body
+
+    body.insertAdjacentHTML("afterbegin",
+        `<div class="wrapper">
+            <div class="modal">
+                <button id="close">X</button>
+                <form>
+                    <label for="numeroMesa"></label>
+                    <input type="number" id="numeroMesa" placeholder="Ex: 10">
+
+                    <label for="situacaoMesa"></label>
+                    <input type="text" id="situacaoMesa" placeholder="Ex: Livre">
+
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+        `)
+
+
+    postMesa()
+
+    const close = document.querySelector("#close")
+    close.addEventListener("click", () => {
+        const wrapper = document.querySelector(".wrapper")
+        wrapper.remove()
+    })
+    // location.reload()
+}
 
 
 
@@ -68,7 +108,38 @@ async function postMesa() {
 
 
         const confirmar = await response.json()
-        console.log(confirmar, "postMesa - Mesa adicionada")
+        console.log(confirmar, "POST - Mesa adicionada")
+    })
+}
+
+
+
+
+
+function abrirModalEdit(mesaEdit) {
+    const body = document.body
+
+    body.insertAdjacentHTML("afterbegin",
+        `<div class="wrapper">
+            <div class="modal">
+                <button id="close">X</button>
+                <form>
+                    <label for="numeroMesa"></label>
+                    <input type="number" id="numeroMesa" value="${mesaEdit.numeroMesa}">
+
+                    <label for="situacaoMesa"></label>
+                    <input type="text" id="situacaoMesa" value="${mesaEdit.situacaoMesa}">
+
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+        `)
+
+    const close = document.querySelector("#close")
+    close.addEventListener("click", () => {
+        const wrapper = document.querySelector(".wrapper")
+        wrapper.remove()
     })
 }
 
@@ -77,23 +148,33 @@ async function postMesa() {
 
 
 
-async function putMesa(id) {
-    const numeroMesa = document.querySelector("#numeroMesa")
-    const situacaoMesa = document.querySelector("#situacaoMesa")
+async function putMesa(mesaEdit) {
+    abrirModalEdit(mesaEdit)
+    const form = document.querySelector("form")
 
-    const mesa = {
-        numeroMesa: numeroMesa.value,
-        situacaoMesa: situacaoMesa.value
-    }
-
-    const response = await fetch(`${baseUrl}/Mesa/${id}`, {
-        method: "PUT",
-        headers: headers,
-        body: JSON.stringify(mesa)
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault()
+    
+        
+        const numeroMesa = document.querySelector("#numeroMesa")
+        const situacaoMesa = document.querySelector("#situacaoMesa")
+    
+        const mesa = {
+            numeroMesa: numeroMesa.value,
+            situacaoMesa: situacaoMesa.value
+        }
+    
+        const response = await fetch(`${baseUrl}/Mesa/${mesaEdit.id}`, {
+            method: "PUT",
+            headers: headers,
+            body: JSON.stringify(mesa)
+        })
+    
+        const confirmar = await response.json()
+        console.log(confirmar, "PUT - Mesa atualizada")
+    
     })
-
-    const confirmar = await response.json()
-    console.log(confirmar, "putMesa - Mesa atualizada")
+    // location.reload()
 }
 
 
@@ -106,5 +187,6 @@ async function deleteMesa(id) {
     const response = await fetch(`${baseUrl}/Mesa/${id}`, {
         method: "DELETE"
     })
-    console.log(response, "deleteMesa - Mesa excluída")
+    console.log(response, "DELETE - Mesa excluída")
+    location.reload()
 }

@@ -3,47 +3,45 @@ import { baseUrl } from "../baseUrl.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 
-
+// Cria uma variável global para armazenar os itens do cardápio
 let cardapioItems = []
-
-
 async function getCardapioItem() {
     const response = await fetch(`${baseUrl}/CardapioItem`)
     const resJson = await response.json()
     cardapioItems = resJson
 }
-
 getCardapioItem()
+
+
+
+
+
+
 function novaComanda() {
-    // <select id="mesa">
-    //                 <option value="${caItem.id}">${caItem.id}</option>
-    //                 <option value="f">f}</option>
-    //                 </select>
-    const btnNew = document.getElementById("new")
-    btnNew.addEventListener("click", async () => {
+    const novaComanda = document.getElementById("novaComanda")
+    novaComanda.addEventListener("click", async () => {
         console.log("Nova Comanda", cardapioItems)
         const lista = document.querySelector("#cardapio_items")
 
+        // Pra cada item do cardápio, criar um li com checkbox
         cardapioItems.forEach(caItem => {
             lista.insertAdjacentHTML("beforeend", `
-             <li>
+            <li>
                 <p>${caItem.titulo}</p>
-                
                 <input class="check" id=${caItem.id} type="checkbox"/>
-             </li>
+            </li>
             `)
         })
 
+        // Adicionar campo para nome do cliente e botão para finalizar
         lista.insertAdjacentHTML("beforeend", `
-            
-            <input type="text" id="cliente" placeholder="Nome do cliente"/>
-            <button id="finalizar">salvar Comanda</button>
+            <input type="text" id="nomeCliente" placeholder="Nome do cliente"/>
+            <button id="finalizarComanda">Salvar Comanda</button>
             `)
 
 
-        const btnFinalizar = document.getElementById("finalizar")
-        btnFinalizar.addEventListener("click", async () => {
-
+        const btnFinalizarComanda = document.getElementById("finalizarComanda")
+        btnFinalizarComanda.addEventListener("click", async () => {
             console.log("Finalizar Comanda", document.querySelector("#mesa").value)
             const inputsCheck = document.querySelectorAll(".check")
             console.log(inputsCheck)
@@ -56,8 +54,8 @@ function novaComanda() {
             })
 
             const body = {
-                "numeroMesa": 11,
-                "nomeCliente": "testeTeste",
+                "numeroMesa": numeroMesa.value,
+                "nomeCliente": nomeCliente.value,
                 "cardapioItemIds": itensSelecionados
             }
 
