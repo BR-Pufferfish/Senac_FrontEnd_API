@@ -1,28 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>Usuario</title>
+    <title>Usuários</title>
 </head>
 
 <body>
-    <a href="../Home/index.html">Home</a>
 
+    <div class="container">
 
-    <button id="novoUsuario">Novo Usuário</button>
+        <div class="top-bar">
+            <a href="../Home/index.html" class="btnBack">←</a>
 
+            <button id="novoUsuario" class="btnAdd">+</button>
 
-    <div id="div_get">
-        <h2>Usuario</h2>
-        <ul>
+            <input type="text" id="search" placeholder="Pesquisar...">
+        </div>
 
-        </ul>
+        <div class="lista-area">
+            <ul id="listaUsuarios">
+                <!-- Itens preenchidos pelo JS -->
+            </ul>
+        </div>
+
     </div>
 
     <script type="module" src="./script.js"></script>
+
 </body>
 
 </html>

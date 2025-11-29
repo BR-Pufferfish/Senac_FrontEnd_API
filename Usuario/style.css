@@ -1,22 +1,98 @@
-/* ---------- ESTILO GLOBAL ---------- */
-
+/* =======================
+   ESTILO GLOBAL
+======================= */
 body {
-    font-family: Arial, sans-serif;
-    background: #f7f9fb;
+    font-family: "Inter", Arial, sans-serif;
+    background: #f8e8ec;
+    color: #442631;
     margin: 0;
     padding: 0;
+
+    display: flex;
+    justify-content: center; /* centro horizontal */
+    align-items: center;     /* centro vertical */
+    flex-direction: column;
+    height: 100vh; /* preenche a tela inteira */
 }
 
 
-/* ---------- LISTA DE USUÁRIOS ---------- */
+/* =======================
+   ÁREA SUPERIOR
+======================= */
+.top-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+}
 
+
+/* BOTÃO HOME */
+.btnHome {
+    background: rgba(255, 105, 130, 0.15);
+    border: 2px solid #ff6b86;
+    padding: 10px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    color: #a33;
+    font-weight: 600;
+    text-decoration: none;
+    transition: .2s;
+}
+
+.btnHome:hover {
+    background: rgba(255, 105, 130, 0.28);
+}
+
+
+/* BOTÃO NOVO USUÁRIO */
+#novoUsuario {
+    background: rgba(255, 105, 130, 0.15);
+    border: 2px solid #ff6b86;
+    padding: 12px 26px; /* maior */
+    border-radius: 12px;
+    cursor: pointer;
+    color: #a33;
+    font-weight: 700;
+    transition: .2s;
+    font-size: 22px; /* "+" fica grande e bonito */
+}
+
+#novoUsuario:hover {
+    background: rgba(255, 105, 130, 0.28);
+}
+
+
+/* CAMPO DE BUSCA */
+#search {
+    flex: 1;
+    padding: 12px 18px;
+    border-radius: 12px;
+    border: 2px solid #ff6b86;
+    background: rgba(255, 105, 130, 0.12);
+    color: #442631;
+    font-size: 16px;
+}
+
+#search:focus {
+    box-shadow: 0 0 10px rgba(255, 105, 130, 0.35);
+}
+
+
+/* =======================
+   CONTAINER
+======================= */
 .container {
     max-width: 900px;
-    margin: 40px auto;
-    background: #fff;
-    padding: 25px;
-    border-radius: 14px;
-    border: 2px solid #e18181;
+    width: 90%;
+    padding: 30px;
+    border-radius: 18px;
+    background: rgba(255, 105, 130, 0.09);
+    border: 2px solid #ff6b86;
+    box-shadow: 0 0 8px rgba(255, 105, 130, 0.35);
+
+    transform: scale(1.35);       /* aumento bonito e proporcional */
+    transform-origin: top center; /* centraliza após escalar */
 }
 
 h2 {
@@ -24,22 +100,10 @@ h2 {
     color: #c44;
 }
 
-/* Botão de novo usuário */
-#novoUsuario {
-    background: #ffdddd;
-    border: 2px solid #e18181;
-    padding: 10px 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    color: #a33;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
 
-#novoUsuario:hover {
-    background: #ffcaca;
-}
-
+/* =======================
+   LISTA
+======================= */
 ul {
     list-style: none;
     padding: 0;
@@ -50,8 +114,8 @@ li {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 10px;
-    border-bottom: 1px solid #f3bcbc;
+    padding: 16px 8px;
+    border-bottom: 1.6px solid rgba(255, 105, 130, 0.4);
 }
 
 li p {
@@ -60,103 +124,108 @@ li p {
 }
 
 
-/* Botões Editar / Excluir */
-button {
-    cursor: pointer;
-}
-
-button[id$="edit"],
-button[id$="editar"] {
-    background: #ffe6c7;
-    border: 2px solid #e18181;
-    padding: 6px 12px;
-    border-radius: 8px;
-    color: #a33;
+/* BOTÕES DA LISTA */
+button[id$="edit"] {
+    background: rgba(255, 206, 160, 0.25);
+    border: 2px solid #ff6b86;
+    padding: 8px 16px;
+    border-radius: 12px;
+    color: #442631;
+    font-weight: 600;
 }
 
 button[id$="edit"]:hover {
-    background: #ffd6a1;
+    background: rgba(255, 206, 160, 0.4);
 }
 
-button[id$="delete"],
-button[id$="excluir"] {
-    background: #ffd1d1;
-    border: 2px solid #e18181;
-    padding: 6px 12px;
-    border-radius: 8px;
-    color: #a33;
+button[id$="delete"] {
+    background: rgba(255, 0, 60, 0.15);
+    border: 2px solid #ff6b86;
+    padding: 8px 16px;
+    border-radius: 12px;
+    color: #442631;
+    font-weight: 600;
 }
 
 button[id$="delete"]:hover {
-    background: #ffb8b8;
+    background: rgba(255, 0, 60, 0.3);
 }
 
 
-
-/* ---------- MODAL ---------- */
-
+/* =======================
+   MODAL
+======================= */
 .wrapper {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, .45);
+    background: rgba(0, 0, 0, .3);
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
 }
 
 .modal {
-    background: white;
+    background: #fdf3f5;
     width: 380px;
-    border-radius: 14px;
+    border-radius: 18px;
     padding: 25px;
-    border: 2px solid #e18181;
-    box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+    border: 2px solid #ff6b86;
+    box-shadow: 0 0 14px rgba(255, 105, 130, 0.4);
+    color: #442631;
     position: relative;
 }
 
-/* Botão X (fechar modal) */
 #close {
     position: absolute;
     right: 12px;
     top: 12px;
-    background: #ffbfbf;
-    border: 2px solid #e18181;
+    background: rgba(255, 105, 130, 0.15);
+    border: 2px solid #ff6b86;
     border-radius: 50%;
     width: 32px;
     height: 32px;
+    color: #442631;
+    font-weight: bold;
     cursor: pointer;
 }
 
-/* Formulário */
+#close:hover {
+    background: rgba(255, 105, 130, 0.3);
+}
 
+
+/* FORM */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 18px;
     margin-top: 20px;
 }
 
 form input {
     padding: 10px;
-    border-radius: 8px;
-    border: 2px solid #e18181;
-    font-size: 15px;
+    border-radius: 12px;
+    border: 2px solid #ff6b86;
+    background: rgba(255, 105, 130, 0.12);
+    color: #442631;
+}
+
+form input:focus {
+    box-shadow: 0 0 10px rgba(255, 105, 130, 0.4);
 }
 
 form button[type="submit"] {
-    background: #ffd6d6;
-    border: 2px solid #e18181;
+    background: rgba(255, 105, 130, 0.2);
+    border: 2px solid #ff6b86;
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 12px;
     cursor: pointer;
-    font-weight: bold;
-    color: #a33;
+    font-weight: 600;
 }
 
 form button[type="submit"]:hover {
-    background: #ffbaba;
+    background: rgba(255, 105, 130, 0.35);
 }
