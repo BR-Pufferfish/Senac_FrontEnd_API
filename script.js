@@ -1,5 +1,5 @@
-//https://localhost:7166/api
-const baseUrl = "https://localhost:7166/api"
+// const baseUrl = "https://localhost:7166/api"
+import { baseUrl } from "../baseUrl.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 
@@ -7,30 +7,33 @@ const headers = { "content-type": "application/json; charset=utf-8" }
 
 
 
-async function getUsers() {
-    const response = await fetch(`${baseUrl}/Usuario`)
-    const users = await response.json()
+async function loginUser() {
+    const form = document.querySelector("form")
 
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault()
+
+        const email = document.querySelector("#email")
+        const senha = document.querySelector("#senha")
+
+        console.log(email.value, senha.value)
+
+        const usuario = {
+            email: email.value,
+            senha: senha.value
+        }
+
+        const response = await fetch(`${baseUrl}/Usuario`, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(usuario)
+        })
+
+        const user = await response.json()
+        console.log(user, "POST LOGIN - Usuário")
+    })
 }
-getUsers()
-
-
-
-
-
-
-// function init() {
-//     const form = document.querySelector("form")
-//     form.addEventListener("submit", (event) => {
-//         event.preventDefault()
-//         createUser()
-//         // updateUser()
-//         // removeUser()
-//         // openModal()
-//     })
-
-// }
-// init()
+loginUser()
 
 
 
