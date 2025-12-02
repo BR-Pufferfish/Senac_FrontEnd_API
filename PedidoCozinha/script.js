@@ -48,8 +48,8 @@
 
 
 
-
-const baseUrl = "https://localhost:7166/api"
+// const baseUrl = "https://localhost:7166/api"
+import { baseUrl } from "../baseUrl.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 
@@ -66,24 +66,28 @@ async function getPedido() {
         lista.insertAdjacentHTML("beforeend", `
              <li>
                 <p>${pedido.id}</p>
-                <button id=${pedido.id}-excluir>Excluir</button>
-                <button id="${pedido.id}-edit">Editar</button>
+                <button id=${pedido.id}>Finalizar</button>
              </li>
             `)
 
 
-        // const btnExcluir = document.getElementById(`${mesa.id}-excluir`)
-        // btnExcluir.addEventListener("click", async () => {
-        //     console.log("Excluir", mesa.id)
-        //     deleteMesa(mesa.id)
-        // })
-
-
-        // const btnEditar = document.getElementById(`${mesa.id}-edit`)
-        // btnEditar.addEventListener("click", async () => {
-        //     console.log("Editar", mesa.id)
-        //     putMesa(mesa.id)
-        // })
+        const btnExcluir = document.getElementById(pedido.id)
+        btnExcluir.addEventListener("click", async () => {
+            console.log("Finalizar", pedido.id)
+            finalizarPedido(pedido.id)
+        })
     })
 }
 getPedido()
+
+
+
+
+
+
+function finalizarPedido() {
+    const body = document.body
+
+    // logica pra apenas remover do corpo o item ja finalizado
+    // body.remove
+}
