@@ -51,7 +51,7 @@ getMesa()
 const novaMesa = document.querySelector("#novaMesa")
 novaMesa.addEventListener("click", modalPostMesa)
 
-function modalPostMesa() {
+async function modalPostMesa() {
     const body = document.body
 
     body.insertAdjacentHTML("afterbegin",
@@ -77,10 +77,17 @@ function modalPostMesa() {
         wrapper.remove()
     })
 
-    postMesa(location.reload);
+    await postMesa();
+
+    location.reload()
 }
 
-async function postMesa(functionCallback) {
+
+
+
+
+
+async function postMesa() {
 
     const form = document.querySelector("form")
 
@@ -106,10 +113,9 @@ async function postMesa(functionCallback) {
 
         const confirmar = await response.json();
         console.log(confirmar, "POST - Mesa adicionada")
-
-        if (functionCallback != null) functionCallback();
     })
 }
+
 
 
 
@@ -175,7 +181,6 @@ async function putMesa(mesaEdit) {
     })
     // location.reload()
 }
-
 
 
 

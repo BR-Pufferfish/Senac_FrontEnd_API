@@ -2,6 +2,8 @@
 import { baseUrl } from "../baseUrl.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
+import { excluir_registro } from "../zzz_confirmacoes/excluir_registro"
+
 
 
 
@@ -184,7 +186,7 @@ async function putUsuario(userEdit) {
         })
 
         const user = await response.json()
-        console.log(user, "usuario atualizado")
+        console.log(user, "PUT - Usuário atualizado")
     })
     // location.reload()
 }
@@ -196,10 +198,17 @@ async function putUsuario(userEdit) {
 
 
 async function deleteUsuario(id) {
-    const response = await fetch(`${baseUrl}/Usuario/${id}`, {
-        method: "DELETE"
-    })
 
-    console.log("DELETE - usuario deletado")
-    location.reload()
+    const confirmar = await excluir_registro();
+
+    if (confirmar == true){
+
+        const response = await fetch(`${baseUrl}/Usuario/${id}`, {
+            method: "DELETE"
+        })
+        console.log(response, "DELETE - usuario deletado")
+        location.reload()
+    }
+
+
 }
