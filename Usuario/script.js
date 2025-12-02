@@ -1,6 +1,7 @@
 // const baseUrl = "https://localhost:7166/api"
 import { baseUrl } from "../baseUrl.js"
 import { excluir_registro } from "../zzz_confirmacoes/excluir_registro.js"
+import { excluir_registro } from "../zzz_confirmacoes/excluir_registro.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 
@@ -200,8 +201,9 @@ async function putUsuario(userEdit) {
 async function deleteUsuario(id) {
 
     const confirmar = await excluir_registro();
+    console.log(confirmar, "confirmação recebida no script.js")
 
-    if (confirmar == true) {
+    if (confirmar) {
 
         const response = await fetch(`${baseUrl}/Usuario/${id}`, {
             method: "DELETE"
