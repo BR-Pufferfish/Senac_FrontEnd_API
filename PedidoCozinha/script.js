@@ -48,8 +48,8 @@
 
 
 
-
-const baseUrl = "https://localhost:7166/api"
+// const baseUrl = "https://localhost:7166/api"
+import { baseUrl } from "../baseUrl.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 

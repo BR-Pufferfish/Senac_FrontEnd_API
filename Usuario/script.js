@@ -6,7 +6,7 @@ const headers = { "content-type": "application/json; charset=utf-8" }
 
 
 
-// Ação ao clicar no botão Adicionar Reserva
+// Ação ao clicar no botão Adicionar Usuário
 const novoUsuario = document.querySelector("#novoUsuario")
 novoUsuario.addEventListener("click", modalPostUsuario)
 
@@ -116,6 +116,7 @@ async function postUsuario() {
         const user = await response.json()
         console.log(user, "usuario criado")
     })
+    // location.reload()
 }
 
 
@@ -185,6 +186,7 @@ async function putUsuario(userEdit) {
         const user = await response.json()
         console.log(user, "usuario atualizado")
     })
+    // location.reload()
 }
 
 
@@ -198,6 +200,6 @@ async function deleteUsuario(id) {
         method: "DELETE"
     })
 
-    console.log("usuario deletado")
+    console.log("DELETE - usuario deletado")
     location.reload()
 }
