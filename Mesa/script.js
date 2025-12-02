@@ -3,9 +3,11 @@ import { baseUrl } from "../baseUrl.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 
-
-
-
+const statusMesa = {
+    1: "Disponível",
+    2: "Ocupada",
+    3: "Reservada",
+}
 
 async function getMesa() {
     const response = await fetch(`${baseUrl}/Mesa`)
@@ -35,6 +37,7 @@ async function getMesa() {
             console.log("Editar", mesa.id)
             putMesa(mesa)
         })
+        div.append(p, btnEditar, btnExcluir)
     })
 }
 getMesa()
