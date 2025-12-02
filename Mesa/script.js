@@ -15,7 +15,8 @@ async function getMesa() {
     resJson.forEach(mesa => {
         lista.insertAdjacentHTML("beforeend", `
              <li>
-                <p>${mesa.numeroMesa}</p>
+                <p>Número: ${mesa.numeroMesa}</p>
+                <p>Situação: ${mesa.situacaoMesa}</p>
                 <button id='${mesa.id}-delete'>Excluir</button>
                 <button id='${mesa.id}-edit'>Editar</button>
              </li>
@@ -59,7 +60,7 @@ function modalPostMesa() {
                     <input type="number" id="numeroMesa" placeholder="Ex: 10">
 
                     <label for="situacaoMesa"></label>
-                    <input type="text" id="situacaoMesa" placeholder="Ex: Livre">
+                    <input type="number" id="situacaoMesa" placeholder="Ex: 0 / 1 / 2">
 
                     <button type="submit">Salvar</button>
                 </form>
@@ -67,23 +68,16 @@ function modalPostMesa() {
         </div>
         `)
 
-
-    postMesa()
-
     const close = document.querySelector("#close")
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
     })
-    // location.reload()
+
+    postMesa(location.reload);
 }
 
-
-
-
-
-
-async function postMesa() {
+async function postMesa(functionCallback) {
 
     const form = document.querySelector("form")
 
@@ -107,8 +101,10 @@ async function postMesa() {
         })
 
 
-        const confirmar = await response.json()
+        const confirmar = await response.json();
         console.log(confirmar, "POST - Mesa adicionada")
+
+        if (functionCallback != null) functionCallback();
     })
 }
 
@@ -154,25 +150,25 @@ async function putMesa(mesaEdit) {
 
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
-    
-        
+
+
         const numeroMesa = document.querySelector("#numeroMesa")
         const situacaoMesa = document.querySelector("#situacaoMesa")
-    
+
         const mesa = {
             numeroMesa: numeroMesa.value,
             situacaoMesa: situacaoMesa.value
         }
-    
+
         const response = await fetch(`${baseUrl}/Mesa/${mesaEdit.id}`, {
             method: "PUT",
             headers: headers,
             body: JSON.stringify(mesa)
         })
-    
+
         const confirmar = await response.json()
         console.log(confirmar, "PUT - Mesa atualizada")
-    
+
     })
     // location.reload()
 }
