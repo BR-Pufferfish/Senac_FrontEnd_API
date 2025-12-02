@@ -1,8 +1,8 @@
 // const baseUrl = "https://localhost:7166/api"
 import { baseUrl } from "../baseUrl.js"
+import { excluir_registro } from "../zzz_confirmacoes/excluir_registro.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
-import { excluir_registro } from "../zzz_confirmacoes/excluir_registro"
 
 
 
@@ -201,7 +201,7 @@ async function deleteUsuario(id) {
 
     const confirmar = await excluir_registro();
 
-    if (confirmar == true){
+    if (confirmar == true) {
 
         const response = await fetch(`${baseUrl}/Usuario/${id}`, {
             method: "DELETE"
