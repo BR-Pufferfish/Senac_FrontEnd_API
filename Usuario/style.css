@@ -96,7 +96,7 @@ body {
     border: 2px solid #ff6b86;
     box-shadow: 0 0 8px rgba(255, 105, 130, 0.35);
 
-    transform: scale(1.35);
+    /* transform: scale(1.35); */
     /* aumento bonito e proporcional */
     transform-origin: top center;
     /* centraliza após escalar */

@@ -1,7 +1,6 @@
 // const baseUrl = "https://localhost:7166/api"
 import { baseUrl } from "../baseUrl.js"
 import { excluir_registro } from "../zzz_confirmacoes/excluir_registro.js"
-import { excluir_registro } from "../zzz_confirmacoes/excluir_registro.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 
@@ -70,6 +69,7 @@ async function getUsuario() {
         const btnExcluir = document.getElementById(`${usuario.id}-delete`)
         btnExcluir.addEventListener("click", async () => {
             console.log("Excluir", usuario.id)
+
             deleteUsuario(usuario.id)
         })
 
@@ -199,10 +199,16 @@ async function putUsuario(userEdit) {
 
 
 async function deleteUsuario(id) {
-
+    //id='${usuario.id}-edit
+    const btnExcluir = document.getElementById(`${id}-delete`)
+    btnExcluir.disabled = true
+    const btnEditar = document.getElementById(`${id}-edit`)
+    btnEditar.disabled = true
     const confirmar = await excluir_registro();
     console.log(confirmar, "confirmação recebida no script.js")
 
+    btnExcluir.disabled = false
+    btnEditar.disabled = false
     if (confirmar) {
 
         const response = await fetch(`${baseUrl}/Usuario/${id}`, {
@@ -211,6 +217,4 @@ async function deleteUsuario(id) {
         console.log(response, "DELETE - usuario deletado")
         location.reload()
     }
-
-
 }
