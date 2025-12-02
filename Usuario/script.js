@@ -1,6 +1,7 @@
 // const baseUrl = "https://localhost:7166/api"
 import { baseUrl } from "../baseUrl.js"
 import { excluir_registro } from "../zzz_confirmacoes/excluir_registro.js"
+import { excluir_registro } from "../zzz_confirmacoes/excluir_registro.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 
