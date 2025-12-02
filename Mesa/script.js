@@ -4,9 +4,9 @@ const headers = { "content-type": "application/json; charset=utf-8" }
 
 
 const statusMesa = {
-    1: "Disponível",
-    2: "Ocupada",
-    3: "Reservada",
+    0: { nome: "Disponível", classe: "mesa-disponivel" },
+    1: { nome: "Ocupada", classe: "mesa-ocupada" },
+    2: { nome: "Reservada", classe: "mesa-reservada" },
 }
 
 async function getMesa() {
@@ -16,14 +16,15 @@ async function getMesa() {
     const lista = document.querySelector("ul")
     resJson.forEach(mesa => {
         lista.insertAdjacentHTML("beforeend", `
-             <li>
-                <p>Número: ${mesa.numeroMesa}</p>
-                <p>Situação: ${mesa.situacaoMesa}</p>
-                <button id='${mesa.id}-delete'>Excluir</button>
-                <button id='${mesa.id}-edit'>Editar</button>
+             <li class="${statusMesa[mesa.situacaoMesa].classe}">
+                <p class="numeroMesa">${mesa.numeroMesa}</p>
+                <p>Situação: ${statusMesa[mesa.situacaoMesa].nome}</p>
+                <div class="botoes">
+                    <button id='${mesa.id}-edit'>Editar</button>
+                    <button id='${mesa.id}-delete'>Excluir</button>
+                </div>
              </li>
             `)
-
 
         const btnExcluir = document.getElementById(`${mesa.id}-delete`)
         btnExcluir.addEventListener("click", async () => {
@@ -37,7 +38,7 @@ async function getMesa() {
             console.log("Editar", mesa.id)
             putMesa(mesa)
         })
-        div.append(p, btnEditar, btnExcluir)
+
     })
 }
 getMesa()
@@ -79,7 +80,7 @@ async function modalPostMesa() {
 
     await postMesa();
 
-    location.reload()
+    // location.reload()
 }
 
 
