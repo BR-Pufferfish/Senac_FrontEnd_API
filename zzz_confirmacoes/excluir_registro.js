@@ -23,12 +23,14 @@ export function excluir_registro() {
         btnConfirm.addEventListener("click", () => {
             wrapper.remove();
             resolve(true);
+            //  return true
         });
 
         // Cancelar
         btnCancel.addEventListener("click", () => {
             wrapper.remove();
             resolve(false);
+            //return false
         });
     });
 }
