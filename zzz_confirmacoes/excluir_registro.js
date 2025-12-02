@@ -1,10 +1,15 @@
 export function excluir_registro() {
     return new Promise(resolve => {
 
-        // Cria o modal dinamicamente
+        // Evita criar múltiplos modais ao clicar várias vezes
+        if (document.querySelector(".wrapper-confirm")) {
+            return;
+        }
+
+        // Cria o modal usando as mesmas classes que já têm CSS (.wrapper e .modal)
         document.body.insertAdjacentHTML("beforeend", `
-            <div class="wrapper-confirm">
-                <div class="modal-confirm">
+            <div class="wrapper wrapper-confirm">
+                <div class="modal modal-confirm">
                     <p>Tem certeza que deseja excluir este registro?</p>
 
                     <div class="buttons">
@@ -16,21 +21,19 @@ export function excluir_registro() {
         `);
 
         const wrapper = document.querySelector(".wrapper-confirm");
-        const btnConfirm = document.querySelector("#btn-confirm");
-        const btnCancel = document.querySelector("#btn-cancel");
+        const btnConfirm = document.getElementById("btn-confirm");
+        const btnCancel = document.getElementById("btn-cancel");
 
-        // Confirmar
-        btnConfirm.addEventListener("click", () => {
+        // Botão EXCLUIR
+        btnConfirm.onclick = () => {
             wrapper.remove();
             resolve(true);
-            //  return true
-        });
+        };
 
-        // Cancelar
-        btnCancel.addEventListener("click", () => {
+        // Botão CANCELAR
+        btnCancel.onclick = () => {
             wrapper.remove();
             resolve(false);
-            //return false
-        });
+        };
     });
 }
