@@ -9,10 +9,13 @@ body {
     padding: 0;
 
     display: flex;
-    justify-content: center; /* centro horizontal */
-    align-items: center;     /* centro vertical */
+    justify-content: center;
+    /* centro horizontal */
+    align-items: center;
+    /* centro vertical */
     flex-direction: column;
-    height: 100vh; /* preenche a tela inteira */
+    height: 100vh;
+    /* preenche a tela inteira */
 }
 
 
@@ -49,13 +52,15 @@ body {
 #novoUsuario {
     background: rgba(255, 105, 130, 0.15);
     border: 2px solid #ff6b86;
-    padding: 12px 26px; /* maior */
+    padding: 12px 26px;
+    /* maior */
     border-radius: 12px;
     cursor: pointer;
     color: #a33;
     font-weight: 700;
     transition: .2s;
-    font-size: 22px; /* "+" fica grande e bonito */
+    font-size: 22px;
+    /* "+" fica grande e bonito */
 }
 
 #novoUsuario:hover {
@@ -91,8 +96,10 @@ body {
     border: 2px solid #ff6b86;
     box-shadow: 0 0 8px rgba(255, 105, 130, 0.35);
 
-    transform: scale(1.35);       /* aumento bonito e proporcional */
-    transform-origin: top center; /* centraliza após escalar */
+    /* transform: scale(1.35); */
+    /* aumento bonito e proporcional */
+    transform-origin: top center;
+    /* centraliza após escalar */
 }
 
 h2 {
