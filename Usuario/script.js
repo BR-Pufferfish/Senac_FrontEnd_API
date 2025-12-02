@@ -42,6 +42,7 @@ function modalPostUsuario() {
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
+        location.reload()
     })
 }
 
@@ -154,6 +155,7 @@ function abrirModalEdit(userEdit) {
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
+        location.reload()
     })
 }
 
@@ -199,16 +201,9 @@ async function putUsuario(userEdit) {
 
 
 async function deleteUsuario(id) {
-    //id='${usuario.id}-edit
-    const btnExcluir = document.getElementById(`${id}-delete`)
-    btnExcluir.disabled = true
-    const btnEditar = document.getElementById(`${id}-edit`)
-    btnEditar.disabled = true
     const confirmar = await excluir_registro();
     console.log(confirmar, "confirmação recebida no script.js")
 
-    btnExcluir.disabled = false
-    btnEditar.disabled = false
     if (confirmar) {
 
         const response = await fetch(`${baseUrl}/Usuario/${id}`, {

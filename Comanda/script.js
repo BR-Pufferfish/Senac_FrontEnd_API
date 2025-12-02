@@ -78,50 +78,52 @@ novaComanda()
 
 
 
-// async function getComandas() {
-//     const response = await fetch(`${baseUrl}/Usuario`)
-//     const resJson = await response.json()
+async function getComandas() {
+    const response = await fetch(`${baseUrl}/Comanda`)
+    const resJson = await response.json()
 
-//     const lista = document.querySelector("ul")
-//     resJson.forEach(usuario => {
-//         lista.insertAdjacentHTML("beforeend", `
-//              <li>
-//                 <p>${usuario.nome}</p>
-//                 <p>${usuario.email}</p>
-//                 <button id='${usuario.id}-delete'>Excluir</button>
-//                 <button id='${usuario.id}-edit'>Editar</button>
-//              </li>
-//             `)
-
-
-//         const btnExcluir = document.getElementById(`${usuario.id}-delete`)
-//         btnExcluir.addEventListener("click", async () => {
-//             console.log("Excluir", usuario.id)
-//             deleteUsuario(usuario.id)
-//         })
+    const lista = document.querySelector("ul")
+    resJson.forEach(comanda => {
+        lista.insertAdjacentHTML("beforeend", `
+             <li>
+                <p>Id: ${comanda.id}</p>
+                <p>Mesa: ${comanda.numeroMesa}</p>
+                <p>Cliente: ${comanda.nomeCliente}</p>
+                <p>Itens: ${comanda.itens}</p>
+                <button id='${usuario.id}-delete'>Excluir</button>
+                <button id='${usuario.id}-edit'>Editar</button>
+             </li>
+            `)
 
 
-//         const btnEditar = document.getElementById(`${usuario.id}-edit`)
-//         btnEditar.addEventListener("click", async () => {
-//             console.log("Editar", usuario.id)
-//             putUsuario(usuario)
-//         })
+        const btnExcluir = document.getElementById(`${usuario.id}-delete`)
+        btnExcluir.addEventListener("click", async () => {
+            console.log("Excluir", usuario.id)
+            deleteUsuario(usuario.id)
+        })
 
 
-//     })
-// }
-// getComandas()
+        const btnEditar = document.getElementById(`${usuario.id}-edit`)
+        btnEditar.addEventListener("click", async () => {
+            console.log("Editar", usuario.id)
+            putUsuario(usuario)
+        })
+
+
+    })
+}
+getComandas()
 
 
 
 
 
 
-// async function deleteComanda(id) {
-//     const response = await fetch(`${baseUrl}/Usuario/${id}`, {
-//         method: "DELETE"
-//     })
+async function deleteComanda(id) {
+    const response = await fetch(`${baseUrl}/Comanda/${id}`, {
+        method: "DELETE"
+    })
 
-//     console.log("DELETE - Comanda deletado")
-//     location.reload()
-// }
+    console.log("DELETE - Comanda deletado")
+    location.reload()
+}
