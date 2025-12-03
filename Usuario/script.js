@@ -18,7 +18,7 @@ function modalPostUsuario() {
     body.insertAdjacentHTML("afterbegin",
         `<div class="wrapper">
             <div class="modal">
-                <button id="close">X</button>
+                <button class="close" id="close">X</button>
                 <form>
                     <label for="nome"></label>
                     <input type="text" id="nome" placeholder="Ex: Shaolin">
@@ -134,7 +134,7 @@ function abrirModalEdit(userEdit) {
     body.insertAdjacentHTML("afterbegin",
         `<div class="wrapper">
             <div class="modal">
-                <button id="close">X</button>
+                <button class="close" id="close">X</button>
                 <form>
                     <label for="nome"></label>
                     <input type="text" id="nome" value="${userEdit.nome}">

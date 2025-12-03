@@ -134,7 +134,7 @@ function abrirModalEdit(reservaEdit) {
     body.insertAdjacentHTML("afterbegin",
         `<div class="wrapper">
             <div class="modal">
-                <button id="close">X</button>
+                <button class="close" id="close">X</button>
                 <form>
                     <label for="numeroMesa"></label>
                     <input type="number" id="numeroMesa" value="${reservaEdit.numeroMesa}">
