@@ -15,6 +15,17 @@
     background: #ffb84d;
 }
 
+a {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 ul {
     list-style-type: none;
     display: flex;
