@@ -4,6 +4,49 @@
     box-sizing: border-box;
 }
 
+            #form_login {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                height: 100vh;
+                margin: 0;
+                font-family: Arial, sans-serif;
+                background: white;
+                padding: 30px;
+                width: 350px;       /* Aumenta o tamanho */
+                border-radius: 10px;
+                box-shadow: 0 0 12px rgba(0,0,0,0.15);
+                gap: 15px;
+            }
+
+            #form_login label {
+                font-weight: bold;
+                font-size: 14px;
+            }
+
+            #form_login input {
+                padding: 12px;
+                font-size: 15px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
+            }
+
+            #form_login button {
+                padding: 12px;
+                font-size: 16px;
+                border: none;
+                border-radius: 6px;
+                background: #0066ff;
+                color: white;
+                cursor: pointer;
+                transition: 0.2s;
+            }
+
+            #form_login button:hover {
+                background: #004bcc;
+            }
+
 .wrapper {
     background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
