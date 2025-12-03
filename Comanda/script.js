@@ -83,6 +83,7 @@ async function getComandas() {
     const resJson = await response.json()
 
     const lista = document.querySelector("ul")
+    const list = [{ id: 1, numeroMesa: 5, nomeCliente: "Ana", itens: "Pizza, Coca-Cola" }]
     resJson.forEach(comanda => {
         lista.insertAdjacentHTML("beforeend", `
              <li>
@@ -90,24 +91,29 @@ async function getComandas() {
                 <p>Mesa: ${comanda.numeroMesa}</p>
                 <p>Cliente: ${comanda.nomeCliente}</p>
                 <p>Itens: ${comanda.itens}</p>
-                <button id='${usuario.id}-delete'>Excluir</button>
-                <button id='${usuario.id}-edit'>Editar</button>
+                <ul id="${comanda.id}-itens">
+                    
+                </ul>
+                <button id='${comanda.id}-delete'>Excluir</button>
+                <button id='${comanda.id}-edit'>Editar</button>
              </li>
             `)
-
-
-        const btnExcluir = document.getElementById(`${usuario.id}-delete`)
-        btnExcluir.addEventListener("click", async () => {
-            console.log("Excluir", usuario.id)
-            deleteUsuario(usuario.id)
+        const ul = document.getElementById(`${comanda.id}-itens`)
+        list.forEach(item => {
+            ul.insertAdjacentHTML("beforeend", `<li>${item.nomeCliente}</li>`)
         })
+        // const btnExcluir = document.getElementById(`${comanda.id}-delete`)
+        // btnExcluir.addEventListener("click", async () => {
+        //     console.log("Excluir", comanda.id)
+        //     deleteComanda(comanda.id)
+        // })
 
 
-        const btnEditar = document.getElementById(`${usuario.id}-edit`)
-        btnEditar.addEventListener("click", async () => {
-            console.log("Editar", usuario.id)
-            putUsuario(usuario)
-        })
+        // const btnEditar = document.getElementById(`${comanda.id}-edit`)
+        // btnEditar.addEventListener("click", async () => {
+        //     console.log("Editar", comanda.id)
+        //     putComanda(comanda)
+        // })
 
 
     })
