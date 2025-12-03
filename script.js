@@ -61,20 +61,3 @@ function openModal() {
         wrapper.remove()
     })
 }
-
-
-
-
-
-
-function toastify(tipo, mensagem) {
-    document.body.insertAdjacentHTML("beforeend",
-        `<div class="toastify ${tipo}">
-        <p>${mensagem}</p>
-    </div>`)
-    const toas = document.querySelector(".toastify")
-    setTimeout(() => {
-
-        toas.remove()
-    }, 3000);
-}
