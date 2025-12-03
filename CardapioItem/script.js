@@ -99,16 +99,16 @@ function modalPostCardapio() {
                 <button id="close">X</button>
                 <form>
                     <label for="titulo">Titulo</label>
-                    <input type="text" id="titulo" name="titulo" placeholder="Ex: Torrada Completa">
+                    <input type="text" id="titulo" placeholder="Ex: Torrada Completa">
 
                     <label for="descricao"></label>
-                    <input type="text" id="descricao" name="descricao" placeholder="Ex: Saboroso lanche...">
+                    <input type="text" id="descricao" placeholder="Ex: Saboroso lanche...">
 
                     <label for="preco"></label>
-                    <input type="number" id="preco" name="preco" placeholder="Ex: 15,00">
+                    <input type="number" id="preco" placeholder="Ex: 15,00">
 
                     <label for="possuipreparo"></label>
-                    <input type="checkbox" id="possuipreparo" name="possuipreparo">
+                    <input type="checkbox" id="possuipreparo">
 
                     <button type="submit">salvar</button>
                 </form>
@@ -205,13 +205,8 @@ function abrirModalEdit(cardapioEdit) {
 
 async function deleteCardapioItem(id) {
 
-    const btnExcluir = document.getElementById(`${id}-delete`)
-    btnExcluir.disabled = true
-
     const confirmar = await excluir_registro();
     console.log(confirmar, "confirmação recebida no script.js")
-
-    btnExcluir.disabled = false
 
     const response = await fetch(`${baseUrl}/CardapioItem/${id}`, {
         method: "DELETE"

@@ -8,6 +8,46 @@ const headers = { "content-type": "application/json; charset=utf-8" }
 
 
 
+async function getUsuario() {
+    const response = await fetch(`${baseUrl}/Usuario`)
+    const resJson = await response.json()
+
+    const lista = document.querySelector("ul")
+    resJson.forEach(usuario => {
+        lista.insertAdjacentHTML("beforeend", `
+             <li>
+                <p>${usuario.nome}</p>
+                <p>${usuario.email}</p>
+                <button id='${usuario.id}-delete'>Excluir</button>
+                <button id='${usuario.id}-edit'>Editar</button>
+             </li>
+            `)
+
+
+        const btnExcluir = document.getElementById(`${usuario.id}-delete`)
+        btnExcluir.addEventListener("click", async () => {
+            console.log("Excluir", usuario.id)
+
+            deleteUsuario(usuario.id)
+        })
+
+
+        const btnEditar = document.getElementById(`${usuario.id}-edit`)
+        btnEditar.addEventListener("click", async () => {
+            console.log("Editar", usuario.id)
+            putUsuario(usuario)
+        })
+
+
+    })
+}
+getUsuario()
+
+
+
+
+
+
 // Ação ao clicar no botão Adicionar Usuário
 const novoUsuario = document.querySelector("#novoUsuario")
 novoUsuario.addEventListener("click", modalPostUsuario)
@@ -45,46 +85,6 @@ function modalPostUsuario() {
         location.reload()
     })
 }
-
-
-
-
-
-
-async function getUsuario() {
-    const response = await fetch(`${baseUrl}/Usuario`)
-    const resJson = await response.json()
-
-    const lista = document.querySelector("ul")
-    resJson.forEach(usuario => {
-        lista.insertAdjacentHTML("beforeend", `
-             <li>
-                <p>${usuario.nome}</p>
-                <p>${usuario.email}</p>
-                <button id='${usuario.id}-delete'>Excluir</button>
-                <button id='${usuario.id}-edit'>Editar</button>
-             </li>
-            `)
-
-
-        const btnExcluir = document.getElementById(`${usuario.id}-delete`)
-        btnExcluir.addEventListener("click", async () => {
-            console.log("Excluir", usuario.id)
-
-            deleteUsuario(usuario.id)
-        })
-
-
-        const btnEditar = document.getElementById(`${usuario.id}-edit`)
-        btnEditar.addEventListener("click", async () => {
-            console.log("Editar", usuario.id)
-            putUsuario(usuario)
-        })
-
-
-    })
-}
-getUsuario()
 
 
 

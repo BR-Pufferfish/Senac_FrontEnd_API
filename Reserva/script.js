@@ -203,10 +203,15 @@ async function putReserva(reservaEdit) {
 
 
 async function deleteReserva(id) {
-    const response = await fetch(`${baseUrl}/Reservas/${id}`, {
-        method: "DELETE"
-    })
+    const confirmar = await excluir_registro();
+    console.log(confirmar, "confirmação recebida no script.js")
 
-    const reser = await response.json()
-    console.log(reser, "DELETE - Reserva deletada")
+    if (confirmar) {
+
+        const response = await fetch(`${baseUrl}/Reservas/${id}`, {
+            method: "DELETE"
+        })
+        const reser = await response.json()
+        console.log(reser, "DELETE - Reserva deletada")
+    }
 }

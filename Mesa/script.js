@@ -1,5 +1,6 @@
 // const baseUrl = "https://localhost:7166/api"
 import { baseUrl } from "../baseUrl.js"
+import { excluir_registro } from "../zzz_confirmacoes/excluir_registro.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 
@@ -158,6 +159,8 @@ async function putMesa(mesaEdit) {
     abrirModalEdit(mesaEdit)
     const form = document.querySelector("form")
 
+    // TODO
+    // validar como que posso inserir o reload aqui
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
 
@@ -189,9 +192,15 @@ async function putMesa(mesaEdit) {
 
 
 async function deleteMesa(id) {
-    const response = await fetch(`${baseUrl}/Mesa/${id}`, {
-        method: "DELETE"
-    })
-    console.log(response, "DELETE - Mesa excluída")
-    location.reload()
+    const confirmar = await excluir_registro();
+    console.log(confirmar, "confirmação recebida no script.js")
+
+    if (confirmar) {
+
+        const response = await fetch(`${baseUrl}/Mesa/${id}`, {
+            method: "DELETE"
+        })
+        console.log(response, "DELETE - Mesa excluída")
+        location.reload()
+    }
 }
