@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
 }
 
 /* :root {
@@ -39,38 +40,10 @@ body {
     cursor: pointer;
 }
 
-.toastify {
-    position: absolute;
-    top: -100px;
-    left: 40%;
-    padding: 24px;
-    background: #ff0000;
-    animation: open 5s ease;
-    /* opacity: 0; */
-}
-
 .sucesso {
     background-color: green;
 }
 
 .erro {
     background-color: red;
-}
-
-.toastify p {
-    color: #fff;
-}
-
-@keyframes open {
-    0% {
-        top: -100px;
-    }
-
-    50% {
-        top: 0;
-    }
-
-    100% {
-        top: -100px;
-    }
 }

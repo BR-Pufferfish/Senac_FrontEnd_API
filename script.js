@@ -48,11 +48,11 @@ function openModal() {
 
     body.insertAdjacentHTML("beforeend",
         `<div class="wrapper">
-        <div class="modal">
-            <button id="close">X</button>
-            <p>Algo deu errado! tente novamente</p>
-        </div>
-    </div>`)
+            <div class="modal">
+                <button id="close">X</button>
+                <p>Usuário Inváido</p>
+            </div>
+        </div>`)
 
     const close = document.querySelector("#close")
     close.addEventListener("click", () => {
