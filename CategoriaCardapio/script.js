@@ -39,8 +39,10 @@ async function getCategoriaCardapio() {
         lista.insertAdjacentHTML("beforeend", `
              <li>
                 <p>${categoria.nome}</p>
+                <div>
                 <button id='edit-${categoria.id}'>Editar</button>
                 <button id='${categoria.id}-delete'>Excluir</button>
+                </div>
             </li>
         `)
 
