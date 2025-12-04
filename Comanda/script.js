@@ -92,21 +92,25 @@ async function getComandas() {
                 <p>Cliente: ${comanda.nomeCliente}</p>
                 <p>Itens: ${comanda.itens}</p>
                 <ul id="${comanda.id}-itens">
-                    
+
                 </ul>
                 <button id='${comanda.id}-delete'>Excluir</button>
                 <button id='${comanda.id}-edit'>Editar</button>
              </li>
             `)
+
+
         const ul = document.getElementById(`${comanda.id}-itens`)
         list.forEach(item => {
             ul.insertAdjacentHTML("beforeend", `<li>${item.nomeCliente}</li>`)
         })
-        // const btnExcluir = document.getElementById(`${comanda.id}-delete`)
-        // btnExcluir.addEventListener("click", async () => {
-        //     console.log("Excluir", comanda.id)
-        //     deleteComanda(comanda.id)
-        // })
+
+
+        const btnExcluir = document.getElementById(`${comanda.id}-delete`)
+        btnExcluir.addEventListener("click", async () => {
+            console.log("Excluir", comanda.id)
+            deleteComanda(comanda.id)
+        })
 
 
         // const btnEditar = document.getElementById(`${comanda.id}-edit`)
@@ -114,8 +118,6 @@ async function getComandas() {
         //     console.log("Editar", comanda.id)
         //     putComanda(comanda)
         // })
-
-
     })
 }
 getComandas()
@@ -126,10 +128,15 @@ getComandas()
 
 
 async function deleteComanda(id) {
-    const response = await fetch(`${baseUrl}/Comanda/${id}`, {
-        method: "DELETE"
-    })
+    const confirmar = await excluir_registro();
+    console.log(confirmar, "confirmação recebida no script.js")
 
-    console.log("DELETE - Comanda deletado")
-    location.reload()
+    if (confirmar) {
+
+        const response = await fetch(`${baseUrl}/Comanda/${id}`, {
+            method: "DELETE"
+        })
+        console.log(response, "DELETE - Comanda deletado")
+        location.reload()
+    }
 }

@@ -16,8 +16,6 @@ async function loginUser() {
         const email = document.querySelector("#email")
         const senha = document.querySelector("#senha")
 
-        console.log(email.value, senha.value)
-
         const usuario = {
             email: email.value,
             senha: senha.value
@@ -28,6 +26,7 @@ async function loginUser() {
             headers: headers,
             body: JSON.stringify(usuario)
         })
+
         if (!response.ok) {
             openModal()
         } else {
