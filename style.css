@@ -4,6 +4,14 @@
     box-sizing: border-box;
 }
 
+/* :root {
+    --primary-color: #ffdc99;
+}
+
+body {
+    background: var(--primary-color);
+} */
+
 .wrapper {
     background-color: rgba(0, 0, 0, 0.3);
     width: 100%;
