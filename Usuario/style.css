@@ -2,20 +2,12 @@
    ESTILO GLOBAL
 ======================= */
 body {
-    font-family: "Inter", Arial, sans-serif;
-    background: #f8e8ec;
     color: #442631;
-    margin: 0;
-    padding: 0;
-
     display: flex;
     justify-content: center;
-    /* centro horizontal */
     align-items: center;
-    /* centro vertical */
     flex-direction: column;
     height: 100vh;
-    /* preenche a tela inteira */
 }
 
 
@@ -28,42 +20,6 @@ body {
     gap: 12px;
     margin-bottom: 20px;
 }
-
-
-/* BOTÃO HOME */
-.btnHome {
-    background: rgba(255, 105, 130, 0.15);
-    border: 2px solid #ff6b86;
-    padding: 10px 18px;
-    border-radius: 12px;
-    cursor: pointer;
-    color: #a33;
-    font-weight: 600;
-    text-decoration: none;
-    transition: .2s;
-}
-
-.btnHome:hover {
-    background: rgba(255, 105, 130, 0.28);
-}
-
-
-/* BOTÃO NOVO USUÁRIO */
-/* #novoUsuario {
-    background: rgba(255, 105, 130, 0.15);
-    border: 2px solid #ff6b86;
-    padding: 12px 26px;
-    border-radius: 12px;
-    cursor: pointer;
-    color: #a33;
-    font-weight: 700;
-    transition: .2s;
-    font-size: 22px;
-}
-
-#novoUsuario:hover {
-    background: rgba(255, 105, 130, 0.28);
-} */
 
 
 /* CAMPO DE BUSCA */
@@ -93,11 +49,7 @@ body {
     background: rgba(255, 105, 130, 0.09);
     border: 2px solid #ff6b86;
     box-shadow: 0 0 8px rgba(255, 105, 130, 0.35);
-
-    /* transform: scale(1.35); */
-    /* aumento bonito e proporcional */
     transform-origin: top center;
-    /* centraliza após escalar */
 }
 
 h2 {
@@ -109,12 +61,6 @@ h2 {
 /* =======================
    LISTA
 ======================= */
-ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
 li {
     display: flex;
     align-items: center;
