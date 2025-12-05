@@ -42,20 +42,15 @@ ul li {
     align-items: center;
     gap: 32px;
 }
+
 .botoes {
     display: flex;
     justify-content: space-between;
     gap: 20px;
+    border-radius: 8px;
+    font-size: 24px;
 }
 
-btnExcluir {
-    border-radius: 8px;
-    font-size: 24px;
-}
-btnEditar {
-    border-radius: 8px;
-    font-size: 24px;
-}
 .numeroMesa {
     border: 5px solid;
     border-radius: 40px;
