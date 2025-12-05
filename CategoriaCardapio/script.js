@@ -1,4 +1,5 @@
 import { baseUrl } from "../baseUrl.js"
+import { categoraiCardapio } from "../baseUrl.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 const novaCategoria = document.querySelector("#novaCategoria")
@@ -31,7 +32,7 @@ function modalPostCategoria() {
 }
 
 async function getCategoriaCardapio() {
-    const response = await fetch(`${baseUrl}/CategoriaCardapio`)
+    const response = await fetch(`${baseUrl}/${categoraiCardapio}`)
     const resJson = await response.json()
 
     const lista = document.querySelector("ul")
@@ -40,8 +41,8 @@ async function getCategoriaCardapio() {
              <li>
                 <p>${categoria.nome}</p>
                 <div>
-                    <button id='edit-${categoria.id}'>Editar</button>
-                    <button id='${categoria.id}-delete'>Excluir</button>
+                    <button class='botoesEditarExcluir' id='edit-${categoria.id}'>Editar</button>
+                    <button class='botoesEditarExcluir' id='${categoria.id}-delete'>Excluir</button>
                 </div>
             </li>
         `)
@@ -78,7 +79,7 @@ async function postCategoriaCardapio() {
             descricao: descricao
         }
 
-        const response = await fetch(`${basseUrl}/CategoriaCardapio`, {
+        const response = await fetch(`${basseUrl}/${categoraiCardapio}`, {
             method: "POST",
             headers: headers,
             body: JSON.stringify(categoria)
@@ -116,7 +117,7 @@ async function deleteCategoriaCardapio(id) {
         descricao: descricao.value
     }
 
-    const response = await fetch(`${baseUrl}/CategoriaCardapio/${id}`, {
+    const response = await fetch(`${baseUrl}/${categoraiCardapio}/${id}`, {
         method: "PUT",
         headers: headers,
         body: JSON.stringify(categoriaPut)
@@ -126,12 +127,12 @@ async function deleteCategoriaCardapio(id) {
     console.log(categoria, "Categoria editada com sucesso")
 }
 
-async function deleteCategoriaCardapio(id) {
-    const response = await fetch(`${baseUrl}/CategoriaCardapio/${id}`, {
-        method: "DELETE",
-        headers: headers
-    })
-    const categoriaDeletada = await response.json()
-    console.log(categoriaDeletada, "Categoria deletada com sucesso")
-    location.reload()
-}
+// async function deleteCategoriaCardapio(id) {
+//     const response = await fetch(`${baseUrl}/CategoriaCardapio/${id}`, {
+//         method: "DELETE",
+//         headers: headers
+//     })
+//     const categoriaDeletada = await response.json()
+//     console.log(categoriaDeletada, "Categoria deletada com sucesso")
+//     location.reload()
+// }

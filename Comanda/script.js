@@ -94,8 +94,8 @@ async function getComandas() {
                 <ul id="${comanda.id}-itens">
 
                 </ul>
-                <button id='${comanda.id}-delete'>Excluir</button>
-                <button id='${comanda.id}-edit'>Editar</button>
+                <button class='botoesEditarExcluir' id='${comanda.id}-delete'>Excluir</button>
+                <button class='botoesEditarExcluir' id='${comanda.id}-edit'>Editar</button>
              </li>
             `)
 

@@ -1,4 +1,3 @@
-/* Fundo geral */
 :root {
     --primary-color: #d35400;
     --primary-color-hover: #e67e22;
@@ -7,19 +6,12 @@
 }
 
 body {
-    font-family: "Poppins", sans-serif;
-    background: #ffdc99;
-    margin: 0;
-    padding: 50px 20px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-
-    gap: 40px;
-    /* espaço maior entre botões */
 }
+
 
 /* Botões EXTRA GRANDES */
 a {
@@ -28,18 +20,13 @@ a {
     justify-content: center;
 
     width: 85vw;
-    /* Ocupa grande parte da tela */
     max-width: 600px;
-    /* Agora permite maior largura */
     height: 110px;
-    /* ALTO — ideal para dedo */
 
     text-decoration: none;
     font-size: 32px;
-    /* Fonte maior */
     font-weight: 600;
 
-    /*cor principal*/
     background-color: var(--primary-color);
     color: white;
     border-radius: 14px;
@@ -48,13 +35,11 @@ a {
     transition: 0.25s ease;
 }
 
-/*Ao passar o mouse por cima do botões*/
 a:hover {
     background-color: var(--primary-color-hover);
     transform: translateY(-5px);
 }
 
-/* Efeito ao clicar */
 a:active {
     transform: scale(0.96);
 }
@@ -69,12 +54,10 @@ a:active {
         gap: 35px;
     }
 
-    /*Resp pelo enquadramento dos botões*/
     a {
         width: 100vw;
         max-width: 450px;
         height: 18vw;
-        /* ainda maior na horizontal */
         font-size: 30px;
     }
 }

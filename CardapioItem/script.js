@@ -19,8 +19,8 @@ async function getCardapioItem() {
         lista.insertAdjacentHTML("beforeend", `
              <li>
                 <p>${caItem.titulo}</p>
-                <button id=${caItem.id}>Excluir</button>
-                <button id="${caItem.id}-edit">Editar</button>
+                <button class='botoesEditarExcluir' id=${caItem.id}>Excluir</button>
+                <button class='botoesEditarExcluir' id="${caItem.id}-edit">Editar</button>
              </li>
             `)
 

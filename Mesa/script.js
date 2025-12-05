@@ -21,8 +21,8 @@ async function getMesa() {
                 <p class="numeroMesa">${mesa.numeroMesa}</p>
                 <p>Situação: ${statusMesa[mesa.situacaoMesa].nome}</p>
                 <div class="botoes">
-                    <button id='${mesa.id}-edit'>Editar</button>
-                    <button id='${mesa.id}-delete'>Excluir</button>
+                    <button class='botoesEditarExcluir' id='${mesa.id}-edit'>Editar</button>
+                    <button class='botoesEditarExcluir' id='${mesa.id}-delete'>Excluir</button>
                 </div>
              </li>
             `)
