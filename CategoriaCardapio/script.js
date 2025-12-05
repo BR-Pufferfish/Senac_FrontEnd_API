@@ -1,4 +1,4 @@
-import { basseUrl } from "../baseUrl.js"
+import { baseUrl } from "../baseUrl.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 const novaCategoria = document.querySelector("#novaCategoria")
@@ -31,7 +31,7 @@ function modalPostCategoria() {
 }
 
 async function getCategoriaCardapio() {
-    const response = await fetch(`${basseUrl}/CategoriaCardapio`)
+    const response = await fetch(`${baseUrl}/CategoriaCardapio`)
     const resJson = await response.json()
 
     const lista = document.querySelector("ul")
@@ -40,8 +40,8 @@ async function getCategoriaCardapio() {
              <li>
                 <p>${categoria.nome}</p>
                 <div>
-                <button id='edit-${categoria.id}'>Editar</button>
-                <button id='${categoria.id}-delete'>Excluir</button>
+                    <button id='edit-${categoria.id}'>Editar</button>
+                    <button id='${categoria.id}-delete'>Excluir</button>
                 </div>
             </li>
         `)
@@ -116,7 +116,7 @@ async function deleteCategoriaCardapio(id) {
         descricao: descricao.value
     }
 
-    const response = await fetch(`${basseUrl}/CategoriaCardapio/${id}`, {
+    const response = await fetch(`${baseUrl}/CategoriaCardapio/${id}`, {
         method: "PUT",
         headers: headers,
         body: JSON.stringify(categoriaPut)
@@ -127,7 +127,7 @@ async function deleteCategoriaCardapio(id) {
 }
 
 async function deleteCategoriaCardapio(id) {
-    const response = await fetch(`${basseUrl}/CategoriaCardapio/${id}`, {
+    const response = await fetch(`${baseUrl}/CategoriaCardapio/${id}`, {
         method: "DELETE",
         headers: headers
     })
