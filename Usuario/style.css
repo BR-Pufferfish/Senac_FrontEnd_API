@@ -106,77 +106,23 @@ button[id$="delete"]:hover {
 /* =======================
    MODAL
 ======================= */
-.wrapper {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, .3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .modal {
-    background: #fdf3f5;
     width: 380px;
     border-radius: 18px;
-    padding: 25px;
     border: 2px solid #ff6b86;
     box-shadow: 0 0 14px rgba(255, 105, 130, 0.4);
     color: #442631;
-    position: relative;
 }
 
-#close {
-    position: absolute;
-    right: 12px;
-    top: 12px;
+.modal .close  {
     background: rgba(255, 105, 130, 0.15);
-    border: 2px solid #ff6b86;
-    border-radius: 50%;
+    border-color: #ff6b86;
     width: 32px;
     height: 32px;
     color: #442631;
-    font-weight: bold;
-    cursor: pointer;
 }
 
-#close:hover {
+.close:hover {
     background: rgba(255, 105, 130, 0.3);
-}
-
-
-/* FORM */
-form {
-    display: flex;
-    flex-direction: column;
-    gap: 18px;
-    margin-top: 20px;
-}
-
-form input {
-    padding: 10px;
-    border-radius: 12px;
-    border: 2px solid #ff6b86;
-    background: rgba(255, 105, 130, 0.12);
-    color: #442631;
-}
-
-form input:focus {
-    box-shadow: 0 0 10px rgba(255, 105, 130, 0.4);
-}
-
-form button[type="submit"] {
-    background: rgba(255, 105, 130, 0.2);
-    border: 2px solid #ff6b86;
-    padding: 10px;
-    border-radius: 12px;
-    cursor: pointer;
-    font-weight: 600;
-}
-
-form button[type="submit"]:hover {
-    background: rgba(255, 105, 130, 0.35);
 }
