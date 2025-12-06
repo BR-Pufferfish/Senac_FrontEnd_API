@@ -5,20 +5,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./style.css">
-    <title>LOGIN</title>
+    <title>Login</title>
 </head>
 
-<body>
+<body class = "body_login">
 
-
-    <form id="form_login">
-        <label for="email"></label>
-        <input type="text" id="email" placeholder="Ex: shaolin@email.com">
-
-        <label for="senha"></label>
-        <input type="text" id="senha" placeholder="Ex: Flavinho2025">
-
-        <button type="submit">Entrar</button>
+    <form class="formularioLogin" id="form_login">
+        <div class="titulo_Login">
+            <h1>Faça o seu login</h1>
+    </div>
+        <div class="preenchimento_login">
+            <label for="email"></label>
+            <input type="text" id="email" placeholder="Ex: email123@gmail.com">
+    </div>
+        <div class="preenchimento_login">
+            <label for="senha"></label>
+            <input type="text" id="senha" placeholder="Ex: Senha123@">
+    </div>
+        <button type="submit", class="btnEntarLogin">Entrar</button>
+        <p></p>
     </form>
 
 
