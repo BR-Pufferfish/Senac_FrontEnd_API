@@ -18,9 +18,12 @@ async function getCardapioItem() {
 
         lista.insertAdjacentHTML("beforeend", `
              <li>
-                <p>${caItem.titulo}</p>
-                <button class='botoesEditarExcluir' id=${caItem.id}>Excluir</button>
-                <button class='botoesEditarExcluir' id="${caItem.id}-edit">Editar</button>
+             <img src="Imagem_Cardapio/principalFoodIcon.png" class="iconeCardapio">
+                    <p>${caItem.titulo}</p>
+                <div class="botoes">
+                    <button class='botoesEditarExcluir' id="${caItem.id}-edit">Editar</button>
+                    <button class='botoesEditarExcluir' id=${caItem.id}>Excluir</button>
+                </div>
              </li>
             `)
 
