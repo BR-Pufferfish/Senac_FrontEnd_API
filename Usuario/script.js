@@ -61,13 +61,13 @@ function modalPostUsuario() {
                 <button class="close" id="close">X</button>
                 <form>
                     <label for="nome"></label>
-                    <input type="text" id="nome" placeholder="Ex: Shaolin">
+                    <input type="text" id="nome" placeholder="Nome">
 
                     <label for="email"></label>
-                    <input type="text" id="email" placeholder="Ex: shaolin@email.com">
+                    <input type="text" id="email" placeholder="Ex: email@gmail.com">
 
                     <label for="senha"></label>
-                    <input type="text" id="senha" placeholder="Ex: Flavinho2025">
+                    <input type="text" id="senha" placeholder="Ex: Senha2025">
 
                     <button type="submit">Salvar</button>
                 </form>
