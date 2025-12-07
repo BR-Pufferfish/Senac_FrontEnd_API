@@ -34,12 +34,6 @@
     gap: 25px;
 }
 
-.barraHorizontal {
-    background-color: #f87842;
-    height: 5px;
-    width: 210px;;
-}
-
 .preenchimento_login {
     display: flex;
     flex-direction: column;
@@ -105,7 +99,7 @@ body {
 
 .modal {
     background-color: aliceblue;
-    padding: 24px;
+    padding: 35px;
     border-radius: 12px;
     position: relative;
 }

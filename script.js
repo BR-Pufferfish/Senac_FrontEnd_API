@@ -50,7 +50,7 @@ function openModal() {
         `<div class="wrapper">
             <div class="modal">
                 <button id="close">X</button>
-                <p>Usuário Inváido</p>
+                <p>Usuário Inválido</p>
             </div>
         </div>`)
 
