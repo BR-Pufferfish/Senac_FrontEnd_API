@@ -15,8 +15,6 @@ getCardapioItem()
 
 
 
-
-
 function novaComanda() {
     const novaComanda = document.getElementById("novaComanda")
     novaComanda.addEventListener("click", async () => {
