@@ -18,8 +18,8 @@ async function getUsuario() {
              <li>
                 <p>${usuario.nome}</p>
                 <p>${usuario.email}</p>
-                <button class='botoesEditarExcluir' id='${usuario.id}-delete'>Excluir</button>
                 <button class='botoesEditarExcluir' id='${usuario.id}-edit'>Editar</button>
+                <button class='botoesEditarExcluir' id='${usuario.id}-delete'>Excluir</button>
              </li>
             `)
 
