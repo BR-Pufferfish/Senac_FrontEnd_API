@@ -11,8 +11,8 @@
 
 
 
-    /*Estilização Tela de Login*/
-/* ============================================== */
+/*Estilização Tela de Login*/
+/* ====================================================================== */
 .body_login {
     width: 400px;
     padding: 20px;
@@ -67,14 +67,14 @@
     text-transform: uppercase;
     font-weight: 700;
 }
-/* ============================================== */
+/* ====================================================================== */
 
 
 
 
 
-    /*Estilização Tela de Login - teste mais limpo*/
-/* ============================================== */
+/*Estilização Tela de Login - teste mais limpo*/
+/* ====================================================================== */
 /* .body_login {
     width: 400px;
     padding: 20px;
@@ -115,25 +115,24 @@
     text-transform: uppercase;
     font-weight: 700;
 } */
-/* ============================================== */
+/* ====================================================================== */
 
 
 
 
 
 
+/* Elementos gerais do html */
+/* ====================================================================== */
 body {
-    font-family: "Poppins", sans-serif;
     background: #ffdc99;
     /* padding: 50px 20px; tive que remover para o modal funcionar
     gap: 40px; */
 }
 
-
 .btnVoltarHome {
     font-size: 48px;
 }
-
 
 .botoesEditarExcluir {
     display: flex;
@@ -143,12 +142,51 @@ body {
     font-size: 24px;
 }
 
+ul {
+    list-style-type: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+ul li {
+    border: 4px solid #000;
+    padding: 12px;
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+}
+
+.botoes {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    border-radius: 8px;
+    font-size: 24px;
+}
+
+.botoes button:nth-child(1) {
+    background-color: #e67e22;
+    color: white;
+}
+
+.botoes button:nth-child(2) {
+    background-color: #db3434;
+    color: white;
+}
+/* ====================================================================== */
 
 
 
 
 
+
+/* Modal que abre os campos editar/cadastrar  */
+/* ====================================================================== */
 .wrapper {
+    /* background-color: rgba(0, 0, 0, 0.3); */
     background-color: rgba(175, 172, 172, 0);
     width: 100%;
     height: 100vh;
@@ -175,108 +213,7 @@ body {
     cursor: pointer;
     font-weight: bold;
 }
-
-
-
-
-
-
-/*  excluir_registro.js  */
-.wrapper-confirm {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 9999;
-}
-
-/* caixa do modal */
-.modal-confirm {
-    background: #fff;
-    padding: 20px 24px;
-    border-radius: 6px;
-    max-width: 320px;
-    width: 100%;
-    text-align: center;
-    font-family: sans-serif;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-/* texto */
-.modal-confirm p {
-    margin-bottom: 18px;
-    font-size: 15px;
-}
-
-/* área dos botões */
-.modal-confirm .buttons {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-}
-
-/* botões */
-.modal-confirm button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-/* excluir (vermelho) */
-#btn-confirm {
-    background: #e74c3c;
-    color: #fff;
-}
-
-/* cancelar (cinza) */
-#btn-cancel {
-    background: #ccc;
-    color: #333;
-}
-
-#btn-confirm:hover {
-    background: #c0392b;
-}
-
-#btn-cancel:hover {
-    background: #b3b3b3;
-}
-
-
-
-
-
-
-/* Botão de adicionar um novo registro nas telas */
-.btnAddRegistro {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    border: none;
-    background: #4CAF50;
-    color: #ffffff;
-    font-size: 28px;
-    font-weight: bold;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-    transition: 0.2s ease;
-}
-
-.btnAddRegistro:hover {
-    background: #43a047;
-    transform: scale(1.05);
-}
-
-.btnAddRegistro:active {
-    transform: scale(0.95);
-}
+/* ====================================================================== */
 
 
 
@@ -284,6 +221,7 @@ body {
 
 
 /*  Formulário de cadastro/edição  */
+/* ====================================================================== */
 form {
     display: flex;
     flex-direction: column;
@@ -321,13 +259,116 @@ form button[type="submit"]:hover {
 
 
 
+/*  excluir_registro.js  */
+/* ====================================================================== */
+.wrapper-confirm {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* caixa do modal */
+.modal-confirm {
+    background: #fff;
+    padding: 20px 24px;
+    border-radius: 6px;
+    max-width: 320px;
+    width: 100%;
+    text-align: center;
+    font-family: sans-serif;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* texto */
+.modal-confirm p {
+    margin-bottom: 18px;
+    font-size: 15px;
+}
+
+/* área dos botões */
+.modal-confirm .buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.modal-confirm button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+#btn-confirm {
+    background: #e74c3c;
+    color: #fff;
+}
+
+#btn-cancel {
+    background: #ccc;
+    color: #333;
+}
+
+#btn-confirm:hover {
+    background: #c0392b;
+}
+
+#btn-cancel:hover {
+    background: #b3b3b3;
+}
+/* ====================================================================== */
+
+
+
+
+
+
+/* Botão de adicionar um novo registro nas telas */
+/* ====================================================================== */
+.btnAddRegistro {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: none;
+    background: #4CAF50;
+    color: #ffffff;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    transition: 0.2s ease;
+}
+
+.btnAddRegistro:hover {
+    background: #43a047;
+    transform: scale(1.05);
+}
+
+.btnAddRegistro:active {
+    transform: scale(0.95);
+}
+/* ====================================================================== */
+
+
+
+
+
+
+/*  Cabeçalho dos Menus  */
+/* ====================================================================== */
 header {
     width: 100%;
     padding: 20px 30px;
     background: linear-gradient(135deg, #ffb347, #ff8300);
-    /* alaranjado suave → forte */
     color: #4a2500;
-    /* marrom escuro para combinar com o tema */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -345,3 +386,4 @@ header h2 {
     margin: 0;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
+/* ====================================================================== */
