@@ -213,8 +213,12 @@ async function deleteCardapioItem(id) {
     const confirmar = await excluir_registro();
     console.log(confirmar, "confirmação recebida no script.js")
 
-    const response = await fetch(`${baseUrl}/CardapioItem/${id}`, {
-        method: "DELETE"
-    })
-    console.log(response, "DELETE - CardapioItem excluído")
+    if (confirmar){
+
+        const response = await fetch(`${baseUrl}/CardapioItem/${id}`, {
+            method: "DELETE"
+        })
+        console.log(response, "DELETE - CardapioItem excluído")
+        location.reload()
+    }
 }

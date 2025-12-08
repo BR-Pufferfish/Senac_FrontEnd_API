@@ -2,34 +2,10 @@ import { baseUrl } from "../baseUrl.js"
 import { categoraiCardapio } from "../baseUrl.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
-const novaCategoria = document.querySelector("#novaCategoria")
-novaCategoria.addEventListener("click", modalPostCategoria)
 
-function modalPostCategoria() {
-    const body = document.body
 
-    body.insertAdjacentHTML("afterbegin",
-        `<div class="wrapper">
-            <div class="modal">
-                <button id="close">X</button>
-                <form>
-                    <label for="nome"></label>
-                    <input type="text" id="nome" placeholder="Ex: Bebidas">
-                    <button type="submit">Salvar</button>
-                </form>
-            </div>
-        </div>
-        `)
 
-    modalPostCategoria()
 
-    const close = document.querySelector("#close")
-    close.addEventListener("click", () => {
-        const wrapper = document.querySelector(".wrapper")
-        wrapper.remove()
-        location.reload()
-    })
-}
 
 async function getCategoriaCardapio() {
     const response = await fetch(`${baseUrl}/${categoraiCardapio}`)
@@ -50,89 +26,215 @@ async function getCategoriaCardapio() {
         const btnExcluir = document.getElementById(`${categoria.id}-delete`)
         btnExcluir.addEventListener("click", async () => {
             console.log("Excluir", categoria.id)
-            deleteCategoriaCardapio(categoria.id)
+            deleteCategoria(categoria.id)
         })
 
         const btnEditar = document.getElementById(`edit-${categoria.id}`)
         btnEditar.addEventListener("click", async () => {
             console.log("Editar", categoria.id)
-            modalEditCategoriaCardapio(categoria)
+            putCategoria(categoria)
         })
     })
 }
 getCategoriaCardapio()
 
-async function postCategoriaCardapio() {
+
+
+
+
+
+// Ação ao clicar no botão Adicionar
+const novaCategoria = document.querySelector("#novaCategoria")
+novaCategoria.addEventListener("click", modalPostCategoria)
+
+async function modalPostCategoria() {
+    const body = document.body
+
+    body.insertAdjacentHTML("afterbegin",
+        `<div class="wrapper">
+            <div class="modal">
+                <button id="close">X</button>
+                <form>
+                    <label for="nomeCategoria"></label>
+                    <input type="text" id="nomeCategoria" placeholder="Ex: Bebidas">
+
+                    <label for="descricaoCategoria"></label>
+                    <input type="text" id="descricaoCategoria" placeholder="Ex: Bebibas diversas">
+
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+        `)
+
+    const close = document.querySelector("#close")
+    close.addEventListener("click", () => {
+        const wrapper = document.querySelector(".wrapper")
+        wrapper.remove()
+    })
+
+    await postCategoria();
+
+    // location.reload()
+}
+
+
+
+
+
+
+async function postCategoria() {
 
     const form = document.querySelector("form")
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault()
 
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault()
+        const nome = document.querySelector("#nomeCategoria")
+        const descricao = document.querySelector("#descricaoCategoria")
 
-        const nome = document.querySelector("#nome").value
-        const descricao = document.querySelector("#descricao").value
-
-        console.log(nome.value, descricao.value)
 
         const categoria = {
-            nome: nome,
-            descricao: descricao
+            nome: nome.value,
+            descricao: descricao.value
         }
 
-        const response = await fetch(`${basseUrl}/${categoraiCardapio}`, {
+
+        const response = await fetch(`${baseUrl}/${categoraiCardapio}`, {
             method: "POST",
             headers: headers,
             body: JSON.stringify(categoria)
         })
 
-        const categoriaPost = await response.json()
-        console.log(categoriaPost, "Categoria criada com sucesso")
+
+        const confirmar = await response.json();
+        console.log(confirmar, "POST - Categoria adicionada")
     })
 }
-// postCategoriaCardapio()
 
-async function deleteCategoriaCardapio(id) {
+
+
+
+
+
+function abrirModalEdit(categoriaEdit) {
+
     const body = document.body
-
     body.insertAdjacentHTML("afterbegin",
-        `<div class="wrapper-delete">
-            <div class="modal-delete">
-                <p>Tem certeza que deseja excluir esta categoria do cardápio?</p>
-                <button id="confirm-delete">Sim</button>
-                <button id="cancel-delete">Não</button>
+        `<div class="wrapper">
+            <div class="modal">
+                <button class="close" id="close">X</button>
+                <form>
+                    <label for="nomeCategoria"></label>
+                    <input type="text" id="nomeCategoria" value="${categoriaEdit.nome}">
+
+                    <label for="descricaoCategoria"></label>
+                    <input type="text" id="descricaoCategoria" value="${categoriaEdit.descricao}">
+
+                    <button type="submit">Salvar</button>
+                </form>
             </div>
         </div>
         `)
-    const confirmDelete = document.querySelector("#confirm-delete")
-    close.addEventListener("click", async () => {
-        const wrapperDelete = document.querySelector(".wrapper-delete")
-        wrapperDelete.remove()
+
+    const close = document.querySelector("#close")
+    close.addEventListener("click", () => {
+        const wrapper = document.querySelector(".wrapper")
+        wrapper.remove()
     })
-
-    const nome = document.querySelector("#nome")
-    const descricao = document.querySelector("#descricao")
-
-    const categoriaPut = {
-        nome: nome.value,
-        descricao: descricao.value
-    }
-
-    const response = await fetch(`${baseUrl}/${categoraiCardapio}/${id}`, {
-        method: "PUT",
-        headers: headers,
-        body: JSON.stringify(categoriaPut)
-    })
-
-    const categoria = await response.json()
-    console.log(categoria, "Categoria editada com sucesso")
 }
 
-// async function deleteCategoriaCardapio(id) {
-//     const response = await fetch(`${baseUrl}/CategoriaCardapio/${id}`, {
-//         method: "DELETE",
-//         headers: headers
-//     })
-//     const categoriaDeletada = await response.json()
-//     console.log(categoriaDeletada, "Categoria deletada com sucesso")
-//     location.reload()
-// }
+
+
+
+
+
+async function putCategoria(categoriaEdit) {
+
+    abrirModalEdit(categoriaEdit)
+    const form = document.querySelector("form")
+
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault()
+
+
+        const nomeCategoria = document.querySelector("#nomeCategoria")
+        const descricaoCategoria = document.querySelector("#descricaoCategoria")
+
+        const categoria = {
+            nome: nomeCategoria.value,
+            descricao: descricaoCategoria.value
+        }
+
+        const response = await fetch(`${baseUrl}/${categoraiCardapio}/${categoriaEdit.id}`, {
+            method: "PUT",
+            headers: headers,
+            body: JSON.stringify(mesa)
+        })
+
+        const confirmar = await response.json()
+        console.log(confirmar, "PUT - Categoria atualizada")
+
+    })
+    // location.reload()
+}
+
+
+
+
+
+
+async function deleteCategoria(id) {
+    const confirmar = await excluir_registro();
+    console.log(confirmar, "confirmação recebida no script.js")
+
+    if (confirmar){
+
+        const response = await fetch(`${baseUrl}/${categoraiCardapio}/${id}`, {
+            method: "DELETE",
+            headers: headers
+        })
+        console.log(response, "DELETE - Categoria excluída")
+        location.reload()
+    }
+}
+
+
+
+
+
+
+    // async function deleteCategoriaCardapio(id) {
+    //     const body = document.body
+
+    //     body.insertAdjacentHTML("afterbegin",
+    //         `<div class="wrapper-delete">
+    //             <div class="modal-delete">
+    //                 <p>Tem certeza que deseja excluir esta categoria do cardápio?</p>
+    //                 <button id="confirm-delete">Sim</button>
+    //                 <button id="cancel-delete">Não</button>
+    //             </div>
+    //         </div>
+    //         `)
+    //     const confirmDelete = document.querySelector("#confirm-delete")
+    //     close.addEventListener("click", async () => {
+    //         const wrapperDelete = document.querySelector(".wrapper-delete")
+    //         wrapperDelete.remove()
+    //     })
+
+    //     const nome = document.querySelector("#nome")
+    //     const descricao = document.querySelector("#descricao")
+
+    //     const categoriaPut = {
+    //         nome: nome.value,
+    //         descricao: descricao.value
+    //     }
+
+    //     const response = await fetch(`${baseUrl}/${categoraiCardapio}/${id}`, {
+    //         method: "PUT",
+    //         headers: headers,
+    //         body: JSON.stringify(categoriaPut)
+    //     })
+
+    //     const categoria = await response.json()
+    //     console.log(categoria, "Categoria editada com sucesso")
+    // }

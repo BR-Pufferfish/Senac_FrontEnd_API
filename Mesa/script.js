@@ -4,6 +4,10 @@ import { excluir_registro } from "../zzz_confirmacoes/excluir_registro.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 
+
+
+
+
 const statusMesa = {
     0: { nome: "Disponível", classe: "mesa-disponivel" },
     1: { nome: "Ocupada", classe: "mesa-ocupada" },
@@ -49,7 +53,7 @@ getMesa()
 
 
 
-// Ação ao clicar no botão Adicionar Usuário
+// Ação ao clicar no botão Adicionar
 const novaMesa = document.querySelector("#novaMesa")
 novaMesa.addEventListener("click", modalPostMesa)
 
@@ -92,7 +96,6 @@ async function modalPostMesa() {
 async function postMesa() {
 
     const form = document.querySelector("form")
-
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
 
@@ -124,8 +127,8 @@ async function postMesa() {
 
 
 function abrirModalEdit(mesaEdit) {
-    const body = document.body
 
+    const body = document.body
     body.insertAdjacentHTML("afterbegin",
         `<div class="wrapper">
             <div class="modal">
@@ -156,11 +159,10 @@ function abrirModalEdit(mesaEdit) {
 
 
 async function putMesa(mesaEdit) {
+
     abrirModalEdit(mesaEdit)
     const form = document.querySelector("form")
-
-    // TODO
-    // validar como que posso inserir o reload aqui
+    
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
 
