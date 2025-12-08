@@ -20,6 +20,7 @@ async function getCardapioItem() {
              <li>
              <img src="Imagem_Cardapio/principalFoodIcon.png" class="iconeCardapio">
                     <h1>${caItem.titulo}</h1>
+                    <h2>R$ ${caItem.preco}</h2>
                 <div class="botoes">
                     <button class='botoesEditarExcluir' id="${caItem.id}-edit">Editar</button>
                     <button class='botoesEditarExcluir' id=${caItem.id}>Excluir</button>
@@ -38,7 +39,7 @@ async function getCardapioItem() {
         const btnEditar = document.getElementById(`${caItem.id}-edit`)
         btnEditar.addEventListener("click", async () => {
             console.log("Editar", caItem.id)
-            putCardapioItem(caItem.id)
+            putCardapioItem(caItem)
         })
     })
 }
@@ -53,7 +54,7 @@ getCardapioItem()
 const novoCardapio = document.querySelector("#novoCardapio")
 novoCardapio.addEventListener("click", modalPostCardapio)
 
-function modalPostCardapio() {
+async function modalPostCardapio() {
     const body = document.body
 
     body.insertAdjacentHTML("afterbegin",
@@ -64,13 +65,13 @@ function modalPostCardapio() {
                     <label for="titulo">Titulo</label>
                     <input type="text" id="titulo" placeholder="Ex: Torrada Completa">
 
-                    <label for="descricao"></label>
+                    <label for="descricao">Descrição</label>
                     <input type="text" id="descricao" placeholder="Ex: Saboroso lanche...">
 
-                    <label for="preco"></label>
+                    <label for="preco">Preço</label>
                     <input type="number" id="preco" placeholder="Ex: 15,00">
 
-                    <label for="possuipreparo"></label>
+                    <label for="possuipreparo">Possui Preparo?</label>
                     <input type="checkbox" id="possuipreparo">
 
                     <button type="submit">salvar</button>
@@ -87,8 +88,6 @@ function modalPostCardapio() {
     })
 
     await postCardapioItem();
-
-    // location.reload()
 }
 
 
@@ -143,13 +142,13 @@ function abrirModalEdit(cardapioEdit) {
                     <label for="titulo">Titulo</label>
                     <input type="text" id="titulo" value="${cardapioEdit.titulo}">
 
-                    <label for="descricao"></label>
+                    <label for="descricao">Descrição</label>
                     <input type="text" id="descricao" value="${cardapioEdit.descricao}">
 
-                    <label for="preco"></label>
+                    <label for="preco">Preço</label>
                     <input type="number" id="preco" value="${cardapioEdit.preco}">
 
-                    <label for="possuipreparo"></label>
+                    <label for="possuipreparo">Possui Preparo?</label>
                     <input type="checkbox" id="possuipreparo" value="${cardapioEdit.possuiPreparo}">
 
                     <button type="submit">Salvar</button>
@@ -162,7 +161,7 @@ function abrirModalEdit(cardapioEdit) {
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
-        // location.reload()
+        location.reload()
     })
 }
 
@@ -200,7 +199,6 @@ async function putCardapioItem(cardapioEdit) {
         const confirmar = await response.json()
         console.log(response, "PUT - CardapioItem atualizado")
     })
-    // location.reload()
 }
 
 
@@ -213,7 +211,7 @@ async function deleteCardapioItem(id) {
     const confirmar = await excluir_registro();
     console.log(confirmar, "confirmação recebida no script.js")
 
-    if (confirmar){
+    if (confirmar) {
 
         const response = await fetch(`${baseUrl}/CardapioItem/${id}`, {
             method: "DELETE"

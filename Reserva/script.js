@@ -35,7 +35,7 @@ async function getReserva() {
         const btnEditar = document.getElementById(`${reserva.id}-edit`)
         btnEditar.addEventListener("click", async () => {
             console.log("Editar", reserva.id)
-            putReserva(reserva.id)
+            putReserva(reserva)
         })
     })
 }
@@ -56,16 +56,16 @@ async function modalPostReserva() {
             <div class="modal">
                 <button id="close">X</button>
                 <form>
-                    <label for="numeroMesa"></label>
+                    <label for="numeroMesa">Número da Mesa</label>
                     <input type="number" id="numeroMesa" placeholder="Ex: 10">
 
-                    <label for="nomeCliente"></label>
+                    <label for="nomeCliente">Cliente</label>
                     <input type="text" id="nomeCliente" placeholder="Ex: Serjão dos Foguetes">
 
-                    <label for="telefone"></label>
+                    <label for="telefone">Contado</label>
                     <input type="text" id="telefone" placeholder="Ex: 99123456789">
 
-                    <label for="dataHoraReserva"></label>
+                    <label for="dataHoraReserva">Data</label>
                     <input type="datetime" id="dataHoraReserva" placeholder="Ex: 28-11-2025">
 
                     <button type="submit">Salvar</button>
@@ -78,11 +78,10 @@ async function modalPostReserva() {
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
+        location.reload()
     })
 
     await postReserva();
-
-    // location.reload()
 }
 
 
@@ -134,16 +133,16 @@ function abrirModalEdit(reservaEdit) {
             <div class="modal">
                 <button class="close" id="close">X</button>
                 <form>
-                    <label for="numeroMesa"></label>
+                    <label for="numeroMesa">Número da Mesa</label>
                     <input type="number" id="numeroMesa" value="${reservaEdit.numeroMesa}">
 
-                    <label for="nomeCliente"></label>
+                    <label for="nomeCliente">Cliente</label>
                     <input type="text" id="nomeCliente" value="${reservaEdit.nomeCliente}">
 
-                    <label for="telefone"></label>
+                    <label for="telefone">Contado</label>
                     <input type="text" id="telefone" value="${reservaEdit.telefone}">
 
-                    <label for="dataHoraReserva"></label>
+                    <label for="dataHoraReserva">Data</label>
                     <input type="datetime" id="dataHoraReserva" value="${reservaEdit.dataHoraReserva}">
 
                     <button type="submit">Salvar</button>
@@ -156,6 +155,7 @@ function abrirModalEdit(reservaEdit) {
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
+        location.reload()
     })
 }
 
@@ -211,9 +211,6 @@ async function deleteReserva(id) {
         const response = await fetch(`${baseUrl}/Reservas/${id}`, {
             method: "DELETE"
         })
-        // Precisa dar o await na response pra printar na tela?
-        // const reser = await response.json()
-        // console.log(reser, "DELETE - Reserva deletada")
         console.log(response, "DELETE - Reserva deletada")
         location.reload()
     }

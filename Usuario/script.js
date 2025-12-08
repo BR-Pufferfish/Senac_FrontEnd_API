@@ -58,13 +58,13 @@ async function modalPostUsuario() {
             <div class="modal">
                 <button class="close" id="close">X</button>
                 <form>
-                    <label for="nome"></label>
+                    <label for="nome">Nome</label>
                     <input type="text" id="nome" placeholder="Nome">
 
-                    <label for="email"></label>
+                    <label for="email">Email</label>
                     <input type="text" id="email" placeholder="Ex: email@gmail.com">
 
-                    <label for="senha"></label>
+                    <label for="senha">Senha</label>
                     <input type="text" id="senha" placeholder="Ex: Senha2025">
 
                     <button type="submit">Salvar</button>
@@ -81,8 +81,6 @@ async function modalPostUsuario() {
     })
 
     await postUsuario();
-
-    // location.reload()
 }
 
 
@@ -133,13 +131,13 @@ function abrirModalEdit(userEdit) {
             <div class="modal">
                 <button class="close" id="close">X</button>
                 <form>
-                    <label for="nome"></label>
+                    <label for="nome">Nome</label>
                     <input type="text" id="nome" value="${userEdit.nome}">
 
-                    <label for="email"></label>
+                    <label for="email">Email</label>
                     <input type="text" id="email" value="${userEdit.email}">
 
-                    <label for="senha"></label>
+                    <label for="senha">Senha</label>
                     <input type="text" id="senha" value="${userEdit.senha}">
 
                     <button type="submit">Salvar</button>

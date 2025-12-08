@@ -63,11 +63,8 @@ async function modalPostMesa() {
             <div class="modal">
                 <button id="close">X</button>
                 <form>
-                    <label for="numeroMesa"></label>
+                    <label for="numeroMesa">Número da Mesa</label>
                     <input type="number" id="numeroMesa" placeholder="Ex: 10">
-
-                    <label for="situacaoMesa"></label>
-                    <input type="number" id="situacaoMesa" placeholder="Ex: 0 / 1 / 2">
 
                     <button type="submit">Salvar</button>
                 </form>
@@ -79,11 +76,10 @@ async function modalPostMesa() {
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
+        location.reload()
     })
 
     await postMesa();
-
-    // location.reload()
 }
 
 
@@ -98,12 +94,11 @@ async function postMesa() {
         event.preventDefault()
 
         const numeroMesa = document.querySelector("#numeroMesa")
-        const situacaoMesa = document.querySelector("#situacaoMesa")
 
 
         const mesa = {
             numeroMesa: numeroMesa.value,
-            situacaoMesa: situacaoMesa.value
+            situacaoMesa: 0
         }
 
 
@@ -117,7 +112,6 @@ async function postMesa() {
         const confirmar = await response.json();
         console.log(confirmar, "POST - Mesa adicionada")
     })
-    // location.reload()
 }
 
 
@@ -133,10 +127,10 @@ function abrirModalEdit(mesaEdit) {
             <div class="modal">
                 <button class="close" id="close">X</button>
                 <form>
-                    <label for="numeroMesa"></label>
+                    <label for="numeroMesa">Número da Mesa</label>
                     <input type="number" id="numeroMesa" value="${mesaEdit.numeroMesa}">
 
-                    <label for="situacaoMesa"></label>
+                    <label for="situacaoMesa">Situação</label>
                     <input type="text" id="situacaoMesa" value="${mesaEdit.situacaoMesa}">
 
                     <button type="submit">Salvar</button>
@@ -149,6 +143,7 @@ function abrirModalEdit(mesaEdit) {
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
+        location.reload()
     })
 }
 
@@ -167,6 +162,8 @@ async function putMesa(mesaEdit) {
 
         const numeroMesa = document.querySelector("#numeroMesa")
         const situacaoMesa = document.querySelector("#situacaoMesa")
+        console.log(situacaoMesa.value, "valor situação mesa")
+        console.log(numeroMesa.value, "valor número mesa")
 
         const mesa = {
             numeroMesa: numeroMesa.value,
@@ -179,11 +176,9 @@ async function putMesa(mesaEdit) {
             body: JSON.stringify(mesa)
         })
 
-        const confirmar = await response.json()
-        console.log(confirmar, "PUT - Mesa atualizada")
-
+        const confirm = await response.json()
+        console.log(confirm, "PUT - Mesa atualizada")
     })
-    // location.reload()
 }
 
 
