@@ -1,4 +1,3 @@
-// const baseUrl = "https://localhost:7166/api"
 import { baseUrl } from "../baseUrl.js"
 import { excluir_registro } from "../zzz_confirmacoes/excluir_registro.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
@@ -48,7 +47,7 @@ getUsuario()
 
 
 
-// Ação ao clicar no botão Adicionar Usuário
+// Ação ao clicar no botão Adicionar
 const novoUsuario = document.querySelector("#novoUsuario")
 novoUsuario.addEventListener("click", modalPostUsuario)
 
@@ -75,15 +74,16 @@ function modalPostUsuario() {
         </div>
         `)
 
+        const close = document.querySelector("#close")
+        close.addEventListener("click", () => {
+            const wrapper = document.querySelector(".wrapper")
+            wrapper.remove()
+            location.reload()
+        })
 
-    postUsuario()
+        await postUsuario();
 
-    const close = document.querySelector("#close")
-    close.addEventListener("click", () => {
-        const wrapper = document.querySelector(".wrapper")
-        wrapper.remove()
-        location.reload()
-    })
+        // location.reload()
 }
 
 
@@ -94,7 +94,6 @@ function modalPostUsuario() {
 async function postUsuario() {
 
     const form = document.querySelector("form")
-
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
 
@@ -102,7 +101,6 @@ async function postUsuario() {
         const email = document.querySelector("#email")
         const senha = document.querySelector("#senha")
 
-        console.log(nome.value, email.value, senha.value)
 
         const usuario = {
             nome: nome.value,
@@ -117,8 +115,8 @@ async function postUsuario() {
             body: JSON.stringify(usuario)
         })
 
-        const user = await response.json()
-        console.log(user, "usuario criado")
+        const confirmar = await response.json()
+        console.log(confirmar, "POST - Usuário adicionado")
     })
     // location.reload()
 }
@@ -165,12 +163,12 @@ function abrirModalEdit(userEdit) {
 
 
 async function putUsuario(userEdit) {
-    abrirModalEdit(userEdit)
 
+    abrirModalEdit(userEdit)
     const form = document.querySelector("form")
+
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
-
 
         const nome = document.querySelector("#nome")
         const email = document.querySelector("#email")
@@ -188,8 +186,8 @@ async function putUsuario(userEdit) {
             body: JSON.stringify(usuario)
         })
 
-        const user = await response.json()
-        console.log(user, "PUT - Usuário atualizado")
+        const confirmar = await response.json()
+        console.log(confirmar, "PUT - Usuário atualizado")
     })
     // location.reload()
 }
@@ -201,6 +199,7 @@ async function putUsuario(userEdit) {
 
 
 async function deleteUsuario(id) {
+
     const confirmar = await excluir_registro();
     console.log(confirmar, "confirmação recebida no script.js")
 

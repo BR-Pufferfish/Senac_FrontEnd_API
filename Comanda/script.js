@@ -3,6 +3,10 @@ import { baseUrl } from "../baseUrl.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
 
 
+
+
+
+
 // Cria uma variável global para armazenar os itens do cardápio
 let cardapioItems = []
 async function getCardapioItem() {
@@ -11,6 +15,53 @@ async function getCardapioItem() {
     cardapioItems = resJson
 }
 getCardapioItem()
+
+
+async function getComandas() {
+    const response = await fetch(`${baseUrl}/Comanda`)
+    const resJson = await response.json()
+
+    const lista = document.querySelector("ul")
+    // const list = [{ id: 1, numeroMesa: 5, nomeCliente: "Ana", itens: "Pizza, Coca-Cola" }]
+    resJson.forEach(comanda => {
+        lista.insertAdjacentHTML("beforeend", `
+             <li>
+                <p>Id: ${comanda.id}</p>
+                <p>Mesa: ${comanda.numeroMesa}</p>
+                <p>Cliente: ${comanda.nomeCliente}</p>
+                <p>Itens: ${comanda.itens}</p>
+                <ul id="${comanda.id}-itens">
+
+                </ul>
+                <button class='botoesEditarExcluir' id='${comanda.id}-delete'>Excluir</button>
+                <button class='botoesEditarExcluir' id='${comanda.id}-edit'>Editar</button>
+             </li>
+            `)
+
+
+        const ul = document.getElementById(`${comanda.id}-itens`)
+        cardapioItems.forEach(item => {
+            ul.insertAdjacentHTML("beforeend", `<li>${item.nomeCliente}</li>`)
+        })
+
+
+        const btnExcluir = document.getElementById(`${comanda.id}-delete`)
+        btnExcluir.addEventListener("click", async () => {
+            console.log("Excluir", comanda.id)
+            deleteComanda(comanda.id)
+        })
+
+
+        // const btnEditar = document.getElementById(`${comanda.id}-edit`)
+        // btnEditar.addEventListener("click", async () => {
+        //     console.log("Editar", comanda.id)
+        //     putComanda(comanda)
+        // })
+    })
+}
+getComandas()
+
+
 
 
 
@@ -70,55 +121,6 @@ function novaComanda() {
     })
 }
 novaComanda()
-
-
-
-
-
-
-async function getComandas() {
-    const response = await fetch(`${baseUrl}/Comanda`)
-    const resJson = await response.json()
-
-    const lista = document.querySelector("ul")
-    // const list = [{ id: 1, numeroMesa: 5, nomeCliente: "Ana", itens: "Pizza, Coca-Cola" }]
-    resJson.forEach(comanda => {
-        lista.insertAdjacentHTML("beforeend", `
-             <li>
-                <p>Id: ${comanda.id}</p>
-                <p>Mesa: ${comanda.numeroMesa}</p>
-                <p>Cliente: ${comanda.nomeCliente}</p>
-                <p>Itens: ${comanda.itens}</p>
-                <ul id="${comanda.id}-itens">
-
-                </ul>
-                <button class='botoesEditarExcluir' id='${comanda.id}-delete'>Excluir</button>
-                <button class='botoesEditarExcluir' id='${comanda.id}-edit'>Editar</button>
-             </li>
-            `)
-
-
-        const ul = document.getElementById(`${comanda.id}-itens`)
-        cardapioItems.forEach(item => {
-            ul.insertAdjacentHTML("beforeend", `<li>${item.nomeCliente}</li>`)
-        })
-
-
-        const btnExcluir = document.getElementById(`${comanda.id}-delete`)
-        btnExcluir.addEventListener("click", async () => {
-            console.log("Excluir", comanda.id)
-            deleteComanda(comanda.id)
-        })
-
-
-        // const btnEditar = document.getElementById(`${comanda.id}-edit`)
-        // btnEditar.addEventListener("click", async () => {
-        //     console.log("Editar", comanda.id)
-        //     putComanda(comanda)
-        // })
-    })
-}
-getComandas()
 
 
 

@@ -1,4 +1,3 @@
-// const baseUrl = "https://localhost:7166/api"
 import { baseUrl } from "../baseUrl.js"
 import { excluir_registro } from "../zzz_confirmacoes/excluir_registro.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
@@ -43,7 +42,6 @@ async function getMesa() {
             console.log("Editar", mesa.id)
             putMesa(mesa)
         })
-
     })
 }
 getMesa()
@@ -119,6 +117,7 @@ async function postMesa() {
         const confirmar = await response.json();
         console.log(confirmar, "POST - Mesa adicionada")
     })
+    // location.reload()
 }
 
 
@@ -162,10 +161,9 @@ async function putMesa(mesaEdit) {
 
     abrirModalEdit(mesaEdit)
     const form = document.querySelector("form")
-    
+
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
-
 
         const numeroMesa = document.querySelector("#numeroMesa")
         const situacaoMesa = document.querySelector("#situacaoMesa")
@@ -194,6 +192,7 @@ async function putMesa(mesaEdit) {
 
 
 async function deleteMesa(id) {
+
     const confirmar = await excluir_registro();
     console.log(confirmar, "confirmação recebida no script.js")
 

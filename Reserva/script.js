@@ -1,48 +1,6 @@
-// const baseUrl = "https://localhost:7166/api"
 import { baseUrl } from "../baseUrl.js"
+import { excluir_registro } from "../zzz_confirmacoes/excluir_registro.js"
 const headers = { "content-type": "application/json; charset=utf-8" }
-
-
-
-
-// Ação ao clicar no botão Adicionar Reserva
-const novaReserva = document.querySelector("#novaReserva")
-novaReserva.addEventListener("click", modalPostReserva)
-
-function modalPostReserva() {
-    const body = document.body
-
-    body.insertAdjacentHTML("beforeend",
-        `<div class="wrapper">
-            <div class="modal">
-                <button id="close">X</button>
-                <form>
-                    <label for="numeroMesa"></label>
-                    <input type="number" id="numeroMesa" placeholder="Ex: 10">
-
-                    <label for="nomeCliente"></label>
-                    <input type="text" id="nomeCliente" placeholder="Ex: Serjão dos Foguetes">
-
-                    <label for="telefone"></label>
-                    <input type="text" id="telefone" placeholder="Ex: 99123456789">
-
-                    <label for="dataHoraReserva"></label>
-                    <input type="datetime" id="dataHoraReserva" placeholder="Ex: 28-11-2025">
-
-                    <button type="submit">Salvar</button>
-                </form>
-            </div>
-        </div>
-        `)
-
-    postReserva()
-
-    const close = document.querySelector("#close")
-    close.addEventListener("click", () => {
-        const wrapper = document.querySelector(".wrapper")
-        wrapper.remove()
-    })
-}
 
 
 
@@ -79,11 +37,53 @@ async function getReserva() {
             console.log("Editar", reserva.id)
             putReserva(reserva.id)
         })
-
-
     })
 }
 getReserva()
+
+
+
+
+// Ação ao clicar no botão Adicionar
+const novaReserva = document.querySelector("#novaReserva")
+novaReserva.addEventListener("click", modalPostReserva)
+
+async function modalPostReserva() {
+    const body = document.body
+
+    body.insertAdjacentHTML("beforeend",
+        `<div class="wrapper">
+            <div class="modal">
+                <button id="close">X</button>
+                <form>
+                    <label for="numeroMesa"></label>
+                    <input type="number" id="numeroMesa" placeholder="Ex: 10">
+
+                    <label for="nomeCliente"></label>
+                    <input type="text" id="nomeCliente" placeholder="Ex: Serjão dos Foguetes">
+
+                    <label for="telefone"></label>
+                    <input type="text" id="telefone" placeholder="Ex: 99123456789">
+
+                    <label for="dataHoraReserva"></label>
+                    <input type="datetime" id="dataHoraReserva" placeholder="Ex: 28-11-2025">
+
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+        `)
+
+    const close = document.querySelector("#close")
+    close.addEventListener("click", () => {
+        const wrapper = document.querySelector(".wrapper")
+        wrapper.remove()
+    })
+
+    await postReserva();
+
+    // location.reload()
+}
 
 
 
@@ -93,7 +93,6 @@ getReserva()
 async function postReserva() {
 
     const form = document.querySelector("form")
-
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
 
@@ -102,7 +101,6 @@ async function postReserva() {
         const telefone = document.querySelector("#telefone")
         const dataHoraReserva = document.querySelector("#dataHoraReserva")
 
-        console.log(numeroMesa.value, nomeCliente.value, telefone.value, dataHoraReserva.value)
 
         const reserva = {
             numeroMesa: numeroMesa.value,
@@ -118,8 +116,8 @@ async function postReserva() {
             body: JSON.stringify(reserva)
         })
 
-        const reser = await response.json()
-        console.log(reser, "POST - Reserva criada")
+        const confirmar = await response.json()
+        console.log(confirmar, "POST - Reserva criada")
     })
 }
 
@@ -167,9 +165,10 @@ function abrirModalEdit(reservaEdit) {
 
 
 async function putReserva(reservaEdit) {
-    abrirModalEdit(reservaEdit)
 
+    abrirModalEdit(reservaEdit)
     const form = document.querySelector("form")
+
     form.addEventListener("submit", async (event) => {
         event.preventDefault()
 
@@ -185,14 +184,14 @@ async function putReserva(reservaEdit) {
             dataHoraReserva: dataHoraReserva.value
         }
 
-        const response = await fetch(`${baseUrl}/Reservas/${id}`, {
+        const response = await fetch(`${baseUrl}/Reservas/${reservaEdit.id}`, {
             method: "PUT",
             headers: headers,
             body: JSON.stringify(reserva)
         })
 
-        const reser = await response.json()
-        console.log(reser, "PUT - Reserva atualizada")
+        const confirmar = await response.json()
+        console.log(confirmar, "PUT - Reserva atualizada")
 
     })
 }
@@ -203,6 +202,7 @@ async function putReserva(reservaEdit) {
 
 
 async function deleteReserva(id) {
+
     const confirmar = await excluir_registro();
     console.log(confirmar, "confirmação recebida no script.js")
 
@@ -211,7 +211,10 @@ async function deleteReserva(id) {
         const response = await fetch(`${baseUrl}/Reservas/${id}`, {
             method: "DELETE"
         })
-        const reser = await response.json()
-        console.log(reser, "DELETE - Reserva deletada")
+        // Precisa dar o await na response pra printar na tela?
+        // const reser = await response.json()
+        // console.log(reser, "DELETE - Reserva deletada")
+        console.log(response, "DELETE - Reserva deletada")
+        location.reload()
     }
 }

@@ -184,6 +184,7 @@ async function putCategoria(categoriaEdit) {
 
 
 async function deleteCategoria(id) {
+
     const confirmar = await excluir_registro();
     console.log(confirmar, "confirmação recebida no script.js")
 
