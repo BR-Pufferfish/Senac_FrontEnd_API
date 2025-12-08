@@ -61,8 +61,8 @@ async function getReserva() {
                 <p>Cliente: ${reserva.nomeCliente}</p>
                 <p>Contato: ${reserva.telefone}</p>
                 <p>Data: ${reserva.dataHoraReserva}</p>
-                <button class='botoesEditarExcluir' id='${reserva.id}-delete'>Excluir</button>
                 <button class='botoesEditarExcluir' id='${reserva.id}-edit'>Editar</button>
+                <button class='botoesEditarExcluir' id='${reserva.id}-delete'>Excluir</button>
              </li>
             `)
 
