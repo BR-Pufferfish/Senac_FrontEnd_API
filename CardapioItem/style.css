@@ -29,6 +29,15 @@ ul li {
     border-radius: 8px;
     font-size: 24px;
 }
+.botoes button:nth-child(1) { /*botão de editar*/
+    background-color: #e67e22;
+    color: white;
+}
+
+.botoes button:nth-child(2) { /*botão de excluir*/
+    background-color: #db3434;
+    color: white;
+}
 
 /*icone do cardapio, imagem que aparece no cardapio*/
 .iconeCardapio {

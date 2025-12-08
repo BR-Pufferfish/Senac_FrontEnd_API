@@ -24,14 +24,14 @@
     flex: 1;
     padding: 12px 18px;
     border-radius: 12px;
-    border: 2px solid #ff6b86;
-    background: rgba(255, 105, 130, 0.12);
-    color: #442631;
+    border: 2px solid #f79f4e;
+    background: rgba(255, 190, 105, 0.12);
+    color: #443626;
     font-size: 16px;
 }
 
 #search:focus {
-    box-shadow: 0 0 10px rgba(255, 105, 130, 0.35);
+    box-shadow: 0 0 10px rgba(255, 190, 105, 0.35);
 }
 
 
@@ -42,15 +42,15 @@
     width: 100%;
     padding: 30px;
     border-radius: 18px;
-    background: rgba(255, 105, 130, 0.09);
-    border: 2px solid #ff6b86;
-    box-shadow: 0 0 8px rgba(255, 105, 130, 0.35);
+    background: rgba(248, 155, 16, 0.075);
+    border: 2px solid #f8621c;
+    box-shadow: 0 0 8px rgba(238, 173, 34, 0.35);
     transform-origin: top center;
 }
 
 h2 {
     margin-bottom: 20px;
-    color: #c44;
+    color: rgb(231, 136, 27);
 }
 
 
@@ -74,7 +74,7 @@ li p {
 /* BOTÕES DA LISTA */
 button[id$="edit"] {
     background: rgba(255, 206, 160, 0.25);
-    border: 2px solid #ff6b86;
+    border: 2px solid #fda93a;
     padding: 8px 16px;
     border-radius: 12px;
     color: #442631;
@@ -86,16 +86,16 @@ button[id$="edit"]:hover {
 }
 
 button[id$="delete"] {
-    background: rgba(255, 0, 60, 0.15);
-    border: 2px solid #ff6b86;
+    background: rgba(255, 123, 0, 0.15);
+    border: 2px solid #ff9d42;
     padding: 8px 16px;
     border-radius: 12px;
-    color: #442631;
+    color: #443626;
     font-weight: 600;
 }
 
 button[id$="delete"]:hover {
-    background: rgba(255, 0, 60, 0.3);
+    background: rgba(255, 136, 0, 0.3);
 }
 
 
@@ -106,19 +106,19 @@ button[id$="delete"]:hover {
 .modal {
     width: 380px;
     border-radius: 18px;
-    border: 2px solid #ff6b86;
-    box-shadow: 0 0 14px rgba(255, 105, 130, 0.4);
-    color: #442631;
+    border: 2px solid #f8ae25;
+    box-shadow: 0 0 14px rgba(255, 195, 105, 0.4);
+    color: #443726;
 }
 
 .modal .close  {
-    background: rgba(255, 105, 130, 0.15);
-    border-color: #ff6b86;
+    background: rgba(255, 173, 105, 0.15);
+    border-color: #ffc46b;
     width: 32px;
     height: 32px;
-    color: #442631;
+    color: #443426;
 }
 
 .close:hover {
-    background: rgba(255, 105, 130, 0.3);
+    background: rgba(255, 178, 105, 0.3);
 }
