@@ -20,6 +20,7 @@ async function getCardapioItem() {
              <li>
              <img src="Imagem_Cardapio/principalFoodIcon.png" class="iconeCardapio">
                     <h1>${caItem.titulo}</h1>
+                    <h2>R$ ${caItem.preco}</h2>
                 <div class="botoes">
                     <button class='botoesEditarExcluir' id="${caItem.id}-edit">Editar</button>
                     <button class='botoesEditarExcluir' id=${caItem.id}>Excluir</button>
@@ -38,7 +39,7 @@ async function getCardapioItem() {
         const btnEditar = document.getElementById(`${caItem.id}-edit`)
         btnEditar.addEventListener("click", async () => {
             console.log("Editar", caItem.id)
-            putCardapioItem(caItem.id)
+            putCardapioItem(caItem)
         })
     })
 }
@@ -87,8 +88,6 @@ async function modalPostCardapio() {
     })
 
     await postCardapioItem();
-
-    // location.reload()
 }
 
 
@@ -200,7 +199,6 @@ async function putCardapioItem(cardapioEdit) {
         const confirmar = await response.json()
         console.log(response, "PUT - CardapioItem atualizado")
     })
-    // location.reload()
 }
 
 

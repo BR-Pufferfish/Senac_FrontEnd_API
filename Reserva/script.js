@@ -35,7 +35,7 @@ async function getReserva() {
         const btnEditar = document.getElementById(`${reserva.id}-edit`)
         btnEditar.addEventListener("click", async () => {
             console.log("Editar", reserva.id)
-            putReserva(reserva.id)
+            putReserva(reserva)
         })
     })
 }
