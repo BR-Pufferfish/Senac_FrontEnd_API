@@ -26,7 +26,6 @@ async function getUsuario() {
         const btnExcluir = document.getElementById(`${usuario.id}-delete`)
         btnExcluir.addEventListener("click", async () => {
             console.log("Excluir", usuario.id)
-
             deleteUsuario(usuario.id)
         })
 
@@ -51,7 +50,7 @@ getUsuario()
 const novoUsuario = document.querySelector("#novoUsuario")
 novoUsuario.addEventListener("click", modalPostUsuario)
 
-function modalPostUsuario() {
+async function modalPostUsuario() {
     const body = document.body
 
     body.insertAdjacentHTML("afterbegin",
@@ -74,16 +73,16 @@ function modalPostUsuario() {
         </div>
         `)
 
-        const close = document.querySelector("#close")
-        close.addEventListener("click", () => {
-            const wrapper = document.querySelector(".wrapper")
-            wrapper.remove()
-            location.reload()
-        })
+    const close = document.querySelector("#close")
+    close.addEventListener("click", () => {
+        const wrapper = document.querySelector(".wrapper")
+        wrapper.remove()
+        location.reload()
+    })
 
-        await postUsuario();
+    await postUsuario();
 
-        // location.reload()
+    // location.reload()
 }
 
 
