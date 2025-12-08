@@ -162,7 +162,7 @@ function abrirModalEdit(cardapioEdit) {
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
-        // location.reload()
+        location.reload()
     })
 }
 

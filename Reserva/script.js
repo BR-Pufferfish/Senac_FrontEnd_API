@@ -78,11 +78,10 @@ async function modalPostReserva() {
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
+        location.reload()
     })
 
     await postReserva();
-
-    // location.reload()
 }
 
 
@@ -156,6 +155,7 @@ function abrirModalEdit(reservaEdit) {
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
+        location.reload()
     })
 }
 
@@ -211,9 +211,6 @@ async function deleteReserva(id) {
         const response = await fetch(`${baseUrl}/Reservas/${id}`, {
             method: "DELETE"
         })
-        // Precisa dar o await na response pra printar na tela?
-        // const reser = await response.json()
-        // console.log(reser, "DELETE - Reserva deletada")
         console.log(response, "DELETE - Reserva deletada")
         location.reload()
     }

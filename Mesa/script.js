@@ -79,11 +79,10 @@ async function modalPostMesa() {
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
+        location.reload()
     })
 
     await postMesa();
-
-    // location.reload()
 }
 
 
@@ -117,7 +116,6 @@ async function postMesa() {
         const confirmar = await response.json();
         console.log(confirmar, "POST - Mesa adicionada")
     })
-    // location.reload()
 }
 
 
@@ -149,6 +147,7 @@ function abrirModalEdit(mesaEdit) {
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
+        location.reload()
     })
 }
 

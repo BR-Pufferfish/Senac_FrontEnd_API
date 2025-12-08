@@ -81,8 +81,6 @@ async function modalPostUsuario() {
     })
 
     await postUsuario();
-
-    // location.reload()
 }
 
 

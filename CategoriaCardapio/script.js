@@ -72,11 +72,10 @@ async function modalPostCategoria() {
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
+        location.reload()
     })
 
     await postCategoria();
-
-    // location.reload()
 }
 
 
@@ -141,6 +140,7 @@ function abrirModalEdit(categoriaEdit) {
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
+        location.reload()
     })
 }
 
@@ -176,7 +176,6 @@ async function putCategoria(categoriaEdit) {
         console.log(confirmar, "PUT - Categoria atualizada")
 
     })
-    // location.reload()
 }
 
 
@@ -199,44 +198,3 @@ async function deleteCategoria(id) {
         location.reload()
     }
 }
-
-
-
-
-
-
-// async function deleteCategoriaCardapio(id) {
-//     const body = document.body
-
-//     body.insertAdjacentHTML("afterbegin",
-//         `<div class="wrapper-delete">
-//             <div class="modal-delete">
-//                 <p>Tem certeza que deseja excluir esta categoria do cardápio?</p>
-//                 <button id="confirm-delete">Sim</button>
-//                 <button id="cancel-delete">Não</button>
-//             </div>
-//         </div>
-//         `)
-//     const confirmDelete = document.querySelector("#confirm-delete")
-//     close.addEventListener("click", async () => {
-//         const wrapperDelete = document.querySelector(".wrapper-delete")
-//         wrapperDelete.remove()
-//     })
-
-//     const nome = document.querySelector("#nome")
-//     const descricao = document.querySelector("#descricao")
-
-//     const categoriaPut = {
-//         nome: nome.value,
-//         descricao: descricao.value
-//     }
-
-//     const response = await fetch(`${baseUrl}/${categoraiCardapio}/${id}`, {
-//         method: "PUT",
-//         headers: headers,
-//         body: JSON.stringify(categoriaPut)
-//     })
-
-//     const categoria = await response.json()
-//     console.log(categoria, "Categoria editada com sucesso")
-// }
