@@ -39,11 +39,10 @@ async function getCategoriaCardapio() {
     resJson.forEach(categoria => {
         lista.insertAdjacentHTML("beforeend", `
              <li>
+             <img src=""
                 <p>${categoria.nome}</p>
-                <div class="botoes">
                     <button class='botoesEditarExcluir' id='edit-${categoria.id}'>Editar</button>
                     <button class='botoesEditarExcluir' id='${categoria.id}-delete'>Excluir</button>
-                </div>
             </li>
         `)
 
