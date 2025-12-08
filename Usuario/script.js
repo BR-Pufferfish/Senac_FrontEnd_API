@@ -186,7 +186,6 @@ async function putUsuario(userEdit) {
         const confirmar = await response.json()
         console.log(confirmar, "PUT - Usuário atualizado")
     })
-    // location.reload()
 }
 
 
