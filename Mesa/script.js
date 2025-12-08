@@ -66,9 +66,6 @@ async function modalPostMesa() {
                     <label for="numeroMesa">Número da Mesa</label>
                     <input type="number" id="numeroMesa" placeholder="Ex: 10">
 
-                    <label for="situacaoMesa">Situação</label>
-                    <input type="number" id="situacaoMesa" placeholder="Ex: 0 / 1 / 2">
-
                     <button type="submit">Salvar</button>
                 </form>
             </div>
@@ -97,12 +94,11 @@ async function postMesa() {
         event.preventDefault()
 
         const numeroMesa = document.querySelector("#numeroMesa")
-        const situacaoMesa = document.querySelector("#situacaoMesa")
 
 
         const mesa = {
             numeroMesa: numeroMesa.value,
-            situacaoMesa: situacaoMesa.value
+            situacaoMesa: 0
         }
 
 
@@ -166,6 +162,8 @@ async function putMesa(mesaEdit) {
 
         const numeroMesa = document.querySelector("#numeroMesa")
         const situacaoMesa = document.querySelector("#situacaoMesa")
+        console.log(situacaoMesa.value, "valor situação mesa")
+        console.log(numeroMesa.value, "valor número mesa")
 
         const mesa = {
             numeroMesa: numeroMesa.value,
@@ -178,11 +176,10 @@ async function putMesa(mesaEdit) {
             body: JSON.stringify(mesa)
         })
 
-        const confirmar = await response.json()
-        console.log(confirmar, "PUT - Mesa atualizada")
+        const confirm = await response.json()
+        console.log(confirm, "PUT - Mesa atualizada")
 
     })
-    // location.reload()
 }
 
 
