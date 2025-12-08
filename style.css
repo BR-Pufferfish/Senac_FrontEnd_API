@@ -7,7 +7,12 @@
 }
 
 
-/*Estilização Tela de Login*/
+
+
+
+
+    /*Estilização Tela de Login*/
+/* ============================================== */
 .body_login {
     width: 400px;
     padding: 20px;
@@ -25,8 +30,6 @@
     margin: 0 auto;
 }
 
-
-/*Formulario da tela de login*/
 .formularioLogin {
     padding: 50px;
     background-color: white;
@@ -38,13 +41,11 @@
     gap: 25px;
 }
 
-
 .preenchimento_login {
     display: flex;
     flex-direction: column;
     gap: 5px;
 }
-
 
 .titulo_Login {
     display: flex;
@@ -52,8 +53,6 @@
     gap: 5px;
 }
 
-
-/*Botão de Login*/
 .btnEntrarLogin {
     padding: 10px;
     align-self: center;
@@ -68,12 +67,17 @@
     text-transform: uppercase;
     font-weight: 700;
 }
+/* ============================================== */
+
+
+
+
 
 
 body {
     font-family: "Poppins", sans-serif;
     background: #ffdc99;
-    /* padding: 50px 20px; tive que remover para o modal funcionar 
+    /* padding: 50px 20px; tive que remover para o modal funcionar
     gap: 40px; */
 }
 
