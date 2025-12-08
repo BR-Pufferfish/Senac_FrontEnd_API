@@ -81,7 +81,7 @@ async function getComandas() {
     const resJson = await response.json()
 
     const lista = document.querySelector("ul")
-    const list = [{ id: 1, numeroMesa: 5, nomeCliente: "Ana", itens: "Pizza, Coca-Cola" }]
+    // const list = [{ id: 1, numeroMesa: 5, nomeCliente: "Ana", itens: "Pizza, Coca-Cola" }]
     resJson.forEach(comanda => {
         lista.insertAdjacentHTML("beforeend", `
              <li>
@@ -99,7 +99,7 @@ async function getComandas() {
 
 
         const ul = document.getElementById(`${comanda.id}-itens`)
-        list.forEach(item => {
+        cardapioItems.forEach(item => {
             ul.insertAdjacentHTML("beforeend", `<li>${item.nomeCliente}</li>`)
         })
 
