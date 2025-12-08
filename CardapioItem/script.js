@@ -40,9 +40,6 @@ async function getCardapioItem() {
             console.log("Editar", caItem.id)
             putCardapioItem(caItem.id)
         })
-
-
-
     })
 }
 getCardapioItem()
@@ -79,8 +76,8 @@ async function postCardapioItem() {
             body: JSON.stringify(cardapioItem)
         })
 
-
-        console.log(response, "POST - CardapioItem adicionado")
+        const confirmar = await response.json();
+        console.log(confirmar, "POST - CardapioItem adicionado")
     })
 }
 
@@ -89,7 +86,7 @@ async function postCardapioItem() {
 
 
 
-// Ação ao clicar no botão Adicionar Usuário
+// Ação ao clicar no botão Adicionar
 const novoCardapio = document.querySelector("#novoCardapio")
 novoCardapio.addEventListener("click", modalPostCardapio)
 
@@ -119,15 +116,16 @@ function modalPostCardapio() {
         </div>
         `)
 
-
-    postCardapioItem()
-
     const close = document.querySelector("#close")
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
         location.reload()
     })
+
+    await postCardapioItem();
+
+    // location.reload()
 }
 
 
@@ -135,28 +133,35 @@ function modalPostCardapio() {
 
 
 
-async function putCardapioItem() {
+async function putCardapioItem(cardapioEdit) {
     abrirModalEdit(cardapioEdit)
+    const form = document.querySelector("form")
 
-    const titulo = document.querySelector("#titulo")
-    const descricao = document.querySelector("#descricao")
-    const preco = document.querySelector("#preco")
-    let checkbox = document.querySelector("#possuipreparo")
+    // TODO
+    // validar como que posso inserir o reload aqui
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault()
 
-    const CardapioItem = {
-        titulo: titulo.value,
-        descricao: descricao.value,
-        preco: Number(preco.value),
-        possuiPreparo: checkbox.checked
-    }
+        const titulo = document.querySelector("#titulo")
+        const descricao = document.querySelector("#descricao")
+        const preco = document.querySelector("#preco")
+        let checkbox = document.querySelector("#possuipreparo")
 
-    const response = await fetch(`${baseUrl}/CardapioItem/1`, {
-        method: "PUT",
-        headers: headers,
-        body: JSON.stringify(CardapioItem)
+        const cardapioItem = {
+            titulo: titulo.value,
+            descricao: descricao.value,
+            preco: Number(preco.value),
+            possuiPreparo: checkbox.checked
+        }
+
+        const response = await fetch(`${baseUrl}/CardapioItem/${cardapioEdit.id}`, {
+            method: "PUT",
+            headers: headers,
+            body: JSON.stringify(cardapioItem)
+        })
+        console.log(response, "PUT - CardapioItem atualizado")
     })
-    console.log(response, "PUT - CardapioItem atualizado")
-    location.reload()
+    // location.reload()
 }
 
 
@@ -190,14 +195,11 @@ function abrirModalEdit(cardapioEdit) {
         </div>
         `)
 
-
-    putCardapioItem()
-
     const close = document.querySelector("#close")
     close.addEventListener("click", () => {
         const wrapper = document.querySelector(".wrapper")
         wrapper.remove()
-        location.reload()
+        // location.reload()
     })
 }
 
