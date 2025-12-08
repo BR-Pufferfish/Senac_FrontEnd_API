@@ -56,10 +56,10 @@ async function modalPostCategoria() {
             <div class="modal">
                 <button id="close">X</button>
                 <form>
-                    <label for="nomeCategoria"></label>
+                    <label for="nomeCategoria">Categoria</label>
                     <input type="text" id="nomeCategoria" placeholder="Ex: Bebidas">
 
-                    <label for="descricaoCategoria"></label>
+                    <label for="descricaoCategoria">Descrição</label>
                     <input type="text" id="descricaoCategoria" placeholder="Ex: Bebibas diversas">
 
                     <button type="submit">Salvar</button>
@@ -125,10 +125,10 @@ function abrirModalEdit(categoriaEdit) {
             <div class="modal">
                 <button class="close" id="close">X</button>
                 <form>
-                    <label for="nomeCategoria"></label>
+                    <label for="nomeCategoria">Categoria</label>
                     <input type="text" id="nomeCategoria" value="${categoriaEdit.nome}">
 
-                    <label for="descricaoCategoria"></label>
+                    <label for="descricaoCategoria">Descrição</label>
                     <input type="text" id="descricaoCategoria" value="${categoriaEdit.descricao}">
 
                     <button type="submit">Salvar</button>
