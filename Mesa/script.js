@@ -176,8 +176,10 @@ async function putMesa(mesaEdit) {
             body: JSON.stringify(mesa)
         })
 
-        const confirm = await response.json()
-        console.log(confirm, "PUT - Mesa atualizada")
+        if (response.ok) {
+            // alert("Mesa atualizada com sucesso!")
+        }
+        console.log("PUT - Mesa atualizada")
     })
 }
 

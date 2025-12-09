@@ -123,7 +123,7 @@ async function postUsuario() {
 
 
 
-function abrirModalEdit(userEdit) {
+async function abrirModalEdit(userEdit) {
     const body = document.body
 
     body.insertAdjacentHTML("afterbegin",

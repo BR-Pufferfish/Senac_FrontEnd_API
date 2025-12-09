@@ -22,16 +22,16 @@ getCardapioItem()
 async function getComandas() {
     const response = await fetch(`${baseUrl}/Comanda`)
     const resJson = await response.json()
+    console.log(resJson, "Comandas recebidas")
 
     const lista = document.querySelector("ul")
-    // const list = [{ id: 1, numeroMesa: 5, nomeCliente: "Ana", itens: "Pizza, Coca-Cola" }]
     resJson.forEach(comanda => {
         lista.insertAdjacentHTML("beforeend", `
              <li>
                 <p>Id: ${comanda.id}</p>
                 <p>Mesa: ${comanda.numeroMesa}</p>
                 <p>Cliente: ${comanda.nomeCliente}</p>
-                <p>Itens: ${comanda.itens}</p>
+                <p>Itens:</p>
                 <ul id="${comanda.id}-itens">
 
                 </ul>
@@ -42,8 +42,8 @@ async function getComandas() {
 
 
         const ul = document.getElementById(`${comanda.id}-itens`)
-        cardapioItems.forEach(item => {
-            ul.insertAdjacentHTML("beforeend", `<li>${item.nomeCliente}</li>`)
+        comanda.itens.forEach(item => {
+            ul.insertAdjacentHTML("beforeend", `<li>${item.titulo}</li>`)
         })
 
 
@@ -54,11 +54,11 @@ async function getComandas() {
         })
 
 
-        // const btnEditar = document.getElementById(`${comanda.id}-edit`)
-        // btnEditar.addEventListener("click", async () => {
-        //     console.log("Editar", comanda.id)
-        //     putComanda(comanda)
-        // })
+        const btnEditar = document.getElementById(`${comanda.id}-edit`)
+        btnEditar.addEventListener("click", async () => {
+            console.log("Editar", comanda.id)
+            putComanda(comanda)
+        })
     })
 }
 getComandas()
@@ -68,61 +68,171 @@ getComandas()
 
 
 
-function novaComanda() {
-    const novaComanda = document.getElementById("novaComanda")
-    novaComanda.addEventListener("click", async () => {
-        console.log("Nova Comanda", cardapioItems)
-        const lista = document.querySelector("#cardapio_items")
 
-        // Pra cada item do cardápio, criar um li com checkbox
-        cardapioItems.forEach(caItem => {
-            lista.insertAdjacentHTML("beforeend", `
-            <li>
-                <p>${caItem.titulo}</p>
-                <input class="check" id=${caItem.id} type="checkbox"/>
-            </li>
+const novaComanda = document.querySelector("#novaComanda")
+novaComanda.addEventListener("click", modalPostComanda)
+
+async function modalPostComanda() {
+    const body = document.body
+
+    body.insertAdjacentHTML("afterbegin",
+        `<div class="wrapper">
+            <div class="modal">
+                <button id="close">X</button>
+                <form>
+                    <label for="numeroMesa">Número da Mesa</label>
+                    <input type="number" id="numeroMesa" placeholder="Ex: 10">
+                    <label for="nomeCliente">Nome do Cliente</label>
+                    <input type="text" id="nomeCliente" placeholder="Ex: Fulano">
+                    <label for="itensComanda">Itens da Comanda</label>
+                    <ul id="itens"></ul>
+                   
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+        `)
+
+    const itensUl = document.getElementById("itens")
+    cardapioItems.forEach(caItem => {
+        itensUl.insertAdjacentHTML("beforeend", `
+            <label>${caItem.titulo}</label>
+            <input type="checkbox" class="caitem" value="${caItem.id}"/>
             `)
-        })
+    })
 
-        // Adicionar campo para nome do cliente e botão para finalizar
-        lista.insertAdjacentHTML("beforeend", `
-            <input type="text" id="nomeCliente" placeholder="Nome do cliente"/>
-            <button id="finalizarComanda">Salvar Comanda</button>
-            `)
+    const close = document.querySelector("#close")
+    close.addEventListener("click", () => {
+        const wrapper = document.querySelector(".wrapper")
+        wrapper.remove()
+        location.reload()
+    })
+
+    await postComanda();
+}
 
 
-        const btnFinalizarComanda = document.getElementById("finalizarComanda")
-        btnFinalizarComanda.addEventListener("click", async () => {
-            console.log("Finalizar Comanda", document.querySelector("#mesa").value)
-            const inputsCheck = document.querySelectorAll(".check")
-            console.log(inputsCheck)
-            let itensSelecionados = []
 
-            inputsCheck.forEach(input => {
-                if (input.checked) {
-                    itensSelecionados.push(parseInt(input.id))
-                }
-            })
 
-            const body = {
-                "numeroMesa": numeroMesa.value,
-                "nomeCliente": nomeCliente.value,
-                "cardapioItemIds": itensSelecionados
+
+
+async function postComanda() {
+    const form = document.querySelector("form")
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault()
+
+        let itensSelecionados = []
+        const itensSelecionadosInpput = document.querySelectorAll(".caitem")
+
+        itensSelecionadosInpput.forEach(input => {
+            if (input.checked) {
+                itensSelecionados.push(parseInt(input.value))
             }
-
-            const res = await fetch(`${baseUrl}/Comanda`, {
-                method: "POST",
-                headers: headers,
-                body: JSON.stringify(body)
-            })
-
-            console.log("Itens Selecionados:", itensSelecionados)
-            const resJson = await res.json()
-            console.log("Comanda criada:", resJson)
         })
+
+        const numeroMesa = document.getElementById("numeroMesa")
+        const nomeCliente = document.getElementById("nomeCliente")
+
+        const comanda = {
+            numeroMesa: parseInt(numeroMesa.value),
+            nomeCliente: nomeCliente.value,
+            cardapioItemIds: itensSelecionados
+        }
+
+        const response = await fetch(`${baseUrl}/Comanda`, {
+            method: "POST",
+            headers: headers,
+            body: JSON.stringify(comanda)
+        })
+
+        const confirmar = await response.json();
+        console.log(confirmar, "POST - Comanda adicionada")
     })
 }
-novaComanda()
+
+
+
+
+
+
+function abrirModalEdit(comandaEdit) {
+
+    const body = document.body
+    body.insertAdjacentHTML("afterbegin",
+        `<div class="wrapper">
+            <div class="modal">
+                <button id="close">X</button>
+                <form>
+                    <label for="numeroMesa">Número da Mesa</label>
+                    <input type="number" id="numeroMesa" value="${comandaEdit.numeroMesa}">
+                    <label for="nomeCliente">Nome do Cliente</label>
+                    <input type="text" id="nomeCliente" value="${comandaEdit.nomeCliente}">
+                    <label for="itensComanda">Itens da Comanda</label>
+                    <ul id="itens"></ul>
+
+                    <button type="submit">Salvar</button>
+                </form>
+            </div>
+        </div>
+        `)
+
+    const itensUl = document.getElementById("itens")
+    cardapioItems.forEach(caItem => {
+        itensUl.insertAdjacentHTML("beforeend", `
+            <label>${caItem.titulo}</label>
+            <input type="checkbox" class="caitem" value="${caItem.id}"/>
+        `)
+    })
+
+    const close = document.querySelector("#close")
+    close.addEventListener("click", () => {
+        const wrapper = document.querySelector(".wrapper")
+        wrapper.remove()
+        location.reload()
+    })
+}
+
+
+
+
+
+
+async function putComanda(comandaEdit) {
+
+    abrirModalEdit(comandaEdit)
+    const form = document.querySelector("form")
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault()
+
+        const numeroMesa = document.getElementById("numeroMesa")
+        const nomeCliente = document.getElementById("nomeCliente")
+        console.log(nomeCliente.value, "valor nome cliente")
+        console.log(numeroMesa.value, "valor número mesa")
+
+        let itensSelecionados = []
+        const itensSelecionadosInpput = document.querySelectorAll(".caitem")
+        itensSelecionadosInpput.forEach(input => {
+            if (input.checked) {
+                itensSelecionados.push(parseInt(input.value))
+            }
+        })
+        console.log(itensSelecionados, "itens selecionados no PUT")
+
+        const comanda = {
+            numeroMesa: parseInt(numeroMesa.value),
+            nomeCliente: nomeCliente.value,
+            cardapioItemIds: itensSelecionados
+        }
+
+        const response = await fetch(`${baseUrl}/Comanda/${comandaEdit.id}`, {
+            method: "PUT",
+            headers: headers,
+            body: JSON.stringify(comanda)
+        })
+
+        console.log(response, "PUT - Comanda atualizado")
+    })
+}
 
 
 
