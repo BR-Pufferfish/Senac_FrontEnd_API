@@ -1,7 +1,7 @@
 /* CONTAINER */
 /* ====================================================================== */
 .container {
-    width: 95%;
+    width: 100%;
     padding: 32px;
     border-radius: 18px;
     background: rgba(248, 155, 16, 0.075);
@@ -9,6 +9,7 @@
     box-shadow: 0 0 8px rgba(238, 173, 34, 0.35);
     transform-origin: top center;
 }
+
 /* ====================================================================== */
 
 
@@ -30,6 +31,7 @@ li p {
     margin: 0 10px;
     flex: 1;
 }
+
 /* ====================================================================== */
 
 
@@ -64,6 +66,7 @@ button[id$="delete"] {
 button[id$="delete"]:hover {
     background: rgba(255, 123, 0, 0.4);
 }
+
 /* ====================================================================== */
 
 
@@ -82,7 +85,7 @@ button[id$="delete"]:hover {
     color: #443726;
 }
 
-.modal .close  {
+.modal .close {
     background: rgba(255, 173, 105, 0.15);
     border-color: #ffc46b;
     width: 32px;
@@ -93,4 +96,5 @@ button[id$="delete"]:hover {
 .close:hover {
     background: rgba(255, 178, 105, 0.3);
 }
+
 /* ====================================================================== */

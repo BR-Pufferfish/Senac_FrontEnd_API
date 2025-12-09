@@ -13,19 +13,16 @@
 
 /*Estilização Tela de Login*/
 /* ====================================================================== */
-.body_login {
+/* .body_login {
     width: 400px;
     padding: 20px;
     border: 10px;
     font-family: "Montserrat";
     color: #404040;
-
-    /* centralização do login*/
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    /*cor de fundo da tela de login*/
     background-color: #e67e22;
     margin: 0 auto;
 }
@@ -34,8 +31,6 @@
     padding: 50px;
     background-color: white;
     border-radius: 30px;
-
-    /*Posicionamento de todas as caixas*/
     display: flex;
     flex-direction: column;
     gap: 25px;
@@ -66,7 +61,7 @@
     color: white;
     text-transform: uppercase;
     font-weight: 700;
-}
+} */
 
 /* ====================================================================== */
 
@@ -76,7 +71,7 @@
 
 /*Estilização Tela de Login - teste mais limpo*/
 /* ====================================================================== */
-/* .body_login {
+.body_login {
     width: 400px;
     padding: 20px;
     border: 10px;
@@ -115,7 +110,8 @@
     color: white;
     text-transform: uppercase;
     font-weight: 700;
-} */
+}
+
 /* ====================================================================== */
 
 
@@ -127,8 +123,6 @@
 /* ====================================================================== */
 body {
     background: #ffdc99;
-    /* padding: 50px 20px; tive que remover para o modal funcionar
-    gap: 40px; */
 }
 
 .btnVoltarHome {
@@ -179,21 +173,6 @@ ul li {
     color: white;
 }
 
-/* teste para utilizar o cabeçalho alinhado
-.top-bar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-    padding: 10px 20px;
-}
-
-.top-bar h2 {
-    margin: 0;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-} */
 /* ====================================================================== */
 
 
@@ -291,7 +270,6 @@ form button[type="submit"]:hover {
     z-index: 9999;
 }
 
-/* caixa do modal */
 .modal-confirm {
     background: #fff;
     padding: 20px 24px;
@@ -303,13 +281,11 @@ form button[type="submit"]:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-/* texto */
 .modal-confirm p {
     margin-bottom: 18px;
     font-size: 15px;
 }
 
-/* área dos botões */
 .modal-confirm .buttons {
     display: flex;
     justify-content: center;
@@ -402,10 +378,54 @@ header {
     font-family: "Poppins", sans-serif;
 }
 
-header h2 {
+.top-bar {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+}
+
+.top-bar h2 {
+    grid-column: 2;
+    justify-self: center;
     font-size: 32px;
     font-weight: 700;
     text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
+
+.btnVoltarHome {
+    justify-self: start;
+    font-size: 36px;
+    text-decoration: none;
+    color: #4a2500;
+    padding: 5px 10px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+    transition: 0.2s;
+}
+
+.btnVoltarHome:hover {
+    border: 2px solid #4a2500;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btnAddRegistro {
+    justify-self: end;
+    font-size: 32px;
+    background: #ffffff;
+    color: #ff8300;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    padding: 5px 12px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btnAddRegistro:hover {
+    background: #ffe0b2;
+    border-color: #ff8300;
+}
+
+
 
 /* ====================================================================== */
