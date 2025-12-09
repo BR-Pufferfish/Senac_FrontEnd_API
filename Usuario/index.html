@@ -11,7 +11,13 @@
 
 
 <header>
-    <h2>Usuários</h2>
+    <div class="top-bar">
+        <a href="../Home/index.html" class="btnVoltarHome">←</a>
+
+        <h2>Usuários</h2>
+
+        <button id="novoUsuario" class="btnAddRegistro">+</button>
+    </div>
 </header>
 
 
@@ -19,17 +25,11 @@
 
     <div class="container">
 
-        <div class="top-bar">
-            <a href="../Home/index.html" class="btnVoltarHome">←</a>
-
-            <button id="novoUsuario" class="btnAddRegistro">+</button>
-        </div>
-
-
-        <div class="lista-area">
+        <div>
             <ul id="listaUsuarios">
             </ul>
         </div>
+
     </div>
 
     <script type="module" src="./script.js"></script>

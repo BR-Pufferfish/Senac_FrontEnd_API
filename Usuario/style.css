@@ -1,62 +1,23 @@
-/* =======================
-   ESTILO GLOBAL
-======================= */
-/* body {
-    color: #442631;
-    display: flex;
-    flex-direction: row;
-} */
-/*Ana - já consta um body global para todos*/
-
-/* =======================
-   ÁREA SUPERIOR
-======================= */
-.top-area {
-    display: flex;
-    justify-content: flex-start;
-    gap: 12px;
-    margin-bottom: 20px;
-}
-
-
-/* CAMPO DE BUSCA */
-#search {
-    flex: 1;
-    padding: 12px 18px;
-    border-radius: 12px;
-    border: 2px solid #f79f4e;
-    background: rgba(255, 190, 105, 0.12);
-    color: #443626;
-    font-size: 16px;
-}
-
-#search:focus {
-    box-shadow: 0 0 10px rgba(255, 190, 105, 0.35);
-}
-
-
-/* =======================
-   CONTAINER
-======================= */
+/* CONTAINER */
+/* ====================================================================== */
 .container {
-    width: 100%;
-    padding: 30px;
+    width: 95%;
+    padding: 32px;
     border-radius: 18px;
     background: rgba(248, 155, 16, 0.075);
     border: 2px solid #f8621c;
     box-shadow: 0 0 8px rgba(238, 173, 34, 0.35);
     transform-origin: top center;
 }
-
-h2 {
-    margin-bottom: 20px;
-    color: rgb(231, 136, 27);
-}
+/* ====================================================================== */
 
 
-/* =======================
-   LISTA
-======================= */
+
+
+
+
+/* LISTA */
+/* ====================================================================== */
 li {
     display: flex;
     align-items: center;
@@ -69,9 +30,15 @@ li p {
     margin: 0 10px;
     flex: 1;
 }
+/* ====================================================================== */
+
+
+
+
 
 
 /* BOTÕES DA LISTA */
+/* ====================================================================== */
 button[id$="edit"] {
     background: rgba(255, 206, 160, 0.25);
     border: 2px solid #fda93a;
@@ -86,7 +53,7 @@ button[id$="edit"]:hover {
 }
 
 button[id$="delete"] {
-    background: rgba(255, 123, 0, 0.15);
+    background: rgba(255, 123, 0, 0.25);
     border: 2px solid #ff9d42;
     padding: 8px 16px;
     border-radius: 12px;
@@ -95,11 +62,18 @@ button[id$="delete"] {
 }
 
 button[id$="delete"]:hover {
-    background: rgba(255, 136, 0, 0.3);
+    background: rgba(255, 123, 0, 0.4);
 }
+/* ====================================================================== */
 
-    /* MODAL */
-/* ============================================== */
+
+
+
+
+
+/* MODAL */
+/* Testar se não pode ser jogado para o main CSS */
+/* ====================================================================== */
 .modal {
     width: 380px;
     border-radius: 18px;
@@ -119,4 +93,4 @@ button[id$="delete"]:hover {
 .close:hover {
     background: rgba(255, 178, 105, 0.3);
 }
-/* ============================================== */
+/* ====================================================================== */
