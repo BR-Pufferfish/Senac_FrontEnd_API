@@ -7,27 +7,34 @@
 }
 
 :root {
-    --primary-color: #d35400;
-    --primary-color-hover: #e67e22;
-    --secondary-color: ;
+    --primary-color: rgba(211, 84, 0, 1);
+    --primary-color-hover: rgba(230, 126, 34, 1);
+    --secondary-color: rgba(255, 131, 0, 1);
     --secondary-color-hover: ;
     --tertiary-color: ;
     --tertiary-color-hover: ;
-    --btnDelete-color: ;
-    --btnDelete-color-hover: ;
-    --btnEdit-color: ;
-    --btnEdit-color-hover: ;
+    --headerStart-color: rgb(255, 179, 71);
+    --headerEnd-color: rgb(255, 131, 0);
+    --btnVoltarHome-color: rgba(74, 37, 0, 0.85);
+    --btnVoltarHome-color-hover: rgba(74, 37, 0, 1);
+    --btnDelete-color: rgba(219, 52, 52, 0.85);
+    --btnDelete-color-hover: rgba(219, 52, 52, 1);
+    --btnEdit-color: rgba(230, 126, 34, 0.85);
+    --btnEdit-color-hover: rgba(230, 126, 34, 1);
     --btnAdd-color: ;
-    --btnAdd-color-hover: ;
+    --btnAdd-color-hover: rgba(255, 224, 178, 1);
     --btnCancel-color: ;
     --btnCancel-color-hover: ;
     --btnConfirm-color: ;
     --btnConfirm-color-hover: ;
-    --btnClose-color: ;
-    --btnClose-color-hover: ;
+    --modalBtnClose-color: rgba(219, 52, 52, 0.85);
+    --modalBtnClose-color-hover: rgba(219, 52, 52, 1);
+    --modalEditDelete-color: aliceblue;
+    --excluirBtnConfirm-color: rgba(231, 76, 60, 0.85);
+    --excluirBtnConfirm-color-hover: rgba(231, 76, 60, 1);
+    --excluirBtnCancel-color: rgba(204, 204, 204, 0.85);
+    --excluirBtnCancel-color-hover: rgba(204, 204, 204, 1);
 }
-
-
 
 
 
@@ -185,13 +192,21 @@ ul li {
 }
 
 .botoes button:nth-child(1) {
-    background-color: #e67e22;
+    background-color: var(--btnEdit-color);
     color: white;
 }
 
+.botoes button:nth-child(1):hover {
+    background-color: var(--btnEdit-color-hover);
+}
+
 .botoes button:nth-child(2) {
-    background-color: #db3434;
+    background-color: var(--btnDelete-color);
     color: white;
+}
+
+.botoes button:nth-child(2):hover {
+    background-color: var(--btnDelete-color-hover);
 }
 
 /* ====================================================================== */
@@ -216,13 +231,14 @@ ul li {
 }
 
 .modal {
-    background-color: aliceblue;
+    background-color: var(--modalEditDelete-color);
     padding: 35px;
     border-radius: 12px;
     position: relative;
 }
 
 .modal .close {
+    background-color: var(--modalBtnClose-color);
     width: 12px;
     height: 12px;
     position: absolute;
@@ -231,6 +247,10 @@ ul li {
     border: 2px solid;
     cursor: pointer;
     font-weight: bold;
+}
+
+.modal .close:hover {
+    background-color: var(--modalBtnClose-color-hover);
 }
 
 /* ====================================================================== */
@@ -294,7 +314,7 @@ form button[type="submit"]:hover {
 .modal-confirm {
     background: #fff;
     padding: 20px 24px;
-    border-radius: 6px;
+    border-radius: 8px;
     max-width: 320px;
     width: 100%;
     text-align: center;
@@ -304,13 +324,13 @@ form button[type="submit"]:hover {
 
 .modal-confirm p {
     margin-bottom: 18px;
-    font-size: 15px;
+    font-size: 16px;
 }
 
 .modal-confirm .buttons {
     display: flex;
     justify-content: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .modal-confirm button {
@@ -318,25 +338,25 @@ form button[type="submit"]:hover {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    font-size: 14px;
+    font-size: 16px;
 }
 
 #btn-confirm {
-    background: #e74c3c;
+    background: var(--excluirBtnConfirm-color);
     color: #fff;
 }
 
+#btn-confirm:hover {
+    background: var(--excluirBtnConfirm-color-hover);
+}
+
 #btn-cancel {
-    background: #ccc;
+    background: var(--excluirBtnCancel-color);
     color: #333;
 }
 
-#btn-confirm:hover {
-    background: #c0392b;
-}
-
 #btn-cancel:hover {
-    background: #b3b3b3;
+    background: var(--excluirBtnCancel-color-hover);
 }
 
 /* ====================================================================== */
@@ -348,20 +368,20 @@ form button[type="submit"]:hover {
 
 /* Botão de adicionar um novo registro nas telas */
 /* ====================================================================== */
-.btnAddRegistro {
+/* .btnAddRegistro {
     width: 48px;
     height: 48px;
     border-radius: 50%;
     border: none;
     background: #4CAF50;
     color: #ffffff;
-    font-size: 28px;
+    font-size: 32px;
     font-weight: bold;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     transition: 0.2s ease;
 }
 
@@ -372,7 +392,7 @@ form button[type="submit"]:hover {
 
 .btnAddRegistro:active {
     transform: scale(0.95);
-}
+} */
 
 /* ====================================================================== */
 
@@ -386,7 +406,7 @@ form button[type="submit"]:hover {
 header {
     width: 100%;
     padding: 20px 30px;
-    background: linear-gradient(135deg, #ffb347, #ff8300);
+    background: linear-gradient(135deg, var(--headerStart-color), var(--headerEnd-color));
     color: #4a2500;
     display: flex;
     align-items: center;
@@ -418,7 +438,7 @@ header {
     justify-self: start;
     font-size: 36px;
     text-decoration: none;
-    color: #4a2500;
+    color: var(--btnVoltarHome-color);
     padding: 5px 10px;
     border: 2px solid transparent;
     border-radius: 8px;
@@ -427,14 +447,14 @@ header {
 
 .btnVoltarHome:hover {
     border: 2px solid #4a2500;
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--btnVoltarHome-color-hover);
 }
 
 .btnAddRegistro {
     justify-self: end;
     font-size: 32px;
     background: #ffffff;
-    color: #ff8300;
+    color: var(--secondary-color);
     border: 2px solid #ffffff;
     border-radius: 8px;
     padding: 5px 12px;
@@ -443,10 +463,12 @@ header {
 }
 
 .btnAddRegistro:hover {
-    background: #ffe0b2;
-    border-color: #ff8300;
+    background: var(--btnAdd-color-hover);
+    border-color: var(--secondary-color);
 }
 
-
+.btnAddRegistro:active {
+    transform: scale(1.05);
+}
 
 /* ====================================================================== */
