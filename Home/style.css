@@ -1,6 +1,4 @@
 :root {
-    --primary-color: #d35400;
-    --primary-color-hover: #e67e22;
     --button-height: 110px;
     --button-font-size: 32px;
 }
@@ -13,7 +11,10 @@ body {
 }
 
 
-/* Botões EXTRA GRANDES */
+
+
+
+
 a {
     display: flex;
     align-items: center;
@@ -29,7 +30,7 @@ a {
 
     background-color: var(--primary-color);
     color: white;
-    border-radius: 14px;
+    border-radius: 12px;
 
     box-shadow: 0 8px 20px rgba(0, 0, 0, 1);
     transition: 0.25s ease;
@@ -43,6 +44,11 @@ a:hover {
 a:active {
     transform: scale(0.96);
 }
+
+
+
+
+
 
 /* Layout para tablets em modo paisagem */
 @media (orientation: landscape) {

@@ -6,6 +6,27 @@
     list-style: none;
 }
 
+:root {
+    --primary-color: #d35400;
+    --primary-color-hover: #e67e22;
+    --secondary-color: ;
+    --secondary-color-hover: ;
+    --tertiary-color: ;
+    --tertiary-color-hover: ;
+    --btnDelete-color: ;
+    --btnDelete-color-hover: ;
+    --btnEdit-color: ;
+    --btnEdit-color-hover: ;
+    --btnAdd-color: ;
+    --btnAdd-color-hover: ;
+    --btnCancel-color: ;
+    --btnCancel-color-hover: ;
+    --btnConfirm-color: ;
+    --btnConfirm-color-hover: ;
+    --btnClose-color: ;
+    --btnClose-color-hover: ;
+}
+
 
 
 
