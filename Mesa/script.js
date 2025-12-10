@@ -98,7 +98,7 @@ async function postMesa() {
 
         const mesa = {
             numeroMesa: numeroMesa.value,
-            situacaoMesa: 0
+            situacao: 0
         }
 
 
@@ -161,13 +161,11 @@ async function putMesa(mesaEdit) {
         event.preventDefault()
 
         const numeroMesa = document.querySelector("#numeroMesa")
-        const situacaoMesa = document.querySelector("#situacaoMesa")
-        console.log(situacaoMesa.value, "valor situação mesa")
-        console.log(numeroMesa.value, "valor número mesa")
+        const situacao = document.querySelector("#situacaoMesa")
 
         const mesa = {
             numeroMesa: numeroMesa.value,
-            situacaoMesa: situacaoMesa.value
+            situacao: situacao.value
         }
 
         const response = await fetch(`${baseUrl}/Mesa/${mesaEdit.id}`, {
