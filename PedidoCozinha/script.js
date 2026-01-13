@@ -14,9 +14,17 @@ async function getPedido() {
 
     const lista = document.querySelector("ul")
     resJson.forEach(pedido => {
+
+        let itensHtml = "";
+        pedido.itens.forEach(item => {
+            itensHtml += `<p><strong>Item:</strong> ${item.titulo}</p>`;
+        });
+
         lista.insertAdjacentHTML("beforeend", `
              <li id=pedido-${pedido.id}>
                 <h2>Pedido ${pedido.id}</h2>
+                <h3><strong>Itens:</strong></h3>
+                ${itensHtml}
                 <button class='botoesEditarExcluir' id=btn-${pedido.id}>Finalizar</button>
              </li>
             `)
