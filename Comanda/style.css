@@ -1,0 +1,132 @@
+/*Para realizar o isolamento da página Comanda do CSS global que foi aplicado*/
+
+#div_get ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 32px;
+    align-items: stretch;
+    padding: 0 32px;
+}
+.paginaComanda {
+    margin-top: 32px; /* ajuste fino: 24px / 32px / 40px */
+}
+.paginaComanda ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* ===== Comandas - Cards ===== */
+.comanda-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #fff7ec;
+    border-radius: 16px;
+    padding: 16px;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.25);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border: 3px solid #000;
+    min-height: 270px;
+}
+.comanda-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 22px rgba(0,0,0,0.25);
+}
+
+/* Cabeçalho */
+.comanda-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    font-size: 18px;
+    border-bottom: 1px solid #e0c7a0;
+    padding-bottom: 6px;
+}
+
+.comanda-id {
+    color: #000;
+}
+
+.comanda-mesa {
+    background: var(--secondary-color);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+}
+
+/* Cliente */
+.comanda-cliente {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Itens */
+.comanda-itens p {
+    font-size: 14px;
+    opacity: 0.7;
+}
+
+.itens-lista {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.item-chip {
+    background: #ffd8a8;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.label-itens {
+    font-weight: 600;
+    font-size: 14px;
+    color: #555;
+}
+
+
+/* Ações */
+.comanda-acoes {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.btn-editar,
+.btn-excluir {
+    flex: 1;
+    padding: 8px;
+    border-radius: 10px;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.comanda-acoes button {
+    flex: 1;
+}
+
+.btn-editar {
+    background: var(--btnEdit-color);
+    color: white;
+}
+
+.btn-editar:hover {
+    background: var(--btnEdit-color-hover);
+}
+
+.btn-excluir {
+    background: var(--btnDelete-color);
+    color: white;
+}
+
+.btn-excluir:hover {
+    background: var(--btnDelete-color-hover);
+}

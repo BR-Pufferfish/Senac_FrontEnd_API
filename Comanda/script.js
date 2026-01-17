@@ -27,23 +27,33 @@ async function getComandas() {
     const lista = document.querySelector("ul")
     resJson.forEach(comanda => {
         lista.insertAdjacentHTML("beforeend", `
-             <li>
-                <p>Id: ${comanda.id}</p>
-                <p>Mesa: ${comanda.numeroMesa}</p>
-                <p>Cliente: ${comanda.nomeCliente}</p>
-                <p>Itens:</p>
-                <ul id="${comanda.id}-itens">
+        <li class="comanda-card">
+            <div class="comanda-header">
+                <span class="comanda-id">#Id: ${comanda.id}</span>
+                <span class="comanda-mesa">Mesa: ${comanda.numeroMesa}</span>
+            </div>
 
-                </ul>
-                <button class='botoesEditarExcluir' id='${comanda.id}-delete'>Excluir</button>
-                <button class='botoesEditarExcluir' id='${comanda.id}-edit'>Editar</button>
-             </li>
-            `)
+            <div class="comanda-cliente"> 
+                👤 ${comanda.nomeCliente}
+            </div>
+
+            <div class="comanda-itens">
+                <span class="label-itens">Itens:</span>
+                <div class="itens-lista" id="${comanda.id}-itens-container"></div>
+            </div>
+
+        <div class="comanda-acoes">
+                <button class="btn-editar" id="${comanda.id}-edit">✏️Editar</button>
+                <button class="btn-excluir" id="${comanda.id}-delete">🗑 Excluir</button>
+        </div>
+
+        </li>
+        `)
 
 
-        const ul = document.getElementById(`${comanda.id}-itens`)
+        const itensContainer = document.getElementById(`${comanda.id}-itens-container`)
         comanda.itens.forEach(item => {
-            ul.insertAdjacentHTML("beforeend", `<li>${item.titulo}</li>`)
+            itensContainer.insertAdjacentHTML("beforeend", `<span class="item-chip">${item.titulo}</span>`)
         })
 
 
