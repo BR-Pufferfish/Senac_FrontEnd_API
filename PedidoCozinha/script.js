@@ -10,36 +10,47 @@ const headers = { "content-type": "application/json; charset=utf-8" }
 async function getPedido() {
     const response = await fetch(`${baseUrl}/PedidoCozinha`)
     const resJson = await response.json()
-    console.log(resJson, "Resposta do fetch na url")
+    console.log(resJson, "Pedidos recebidos")
 
-    const lista = document.querySelector("ul")
+    const lista = document.getElementById("lista-pedidos");
+
+    if (!Array.isArray(resJson) || resJson.length === 0) {
+        lista.innerHTML = "<p>Nenhum pedido na cozinha.</p>";
+        return;
+    }
+
     resJson.forEach(pedido => {
 
         let itensHtml = "";
-        pedido.itens.forEach(item => {
-            itensHtml += `<p><strong>Item:</strong> ${item.titulo}</p>`;
-        });
+
+        if (pedido.itens && pedido.itens.length > 0) {
+            pedido.itens.forEach(item => {
+                itensHtml += `<p>${item.titulo}</p>`;
+            });
+        } else {
+            itensHtml = "<p>Nenhum item encontrado.</p>";
+        }
 
         lista.insertAdjacentHTML("beforeend", `
-             <li id=pedido-${pedido.id}>
-                <h2>Pedido ${pedido.id}</h2>
-                <h3><strong>Itens:</strong></h3>
+            <li id="pedido-${pedido.id}">
+                <h2>Pedido #${pedido.id}</h2>
+                <h3>Itens do Pedido</h3>
                 ${itensHtml}
-                <button class='botoesEditarExcluir' id=btn-${pedido.id}>Finalizar</button>
-             </li>
-            `)
+                <button class="botoesEditarExcluir" id="btn-${pedido.id}">
+                    Finalizar
+                </button>
+            </li>
+        `);
 
-        const btnFinalizar = document.getElementById(`btn-${pedido.id}`)
-        btnFinalizar.addEventListener("click", async () => {
-            console.log("Finalizar", pedido.id)
-            finalizarPedido(pedido.id)
-        })
-    })
+        const btnFinalizar = document.getElementById(`btn-${pedido.id}`);
+        btnFinalizar.addEventListener("click", () => {
+            console.log("Finalizar", pedido.id);
+            finalizarPedido(pedido.id);
+        });
+    });
 }
-getPedido()
 
-
-
+getPedido();
 
 
 
