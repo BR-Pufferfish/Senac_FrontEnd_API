@@ -106,8 +106,7 @@ async function postCategoria() {
         })
 
 
-        const confirmar = await response.json();
-        console.log(confirmar, "POST - Categoria adicionada")
+        location.reload();
     })
 }
 

@@ -74,7 +74,7 @@ async function modalPostCardapio() {
                     <label for="possuipreparo">Possui Preparo?</label>
                     <input type="checkbox" id="possuipreparo">
 
-                    <button type="submit">salvar</button>
+                    <button type="submit">Salvar</button>
                 </form>
             </div>
         </div>
@@ -121,8 +121,7 @@ async function postCardapioItem() {
             body: JSON.stringify(cardapioItem)
         })
 
-        const confirmar = await response.json();
-        console.log(confirmar, "POST - CardapioItem adicionado")
+        location.reload();
     })
 }
 

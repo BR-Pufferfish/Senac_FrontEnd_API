@@ -155,8 +155,7 @@ async function postComanda() {
             body: JSON.stringify(comanda)
         })
 
-        const confirmar = await response.json();
-        console.log(confirmar, "POST - Comanda adicionada")
+        location.reload();
     })
 }
 

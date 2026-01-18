@@ -112,10 +112,8 @@ async function postUsuario() {
             body: JSON.stringify(usuario)
         })
 
-        const confirmar = await response.json()
-        console.log(confirmar, "POST - Usuário adicionado")
+        location.reload();
     })
-    // location.reload()
 }
 
 

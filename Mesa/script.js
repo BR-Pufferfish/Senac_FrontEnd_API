@@ -109,8 +109,7 @@ async function postMesa() {
         })
 
 
-        const confirmar = await response.json();
-        console.log(confirmar, "POST - Mesa adicionada")
+        location.reload();
     })
 }
 
