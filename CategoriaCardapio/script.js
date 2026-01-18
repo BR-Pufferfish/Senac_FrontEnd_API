@@ -150,31 +150,38 @@ function abrirModalEdit(categoriaEdit) {
 
 async function putCategoria(categoriaEdit) {
 
-    abrirModalEdit(categoriaEdit)
-    const form = document.querySelector("form")
+    abrirModalEdit(categoriaEdit);
+    const form = document.querySelector("form");
 
-    form.addEventListener("submit", async (event) => {
-        event.preventDefault()
+    form.onsubmit = async (event) => {
+        event.preventDefault();
 
 
-        const nomeCategoria = document.querySelector("#nomeCategoria")
-        const descricaoCategoria = document.querySelector("#descricaoCategoria")
+        const nomeCategoria = document.querySelector("#nomeCategoria").value;
+        const descricaoCategoria = document.querySelector("#descricaoCategoria").value;
 
         const categoria = {
-            nome: nomeCategoria.value,
-            descricao: descricaoCategoria.value
+            id: categoriaEdit.id,
+            nome: nomeCategoria,
+            descricao: descricaoCategoria
         }
 
         const response = await fetch(`${baseUrl}/${categoraiCardapio}/${categoriaEdit.id}`, {
             method: "PUT",
             headers: headers,
-            body: JSON.stringify(mesa)
-        })
+            body: JSON.stringify(categoria)
+        });
 
-        const confirmar = await response.json()
-        console.log(confirmar, "PUT - Categoria atualizada")
+        if (!response.ok) {
+            alert("Erro ao atualizar categoria");
+            return;
+        }
 
-    })
+        console.log("Categoria atualizada com sucesso");
+
+        document.querySelector(".wrapper").remove();
+        location.reload();
+    };
 }
 
 
