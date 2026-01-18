@@ -6,7 +6,7 @@ const headers = { "content-type": "application/json; charset=utf-8" }
 
 
 
-
+  
 
 async function getCardapioItem() {
     const response = await fetch(`${baseUrl}/CardapioItem`)
@@ -17,10 +17,17 @@ async function getCardapioItem() {
 
 
         lista.insertAdjacentHTML("beforeend", `
-             <li>
-             <img src="Imagem_Cardapio/principalFoodIcon.png" class="iconeCardapio">
-                    <h1>${caItem.titulo}</h1>
-                    <h2>R$ ${caItem.preco}</h2>
+             <li class="card-cardapio">
+                <div class="card-img">
+                    <img src="Imagem_Cardapio/principalFoodIcon.png" class="iconeCardapio">
+                </div>
+
+                <div class="card-conteudo">
+                    <h3 class="titulo">${caItem.titulo}</h3>
+                    <p class="descricao">${caItem.descricao ?? "Descrição não informada"}</p>            
+
+                    <div class="preco">R$ ${Number(caItem.preco).toFixed(2)}</div>
+                
                 <div class="botoes">
                     <button class='botoesEditarExcluir' id="${caItem.id}-edit">Editar</button>
                     <button class='botoesEditarExcluir' id=${caItem.id}>Excluir</button>

@@ -51,3 +51,109 @@ ul li {
     height: 300px;
     border-radius: 20px;
 }
+/* CONTAINER GERAL */
+.container {
+    padding: 30px 30px 30px 60px; /* espaço topo + esquerda */
+}
+
+/* LISTA */
+ul {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* CARD */
+.card-cardapio {
+    background: #fffef5;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+}
+
+.card-cardapio:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 28px rgba(0,0,0,0.18);
+}
+
+/* IMAGEM */
+.card-img {
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.iconeCardapio {
+    width: 160px;
+    height: auto;
+    border-radius: 16px;
+    border: none;
+}
+
+/* CONTEÚDO */
+.card-conteudo {
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.titulo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2c2c2c;
+}
+
+.descricao {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.4;
+    min-height: 40px;
+}
+
+/* PREÇO */
+.preco {
+    font-size: 18px;
+    font-weight: bold;
+    color: #e67e22;
+    margin-top: 6px;
+}
+
+/* BOTÕES */
+.botoes {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+}
+
+.botoes button {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.btn-editar {
+    background: #f5a623;
+    color: #fff;
+}
+
+.btn-editar:hover {
+    background: #e67e22;
+}
+
+.btn-excluir {
+    background: #e74c3c;
+    color: #fff;
+}
+
+.btn-excluir:hover {
+    background: #c0392b;
+}
