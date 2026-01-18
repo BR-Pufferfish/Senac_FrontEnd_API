@@ -7,26 +7,28 @@
 }
 
 :root {
-    --primary-color: rgba(211, 84, 0, 1);
-    --primary-color-hover: rgba(230, 126, 34, 1);
-    --secondary-color: rgba(255, 131, 0, 1);
-    --secondary-color-hover: ;
+    /*--primary-color: rgba(211, 84, 0, 1); */
+    --primary-color: #ffb444; /*#E67E22;*/ 
+    --primary-color-hover: #ffa500; /*rgba(230, 126, 34, 1);*/
+    /*--secondary-color: rgba(255, 131, 0, 1); */
+    --secondary-color: #F5A623;
+    --secondary-color-hover: #F8C471;
     --tertiary-color: ;
     --tertiary-color-hover: ;
     --headerStart-color: rgb(255, 179, 71);
     --headerEnd-color: rgb(255, 131, 0);
     --btnVoltarHome-color: rgba(74, 37, 0, 0.85);
-    --btnVoltarHome-color-hover: rgba(74, 37, 0, 1);
+    --btnVoltarHome-color-hover: rgb(218, 109, 0);
     --btnDelete-color: rgba(219, 52, 52, 0.85);
     --btnDelete-color-hover: rgba(219, 52, 52, 1);
     --btnEdit-color: rgba(230, 126, 34, 0.85);
     --btnEdit-color-hover: rgba(230, 126, 34, 1);
-    --btnAdd-color: ;
-    --btnAdd-color-hover: rgba(255, 224, 178, 1);
-    --btnCancel-color: ;
-    --btnCancel-color-hover: ;
-    --btnConfirm-color: ;
-    --btnConfirm-color-hover: ;
+    --btnAdd-color: #afbeb5;
+    --btnAdd-color-hover: #b7bbb9;/*rgba(255, 224, 178, 1);*/
+    --btnCancel-color: #BDC3C7;
+    --btnCancel-color-hover: #95A5A6;
+    --btnConfirm-color: #2980B9;
+    --btnConfirm-color-hover: #3498DB;
     --modalBtnClose-color: rgba(219, 52, 52, 0.85);
     --modalBtnClose-color-hover: rgba(219, 52, 52, 1);
     --modalEditDelete-color: aliceblue;
@@ -150,7 +152,7 @@
 /* Elementos gerais do html */
 /* ====================================================================== */
 body {
-    background: #ffdc99;
+    background: #ffffe0; /*#ffdc99;*/
 }
 
 .btnVoltarHome {
