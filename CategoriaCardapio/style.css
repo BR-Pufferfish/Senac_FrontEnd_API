@@ -32,3 +32,34 @@ ul li {
     background-color: #db3434;
     color: white;
 } */
+/* Espaçamento geral da lista de categorias */
+#div_get {
+    padding-top: 30px;     /* espaço do topo */
+    padding-left: 30px;    /* espaço da esquerda */
+    padding-right: 30px;
+}
+
+/* Lista */
+#div_get ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+/* Nome da categoria */
+.categoria-nome {
+    font-size: 20px;
+    font-weight: 700;
+    color: #4a2500;
+    text-align: center;
+}
+
+/* Descrição da categoria */
+.categoria-descricao {
+    font-size: 14px;
+    color: #6b4b2a;
+    text-align: center;
+    line-height: 1.4;
+    opacity: 0.9;
+    padding: 0 6px;
+}

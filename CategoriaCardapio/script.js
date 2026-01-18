@@ -17,6 +17,7 @@ async function getCategoriaCardapio() {
         lista.insertAdjacentHTML("beforeend", `
              <li>
                 <p>${categoria.nome}</p>
+                <p class="categoriaDescricao">${categoria.descricao ?? "Sem descrição"}</p>
                 <div class="botoes">
                     <button class="botoesEditarExcluir" id="edit-${categoria.id}">Editar</button>
                     <button class="botoesEditarExcluir" id="${categoria.id}-delete">Excluir</button>
