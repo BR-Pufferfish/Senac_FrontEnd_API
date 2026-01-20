@@ -1,0 +1,117 @@
+.reserva-lista,
+ul {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 28px;
+    padding: 30px;
+}
+/* ===== CARD RESERVA ===== */
+ul li {
+    background: #fffdf4;
+    border-radius: 22px;
+    padding: 26px 20px;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, 0.25),
+        inset 0 0 0 3px rgba(0, 0, 0, 0.08);
+
+    transition: 
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+ul li:hover {
+    transform: translateY(-10px);
+    box-shadow:
+        0 18px 40px rgba(0, 0, 0, 0.35),
+        inset 0 0 0 3px var(--primary-color);
+}
+
+ul li p:first-child {
+    background: rgba(255, 180, 68, 0.25);
+    border-radius: 14px;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a2500;
+    margin-bottom: 4px;
+
+    box-shadow: inset 0 0 0 2px rgba(0, 0, 0, 0.15);
+}
+
+ul li p {
+    font-size: 15px;
+    color: #4a2500;
+    text-align: center;
+}
+
+ul li p:nth-child(3) {
+    font-size: 20px;
+    font-weight: 800;
+    color: #000;
+    margin: 6px 0 4px;
+}
+ul li p:not(:nth-child(3)) {
+    font-size: 14px;
+    color: #5c3a00;
+}
+
+ul li button {
+    width: 100%;
+    padding: 10px;
+    border-radius: 12px;
+    border: none;
+    font-weight: 700;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s ease;
+    width: auto;
+    flex: 1;
+}
+
+button[id$="-edit"] {
+    background: var(--btnEdit-color);
+    color: #fff;
+}
+
+button[id$="-edit"]:hover {
+    background: var(--btnEdit-color-hover);
+    transform: scale(1.04);
+}
+
+button[id$="-delete"] {
+    background: var(--btnDelete-color);
+    color: #fff;
+}
+
+button[id$="-delete"]:hover {
+    background: var(--btnDelete-color-hover);
+    transform: scale(1.04);
+}
+
+ul li {
+    animation: reservaFade 0.35s ease;
+}
+ul li .acoes {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+
+@keyframes reservaFade {
+    from {
+        opacity: 0;
+        transform: translateY(8px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
