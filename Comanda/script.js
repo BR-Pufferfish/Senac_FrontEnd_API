@@ -239,7 +239,7 @@ async function putComanda(comandaEdit) {
             body: JSON.stringify(comanda)
         })
 
-        console.log(response, "PUT - Comanda atualizado")
+        location.reload();
     })
 }
 

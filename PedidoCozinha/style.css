@@ -1,17 +1,18 @@
 #div_get {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(640px, 1fr));
-    justify-content: start;
-    gap: 40px;
-    padding: 24px 48px;
+    grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+    gap: 28px;
+
+    padding: 24px;
     width: 100%;
+
+    align-items: stretch;
 }
 .paginaPedidoCozinha {
     display: flex;
     justify-content: flex-start;
-    max-width: 1200px;
-    padding-left: 32px;
-    padding-right: 16px;
+    max-width: 1280px;
+    padding: 32px auto;
     margin-top: 32px; /* ajuste fino: 24px / 32px / 40px */
 }
 .paginaPedidoCozinha ul {
@@ -25,59 +26,64 @@
 }
 /*Título da página*/
 h2 {
-    font-size: 50px;
+    font-size: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 12px;
 }
 /*Isolando PedidoCozinha do CSS geral*/
 #lista-pedidos {
-    display: grid;
-    flex-direction: column;
-    gap: 22px;
-    justify-content: flex-start; /* 🔥 FICA À ESQUERDA */
+    display: contents;
+    gap: 24px;
+    justify-content: flex-start;
     align-items: stretch;
-
-    padding: 0;
-    margin: 0;
+    width: 100%;
 }
 /*Card do pedido*/
 #lista-pedidos li {
-    background: #fff7ec;
-    width: 640px;
-    border-radius: 14px;
-    padding: 18px 20px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    background: #fffdf8;
+    width: 100%;
+    border-radius: 18px;
+
+    padding: 18px 20px; /* 🔥 aqui está o segredo */
+    min-height: 200px;
+
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
+
     border-left: 6px solid #ff9800;
-    min-height: 260px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
+#lista-pedidos li:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+}
 /*Título do pedido*/
 /*Números dos pedidos*/
 #lista-pedidos li h2 {
-    font-size: 24px;
-    font-weight: 600;
-    margin: 0;
-    justify-content: flex-start;
+    font-size: 20px;
+    font-weight: 700;
+    color: #2e2e2e;
 }
 
 #lista-pedidos li h3 {
-    font-size: 16px;
-    font-weight: 500;
-    margin: 4px 0;
-    color: #555;
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 6px;
 }
 
 /*Itens do pedido*/
 #lista-pedidos li p {
-    font-size: 16px;
-    margin: 3px 0;
-    padding-left: 10px;
-    border-left: 3px solid #e0e0e0;
-    color: #333;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-radius: 6px;
+    background: #fff3e0;
+    border-left: 3px solid #ffb74d;
 }
 
 /*Botões do pedido*/
@@ -85,30 +91,29 @@ h2 {
     margin-top: auto;
     align-self: flex-end;
 
-    padding: 10px 22px;
-    font-size: 15px;
+    padding: 8px 18px;
+    font-size: 13px;
     font-weight: 600;
 
-    border: none;
     border-radius: 8px;
-    cursor: pointer;
-
     background-color: #4caf50;
-    color: #fff;
-
     transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .botoesEditarExcluir:hover {
     background-color: #43a047;
-    transform: scale(1.05);
+    transform: translateY(-1px);
 }
 
 .botoesEditarExcluir:active {
     transform: scale(0.98);
 }
 
-
+@media (max-width: 768px) {
+    #div_get {
+        grid-template-columns: 1fr;
+    }
+}
 /* ul {
     list-style-type: none;
     display: flex;

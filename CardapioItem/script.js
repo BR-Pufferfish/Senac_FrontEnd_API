@@ -202,8 +202,7 @@ async function putCardapioItem(cardapioEdit) {
             body: JSON.stringify(cardapioItem)
         })
 
-        const confirmar = await response.json()
-        console.log(response, "PUT - CardapioItem atualizado")
+        location.reload();
     })
 }
 
